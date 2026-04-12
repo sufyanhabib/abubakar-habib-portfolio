@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, ArrowRight, Download } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 import { useRef } from "react";
+import { HeroGlobe } from "@/components/HeroGlobe";
 
 export function Hero() {
   const { identity } = portfolioData;
@@ -23,7 +24,7 @@ export function Hero() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-24 overflow-hidden bg-background transition-colors duration-700"
+      className="relative min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background transition-colors duration-700"
     >
       {/* Premium Background System */}
       <div className="absolute inset-0 z-0">
@@ -203,14 +204,7 @@ export function Hero() {
 
             {/* Premium Circular Frame */}
             <div className="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl shadow-primary/10 bg-muted/30 backdrop-blur-sm">
-              <img 
-                src={identity.avatarUrl} 
-                alt={identity.name} 
-                className="object-cover w-full h-full transition-transform duration-1000 ease-in-out group-hover:scale-105 opacity-80 mix-blend-lighten dark:mix-blend-screen"
-                referrerPolicy="no-referrer"
-              />
-              {/* Subtle Overlay for depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              <HeroGlobe />
             </div>
 
             {/* Floating Labels (Pills) */}

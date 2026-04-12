@@ -77,6 +77,39 @@ export const portfolioData = {
         "Implemented IP addressing schemes and performed OS installations.",
         "Documented technical procedures and built an internal knowledge base."
       ]
+    },
+    {
+      role: "Summer Hackathon Participant",
+      company: "Codédex",
+      location: "Remote",
+      period: "July 2024",
+      description: "Completed Track 2: Brooklyn Stoop Sale Invitation.",
+      achievements: [
+        "Received a digital badge for successful completion.",
+        "Developed interactive web components under hackathon constraints."
+      ]
+    },
+    {
+      role: "Open Source Contributor",
+      company: "Hacktoberfest",
+      location: "Global",
+      period: "Oct 2023",
+      description: "Engaged in global open-source event completing all required pull requests.",
+      achievements: [
+        "Contributed to diverse open-source projects.",
+        "Demonstrated commitment to collaborative development within the community."
+      ]
+    },
+    {
+      role: "Master of Computer Applications",
+      company: "Bihar University",
+      location: "Bihar, India",
+      period: "2021 - 2023",
+      description: "Starting point of the technical journey, mastering core computer science fundamentals.",
+      achievements: [
+        "Focused on systems, networking, and software engineering.",
+        "Built foundational projects in C, Java, and Web Technologies."
+      ]
     }
   ],
   projects: [

@@ -4,7 +4,6 @@ import { About } from "@/sections/About";
 import { Skills } from "@/sections/Skills";
 import { Experience } from "@/sections/Experience";
 import { Projects } from "@/sections/Projects";
-import { Journey } from "@/sections/Journey";
 import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 
@@ -18,7 +17,6 @@ export default function App() {
         <Skills />
         <Experience />
         <Projects />
-        <Journey />
         <Contact />
       </main>
       <Footer />

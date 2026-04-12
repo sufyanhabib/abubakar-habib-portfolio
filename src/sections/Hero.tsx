@@ -80,20 +80,11 @@ export function Hero() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-center lg:text-left"
         >
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-primary font-mono text-xs tracking-[0.3em] uppercase mb-6 opacity-80"
-          >
-            Available for new opportunities
-          </motion.p>
-          
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-5xl md:text-7xl lg:text-9xl font-display font-bold tracking-tighter leading-[0.85] mb-8"
+            className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-display font-bold tracking-tighter leading-tight mb-8"
           >
             <span className="text-tricolor animate-gradient-x inline-block">
               {identity.name}
@@ -104,10 +95,20 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-2xl font-display font-medium text-foreground/70 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+            className="text-lg md:text-2xl font-display font-medium text-foreground/70 mb-4 max-w-xl mx-auto lg:mx-0 leading-relaxed"
           >
             {identity.title}
           </motion.h2>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45 }}
+            className="text-primary font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase mb-10 opacity-80 flex items-center justify-center lg:justify-start gap-3"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+            Available for new opportunities
+          </motion.p>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -138,17 +139,32 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="flex items-center justify-center lg:justify-start gap-8"
+            className="flex items-center justify-center lg:justify-start gap-5 mb-12"
           >
-            <a href={identity.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-all duration-300 transform hover:scale-110">
-              <Github className="h-5 w-5" />
-            </a>
-            <a href={identity.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-all duration-300 transform hover:scale-110">
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a href={`mailto:${identity.email}`} className="text-muted-foreground hover:text-foreground transition-all duration-300 transform hover:scale-110">
-              <Mail className="h-5 w-5" />
-            </a>
+            {[
+              { icon: Github, href: identity.github, label: "GitHub" },
+              { icon: Linkedin, href: identity.linkedin, label: "LinkedIn" },
+              { icon: Mail, href: `mailto:${identity.email}`, label: "Email" }
+            ].map((social, i) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -4 }}
+                className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-foreground/[0.03] border border-foreground/10 hover:border-primary/50 hover:bg-primary/5 transition-all duration-500"
+              >
+                <social.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
+                
+                {/* Premium Glow Effect */}
+                <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                {/* Tooltip-like label (optional, but adds to premium feel) */}
+                <span className="absolute -top-10 scale-0 group-hover:scale-100 transition-all duration-300 bg-foreground text-background text-[10px] font-mono px-2 py-1 rounded uppercase tracking-widest pointer-events-none">
+                  {social.label}
+                </span>
+              </motion.a>
+            ))}
           </motion.div>
         </motion.div>
 
@@ -201,25 +217,28 @@ export function Hero() {
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 -left-4 md:-left-8 bg-background/90 backdrop-blur-md border border-primary/20 px-4 py-2 rounded-full shadow-xl z-20"
+              className="absolute top-10 -left-4 md:-left-8 bg-background/90 backdrop-blur-md border-2 border-orange-500/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2"
             >
-              <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-primary">Frontend</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse" />
+              <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-orange-500">Frontend</span>
             </motion.div>
 
             <motion.div 
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-20 -right-4 md:-right-8 bg-background/90 backdrop-blur-md border border-primary/20 px-4 py-2 rounded-full shadow-xl z-20"
+              className="absolute bottom-20 -right-4 md:-right-8 bg-background/90 backdrop-blur-md border-2 border-dashed border-green-500/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2"
             >
-              <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-primary">Network</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-green-500">Network</span>
             </motion.div>
 
             <motion.div 
               animate={{ x: [0, 8, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              className="absolute top-1/2 -right-8 md:-right-12 bg-primary/10 backdrop-blur-md border border-primary/30 px-4 py-2 rounded-full shadow-xl z-20"
+              className="absolute top-1/2 -right-8 md:-right-12 bg-background/90 backdrop-blur-md border-2 border-dotted border-primary/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2"
             >
-              <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-foreground">AI Engineer</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-primary">AI Engineer</span>
             </motion.div>
           </div>
         </motion.div>

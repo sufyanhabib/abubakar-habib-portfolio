@@ -38,13 +38,12 @@
 
 @keyframes gradient-x {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient-x 8s ease infinite;
+  background-size: 300% auto;
+  animation: gradient-x 15s linear infinite;
 }
 
 .text-tricolor {
@@ -52,9 +51,10 @@
     to right,
     #FF9933,
     #FFFFFF,
-    #138808
+    #138808,
+    #FF9933
   );
-  background-size: 200% auto;
+  background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -65,9 +65,10 @@
     to right,
     #FF9933,
     #FFFFFF,
-    #138808
+    #138808,
+    #FF9933
   );
-  background-size: 200% auto;
+  background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -76,10 +77,11 @@
   background: linear-gradient(
     to right,
     #FF9933,
-    #94a3b8,
-    #138808
+    #cbd5e1,
+    #138808,
+    #FF9933
   );
-  background-size: 200% auto;
+  background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

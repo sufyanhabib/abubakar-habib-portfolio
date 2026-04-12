@@ -85,9 +85,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-display font-bold tracking-tighter leading-tight mb-8"
+            className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-display font-bold tracking-tight leading-tight mb-8"
           >
-            <span className="text-tricolor animate-gradient-x inline-block">
+            <span className="text-tricolor animate-gradient-x inline-block pr-6">
               {identity.name}
             </span>
           </motion.h1>

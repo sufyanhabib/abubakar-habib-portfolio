@@ -10,7 +10,7 @@ export function Projects() {
     <Section id="projects" title="Featured Projects" subtitle="Curated work demonstrating frontend capability and product thinking.">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {portfolioData.projects.map((project, i) => (
-          <Card key={i} className="group overflow-hidden bg-secondary/20 border-border/50 flex flex-col">
+          <Card key={i} className="group overflow-hidden bg-secondary/20 border-border/50 flex flex-col h-full">
             <div className="aspect-video overflow-hidden relative">
               <img 
                 src={`https://picsum.photos/seed/${project.title}/800/450`} 
@@ -43,14 +43,14 @@ export function Projects() {
                 </div>
               </div>
             </CardContent>
-            <CardFooter className="p-8 pt-0 flex gap-4">
-              <Button variant="outline" size="sm" className="flex-1 rounded-full" asChild>
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
+            <CardFooter className="p-8 pt-4 pb-6 flex gap-4 mt-auto">
+              <Button variant="outline" size="sm" className="flex-1 rounded-full h-10" asChild>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center">
                   <Github className="mr-2 h-4 w-4" /> Code
                 </a>
               </Button>
-              <Button size="sm" className="flex-1 rounded-full" asChild>
-                <a href={project.demo} target="_blank" rel="noopener noreferrer">
+              <Button size="sm" className="flex-1 rounded-full h-10" asChild>
+                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center">
                   <ExternalLink className="mr-2 h-4 w-4" /> Demo
                 </a>
               </Button>

@@ -34,21 +34,25 @@ export const portfolioData = {
   skills: [
     {
       category: "Frontend Engineering",
+      description: "Crafting high-performance, accessible user interfaces with modern React architectures and fluid motion design.",
       icon: Code2,
       items: ["React", "JavaScript (ES6+)", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design", "HTML5/CSS3"]
     },
     {
       category: "Network Infrastructure",
+      description: "Designing and troubleshooting robust network architectures with a focus on security, scalability, and performance.",
       icon: Network,
       items: ["IP Addressing & Subnetting", "VLAN Segmentation", "Switching & Routing", "OSPF & Static Routing", "Cisco CLI", "Troubleshooting (Ping/Traceroute)"]
     },
     {
       category: "Systems & Tools",
+      description: "Leveraging industry-standard tools and server environments to streamline development and infrastructure management.",
       icon: Terminal,
       items: ["Git & GitHub", "Windows Server 2022", "Cisco Packet Tracer", "VS Code", "DNS & DHCP Basics", "Network Security Fundamentals"]
     },
     {
       category: "Future Direction",
+      description: "Exploring the frontier of intelligent systems and advanced UI patterns to build the next generation of web products.",
       icon: BrainCircuit,
       items: ["Advanced React Patterns", "UI Engineering", "Intelligent Systems", "AI Integration"]
     }

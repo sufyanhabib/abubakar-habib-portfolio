@@ -4,6 +4,7 @@ import { About } from "@/sections/About";
 import { Skills } from "@/sections/Skills";
 import { Experience } from "@/sections/Experience";
 import { Projects } from "@/sections/Projects";
+import { Articles } from "@/sections/Articles";
 import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 import { SoundProvider } from "@/components/SoundProvider";
@@ -19,6 +20,7 @@ export default function App() {
           <Skills />
           <Experience />
           <Projects />
+          <Articles />
           <Contact />
         </main>
         <Footer />

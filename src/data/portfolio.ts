@@ -247,5 +247,40 @@ Currently, I am focused on strengthening my frontend development skills while ex
     { name: "Framework Valley: React Course", status: "Certificate" },
     { name: "The Legend of Python", status: "Certificate" },
     { name: "Hacktoberfest 2023", status: "Digital Badge" }
+  ],
+  articles: [
+    {
+      title: "The Intersection of Networking and Frontend Engineering",
+      excerpt: "How understanding the OSI model and TCP/IP can make you a better web developer. Exploring latency, packet loss, and browser rendering.",
+      date: "Oct 12, 2023",
+      readTime: "8 min read",
+      category: "Systems",
+      slug: "networking-frontend-intersection",
+      featured: true
+    },
+    {
+      title: "Building Intelligent Interfaces with React and Gemini",
+      excerpt: "Integrating LLMs into modern UI patterns. A guide to building responsive AI-driven components that feel natural and fast.",
+      date: "Sep 28, 2023",
+      readTime: "12 min read",
+      category: "AI",
+      slug: "react-gemini-interfaces"
+    },
+    {
+      title: "Mastering CSS Grid for Complex Dashboard Layouts",
+      excerpt: "Moving beyond flexbox for data-heavy applications. Real-world examples of robust, responsive grid systems.",
+      date: "Aug 15, 2023",
+      readTime: "6 min read",
+      category: "Frontend",
+      slug: "mastering-css-grid"
+    },
+    {
+      title: "Troubleshooting Network Latency in Production Environments",
+      excerpt: "A practical guide to using ping, traceroute, and Wireshark to diagnose performance bottlenecks in live systems.",
+      date: "Jul 22, 2023",
+      readTime: "10 min read",
+      category: "Networking",
+      slug: "troubleshooting-network-latency"
+    }
   ]
 };

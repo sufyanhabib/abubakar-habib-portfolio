@@ -1,9 +1,11 @@
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "motion/react";
+import { useSound } from "@/components/SoundProvider";
 
 export function ThemeToggle() {
+  const { isMuted, playThemeSound } = useSound();
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("theme");
@@ -22,40 +24,6 @@ export function ThemeToggle() {
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
-
-  const playThemeSound = useCallback((targetTheme: "light" | "dark") => {
-    try {
-      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
-      if (!AudioContext) return;
-
-      const ctx = new AudioContext();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = "sine";
-      
-      // Brighter (higher) for light mode, deeper (lower) for dark mode
-      const startFreq = targetTheme === "light" ? 1200 : 800;
-      const endFreq = targetTheme === "light" ? 400 : 200;
-
-      osc.frequency.setValueAtTime(startFreq, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(endFreq, ctx.currentTime + 0.1);
-
-      gain.gain.setValueAtTime(0.05, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start();
-      osc.stop(ctx.currentTime + 0.1);
-
-      // Close context after sound finishes to save resources
-      setTimeout(() => ctx.close(), 200);
-    } catch (e) {
-      // Audio might be blocked by browser policy
-    }
-  }, []);
 
   const toggleTheme = () => {
     const nextTheme = theme === "light" ? "dark" : "light";

@@ -24,6 +24,7 @@ export const portfolioData = {
     email: "sufyanhabib80@gmail.com",
     github: "https://github.com/sufyanhabib",
     linkedin: "#", // Placeholder
+    codepen: "https://codepen.io/sufyanhabib",
     resumeUrl: "#", // Placeholder
     avatarUrl: "input_file_0.png",
     valueProp: "Engineering robust systems and crafting refined interfaces, backed by real-world networking experience, with a growing interest in Artificial Intelligence."

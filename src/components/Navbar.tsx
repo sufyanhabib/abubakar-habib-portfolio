@@ -1,8 +1,9 @@
-import { motion } from "motion/react";
-import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { Github, Linkedin, Mail, Menu, X, Volume2, VolumeX } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useSound } from "@/components/SoundProvider";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -16,6 +17,8 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { isMuted, toggleMute, playClick } = useSound();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,14 +54,40 @@ export function Navbar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
+              onClick={() => playClick()}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.name}
             </motion.a>
           ))}
           <div className="flex items-center gap-4">
+            <button
+              onClick={toggleMute}
+              className="p-2 rounded-full hover:bg-foreground/5 transition-colors text-muted-foreground hover:text-foreground w-10 h-10 flex items-center justify-center relative overflow-hidden"
+              aria-label={isMuted ? "Unmute" : "Mute"}
+              role="switch"
+              aria-checked={!isMuted}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={isMuted ? "muted" : "unmuted"}
+                  initial={{ y: 20, rotate: 90, opacity: 0 }}
+                  animate={{ y: 0, rotate: 0, opacity: 1 }}
+                  exit={{ y: -20, rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+                </motion.div>
+              </AnimatePresence>
+            </button>
             <ThemeToggle />
-            <Button variant="outline" size="sm" asChild className="rounded-full">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              asChild 
+              className="rounded-full"
+              onClick={() => playClick()}
+            >
               <a href="#contact">Hire Me</a>
             </Button>
           </div>
@@ -66,6 +95,23 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <div className="flex items-center gap-4 md:hidden">
+          <button
+            onClick={toggleMute}
+            className="p-2 rounded-full hover:bg-foreground/5 transition-colors text-muted-foreground hover:text-foreground w-10 h-10 flex items-center justify-center relative overflow-hidden"
+            aria-label={isMuted ? "Unmute" : "Mute"}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={isMuted ? "muted" : "unmuted"}
+                initial={{ y: 20, rotate: 90, opacity: 0 }}
+                animate={{ y: 0, rotate: 0, opacity: 1 }}
+                exit={{ y: -20, rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+              </motion.div>
+            </AnimatePresence>
+          </button>
           <ThemeToggle />
           <button
             className="text-foreground"

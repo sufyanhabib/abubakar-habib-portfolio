@@ -1,14 +1,16 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, ArrowRight, Download } from "lucide-react";
+import { Github, Linkedin, Mail, Codepen, ArrowRight, Download } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 import { useRef } from "react";
 import { HeroGlobe } from "@/components/HeroGlobe";
+import { useSound } from "@/components/SoundProvider";
 
 export function Hero() {
   const { identity } = portfolioData;
   const containerRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const { playClick } = useSound();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -145,6 +147,7 @@ export function Hero() {
             {[
               { icon: Github, href: identity.github, label: "GitHub" },
               { icon: Linkedin, href: identity.linkedin, label: "LinkedIn" },
+              { icon: Codepen, href: identity.codepen, label: "CodePen" },
               { icon: Mail, href: `mailto:${identity.email}`, label: "Email" }
             ].map((social, i) => (
               <motion.a
@@ -211,27 +214,36 @@ export function Hero() {
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 -left-4 md:-left-8 bg-background/90 backdrop-blur-md border-2 border-orange-500/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2"
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => playClick()}
+              className="absolute top-10 -left-4 md:-left-8 bg-background/90 backdrop-blur-md border-2 border-orange-500/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2 cursor-pointer select-none group/tag"
             >
-              <div className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse" />
+              <div className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse group-hover/tag:scale-125 transition-transform" />
               <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-orange-500">Frontend</span>
             </motion.div>
 
             <motion.div 
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-20 -right-4 md:-right-8 bg-background/90 backdrop-blur-md border-2 border-dashed border-green-500/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2"
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => playClick()}
+              className="absolute bottom-20 -right-4 md:-right-8 bg-background/90 backdrop-blur-md border-2 border-dashed border-green-500/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2 cursor-pointer select-none group/tag"
             >
-              <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+              <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse group-hover/tag:scale-125 transition-transform" />
               <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-green-500">Network</span>
             </motion.div>
 
             <motion.div 
               animate={{ x: [0, 8, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              className="absolute top-1/2 -right-8 md:-right-12 bg-background/90 backdrop-blur-md border-2 border-dotted border-primary/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2"
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => playClick()}
+              className="absolute top-1/2 -right-8 md:-right-12 bg-background/90 backdrop-blur-md border-2 border-dotted border-primary/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2 cursor-pointer select-none group/tag"
             >
-              <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+              <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse group-hover/tag:scale-125 transition-transform" />
               <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-primary">AI Engineer</span>
             </motion.div>
           </div>

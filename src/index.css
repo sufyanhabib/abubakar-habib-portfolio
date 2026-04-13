@@ -36,6 +36,11 @@
   }
 }
 
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
 @keyframes gradient-x {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
@@ -90,6 +95,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import "leaflet/dist/leaflet.css";
 
 @custom-variant dark (&:is(.dark *));
 

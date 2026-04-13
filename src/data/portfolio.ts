@@ -26,11 +26,17 @@ export const portfolioData = {
     linkedin: "#", // Placeholder
     resumeUrl: "#", // Placeholder
     avatarUrl: "input_file_0.png",
-    valueProp: "Engineering robust systems and crafting refined interfaces with a foundation in networking and a trajectory into AI."
+    valueProp: "Engineering robust systems and crafting refined interfaces, backed by real-world networking experience, with a growing interest in Artificial Intelligence."
   },
   about: {
-    story: "With a Master of Computer Applications (MCA) and a solid foundation in network engineering, I bring a unique systems-thinking approach to frontend development. I don't just build UI; I understand the infrastructure that powers it. My journey began with routing and switching, which instilled a discipline for troubleshooting and architectural clarity that I now apply to building modern, performant web applications. I am currently focused on mastering advanced React patterns while exploring the intersection of software engineering and intelligent systems."
-  },
+  story: `With a Master of Computer Applications (MCA) and hands-on experience in networking and IT infrastructure, I bring a practical, problem-solving mindset to frontend development.
+
+I worked as a Junior Consultant on the BMC HIMS Project at Niveshan Technologies, where I supported IT infrastructure and network operations in a live production environment. My role involved handling ticketing systems, troubleshooting connectivity issues, monitoring system performance, and ensuring smooth day-to-day operations.
+
+My journey started with networking, where I gained experience in IP addressing, system configuration, and troubleshooting. This has given me a deeper understanding of how systems work beyond the interface, which I apply while building modern, responsive web applications using React.
+
+Currently, I am focused on strengthening my frontend development skills while exploring Artificial Intelligence to build more intelligent and reliable systems.`
+},
   skills: [
     {
       category: "Frontend Engineering",
@@ -108,7 +114,7 @@ export const portfolioData = {
       role: "Master of Computer Applications",
       company: "Bihar University",
       location: "Bihar, India",
-      period: "2021 - 2023",
+      period: "Dec 2019 - Dec 2022",
       description: "Starting point of the technical journey, mastering core computer science fundamentals.",
       achievements: [
         "Focused on systems, networking, and software engineering.",
@@ -118,31 +124,103 @@ export const portfolioData = {
   ],
   projects: [
     {
-      title: "Wall of Wonder",
-      description: "A premium photography collection platform designed with a focus on visual hierarchy and seamless user experience.",
-      problem: "Creating a high-performance image gallery that maintains aesthetic polish across all device sizes.",
-      solution: "Implemented a responsive grid system with optimized asset loading and refined typography to showcase high-quality photography.",
-      tags: ["React", "Tailwind CSS", "UI Design"],
-      github: "#",
-      demo: "#"
+      title: "FoxFoods",
+      description: "A comprehensive food delivery and management platform built with modern web technologies.",
+      techStack: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+      type: "github",
+      codeUrl: "https://github.com/Abhishek-090/FoxFoods",
+      liveUrl: "https://fox-foods.vercel.app/",
+      image: "https://private-user-images.githubusercontent.com/99119749/398713284-1b21c185-6a00-4531-adc9-72db9681a1de.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYwNzM0ODQsIm5iZiI6MTc3NjA3MzE4NCwicGF0aCI6Ii85OTExOTc0OS8zOTg3MTMyODQtMWIyMWMxODUtNmEwMC00NTMxLWFkYzktNzJkYjk2ODFhMWRlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNDEzVDA5Mzk0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBlMWJhNjYwNWM1YjA3ZmVlNzNmYWE3MzA2NTY2ODhlZTllZTczZWY0ZThmODY2YjYzYTdhYWFhMDQxOTYwNDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.VjgJgnVIIoGPuSu8zxPCFaBlks8plAUYhKFEV1aR0ag"
     },
     {
-      title: "Feed-A-Star-Mole",
-      description: "An interactive, browser-based game that demonstrates complex state management and CSS animation techniques.",
-      problem: "Synchronizing game logic with fluid animations to create an engaging user experience.",
-      solution: "Leveraged JavaScript state management and CSS keyframes to build a responsive, high-frame-rate interactive experience.",
-      tags: ["JavaScript", "CSS Animations", "Game Logic"],
-      github: "#",
-      demo: "#"
+      title: "Brooklyn Stoop Sale",
+      description: "An interactive invitation for a Brooklyn-themed stoop sale, developed for the Codédex hackathon.",
+      techStack: ["HTML", "CSS", "JavaScript"],
+      type: "github",
+      codeUrl: "https://github.com/sufyanhabib/Brooklyn-Stoop_Sale",
+      liveUrl: "brooklyn-stoop-sale-khaki.vercel.app",
+      image: "https://private-user-images.githubusercontent.com/26720225/348476571-1de2b6b2-e0ea-4cb7-96bb-a83987ae0a88.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYwNzM3NjUsIm5iZiI6MTc3NjA3MzQ2NSwicGF0aCI6Ii8yNjcyMDIyNS8zNDg0NzY1NzEtMWRlMmI2YjItZTBlYS00Y2I3LTk2YmItYTgzOTg3YWUwYTg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNDEzVDA5NDQyNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJjZDg3ODJjMmRjMDE4OWExZGQ3M2I5OTgwNTQzODkwMjkwZmQxNzMxZTc3YjJjZTNlOTc2ZmQ3Yjc0ZDMyNTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.wvBxfhodiVhK7-We1cucD8bEoeSr59-NUw36YBOKFS0"
+    },
+    {
+      title: "Aro Pharma Website",
+      description: "A professional pharmaceutical website showcasing products and corporate information.",
+      techStack: ["React", "Tailwind CSS", "Framer Motion"],
+      type: "github",
+      codeUrl: "https://github.com/sufyanhabib/-aro-pharma-website",
+      liveUrl: "https://aro-pharma.vercel.app/",
+      image: "https://codepen.io/sufyanhabib/full/qEadKvx"
     },
     {
       title: "Systems Portfolio",
-      description: "A production-ready portfolio architecture (this site) built to showcase the intersection of networking and frontend engineering.",
-      problem: "Communicating a multi-disciplinary background in a coherent, recruiter-friendly narrative.",
-      solution: "Designed a modular React system with Framer Motion for premium storytelling and shadcn/ui for professional polish.",
-      tags: ["React", "Framer Motion", "shadcn/ui"],
-      github: "#",
-      demo: "#"
+      description: "My personal portfolio showcasing the intersection of networking and frontend engineering.",
+      techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      type: "github",
+      codeUrl: "https://github.com/sufyanhabib/abubakar-habib-portfolio",
+      liveUrl: "https://abubakar-habib.vercel.app/",
+      image: "https://picsum.photos/seed/portfolio/800/450"
+    },
+    {
+      title: "Interactive UI Component",
+      description: "A premium interactive UI component built on CodePen showcasing advanced CSS and JS.",
+      techStack: ["HTML", "CSS", "JavaScript"],
+      type: "codepen",
+      codeUrl: "https://codepen.io/sufyanhabib/full/qEadKvx",
+      liveUrl: "https://codepen.io/sufyanhabib/full/qEadKvx",
+      image: "https://codepen.io/sufyanhabib/pen/qEadKvx"
+    },
+    {
+      title: "Modern Dashboard Concept",
+      description: "A sleek, dark-themed dashboard concept with fluid animations.",
+      techStack: ["CSS", "SVG", "Animation"],
+      type: "codepen",
+      codeUrl: "https://codepen.io/sufyanhabib/full/YPGPEdw",
+      liveUrl: "https://codepen.io/sufyanhabib/full/YPGPEdw",
+      image: "https://picsum.photos/seed/cp2/800/450"
+    },
+    {
+      title: "Glassmorphism UI Kit",
+      description: "Exploring the limits of glassmorphism in modern web design.",
+      techStack: ["CSS", "Glassmorphism"],
+      type: "codepen",
+      codeUrl: "https://codepen.io/sufyanhabib/full/pvEvdxV",
+      liveUrl: "https://codepen.io/sufyanhabib/full/pvEvdxV",
+      image: "https://picsum.photos/seed/cp3/800/450"
+    },
+    {
+      title: "Dynamic Data Visualization",
+      description: "Interactive data visualization using pure CSS and minimal JS.",
+      techStack: ["D3.js", "SVG", "JavaScript"],
+      type: "codepen",
+      codeUrl: "https://codepen.io/sufyanhabib/full/YPGzNqP",
+      liveUrl: "https://codepen.io/sufyanhabib/full/YPGzNqP",
+      image: "https://picsum.photos/seed/cp4/800/450"
+    },
+    {
+      title: "Neumorphic Interface",
+      description: "A study in neumorphic design patterns and accessibility.",
+      techStack: ["CSS", "Neumorphism"],
+      type: "codepen",
+      codeUrl: "https://codepen.io/sufyanhabib/full/dPpyNGb",
+      liveUrl: "https://codepen.io/sufyanhabib/full/dPpyNGb",
+      image: "https://picsum.photos/seed/cp5/800/450"
+    },
+    {
+      title: "Creative Coding Experiment",
+      description: "Generative art and creative coding patterns.",
+      techStack: ["Canvas API", "JavaScript"],
+      type: "codepen",
+      codeUrl: "https://codepen.io/sufyanhabib/pen/rNbboaz",
+      liveUrl: "https://codepen.io/sufyanhabib/pen/rNbboaz",
+      image: "https://picsum.photos/seed/cp6/800/450"
+    },
+    {
+      title: "Advanced Layout System",
+      description: "A robust CSS Grid and Flexbox layout system for complex applications.",
+      techStack: ["CSS Grid", "Flexbox"],
+      type: "codepen",
+      codeUrl: "https://codepen.io/sufyanhabib/full/LYvzMGR",
+      liveUrl: "https://codepen.io/sufyanhabib/full/LYvzMGR",
+      image: "https://picsum.photos/seed/cp7/800/450"
     }
   ],
   learningJourney: [
@@ -164,7 +242,7 @@ export const portfolioData = {
     }
   ],
   certifications: [
-    { name: "CCNA (Routing & Switching)", status: "Ongoing Hands-on Practice" },
+    { name: "CCNA (Routing & Switching)", status: "Hands-on Practice" },
     { name: "Framework Valley: React Course", status: "Certificate" },
     { name: "The Legend of Python", status: "Certificate" },
     { name: "Hacktoberfest 2023", status: "Digital Badge" }

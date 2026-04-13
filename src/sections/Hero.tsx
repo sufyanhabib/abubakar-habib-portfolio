@@ -24,7 +24,7 @@ export function Hero() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background transition-colors duration-700"
+      className="relative min-h-screen flex items-center pt-20 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background transition-colors duration-700"
     >
       {/* Premium Background System */}
       <div className="absolute inset-0 z-0">
@@ -70,7 +70,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-20 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-12 lg:py-0">
+      <div className="relative z-20 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-8 lg:py-0">
         <motion.div
           style={{ 
             opacity: shouldReduceMotion ? 1 : contentOpacity,
@@ -85,9 +85,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-display font-bold tracking-tight leading-tight mb-8"
+            className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-display font-bold tracking-tighter leading-[0.85] mb-8"
           >
-            <span className="text-tricolor animate-gradient-x inline-block pr-6">
+            <span className="text-tricolor animate-gradient-x inline-block">
               {identity.name}
             </span>
           </motion.h1>
@@ -176,7 +176,7 @@ export function Hero() {
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative px-8 lg:px-0 flex justify-center lg:justify-end"
         >
-          <div className="relative w-full max-w-[320px] md:max-w-lg aspect-square group">
+          <div className="relative w-full max-w-[320px] md:max-w-lg aspect-square group lg:-mt-20">
             {/* Background Abstract Waves (Inspired by Josh but techy) */}
             <div className="absolute inset-0 z-0 overflow-visible pointer-events-none">
               <svg viewBox="0 0 400 400" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] opacity-20 dark:opacity-30">
@@ -238,16 +238,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-4"
-      >
-        <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-muted-foreground/50">Explore</span>
-        <div className="w-[1px] h-16 bg-gradient-to-b from-primary/50 to-transparent" />
-      </motion.div>
     </section>
   );
 }

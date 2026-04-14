@@ -5,12 +5,14 @@ import { motion, AnimatePresence } from "motion/react";
 import { useSound } from "@/components/SoundProvider";
 
 export function ThemeToggle() {
-  const { isMuted, playThemeSound } = useSound();
+  const { playThemeSound } = useSound();
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("theme");
       if (saved === "light" || saved === "dark") return saved;
-      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      
+      // Default to 'dark' if no theme is found in localStorage or system preferences
+      return "dark";
     }
     return "dark";
   });
@@ -19,16 +21,20 @@ export function ThemeToggle() {
     const root = window.document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
+      root.setAttribute('data-theme', 'dark');
     } else {
       root.classList.remove("dark");
+      root.setAttribute('data-theme', 'light');
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    const nextTheme = theme === "light" ? "dark" : "light";
-    playThemeSound(nextTheme);
-    setTheme(nextTheme);
+    setTheme((prev) => {
+      const next = prev === "light" ? "dark" : "light";
+      playThemeSound(next);
+      return next;
+    });
   };
 
   return (

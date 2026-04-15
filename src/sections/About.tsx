@@ -2,6 +2,7 @@ import { Section } from "@/components/Section";
 import { portfolioData } from "@/data/portfolio";
 import { LocationCard } from "@/components/LocationCard";
 import { NinjaIdentityCard } from "@/components/NinjaIdentityCard";
+import { NinjaProfileCard } from "@/components/ninja-card/NinjaProfileCard";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -54,6 +55,10 @@ export function About() {
                   </p>
                 </motion.div>
               ))}
+
+              <div className="pt-12">
+                <NinjaProfileCard />
+              </div>
             </div>
 
             <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-8">

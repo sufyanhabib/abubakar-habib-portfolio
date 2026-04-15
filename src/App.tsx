@@ -8,48 +8,48 @@ import { Articles } from "@/sections/Articles";
 import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 import { SoundProvider } from "@/components/SoundProvider";
+import { NinjaProfilePage } from "@/pages/NinjaProfilePage";
 import { useEffect, useLayoutEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
-export default function App() {
-  // Disable browser scroll restoration immediately
-  if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
-    window.history.scrollRestoration = 'manual';
-  }
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
   useLayoutEffect(() => {
-    // Force scroll to top before paint
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-  useEffect(() => {
-    // Fallback for some browsers or late layout shifts
-    const handleLoad = () => {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    };
+  return null;
+}
 
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      window.addEventListener('load', handleLoad);
-      return () => window.removeEventListener('load', handleLoad);
-    }
-  }, []);
+function Portfolio() {
+  return (
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary">
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Articles />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
+}
 
+export default function App() {
   return (
     <SoundProvider>
-      <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Experience />
-          <Projects />
-          <Articles />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Portfolio />} />
+          <Route path="/ninja-profile" element={<NinjaProfilePage />} />
+        </Routes>
+      </BrowserRouter>
     </SoundProvider>
   );
 }

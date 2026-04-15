@@ -1,6 +1,7 @@
 import { Section } from "@/components/Section";
 import { portfolioData } from "@/data/portfolio";
 import { LocationCard } from "@/components/LocationCard";
+import { NinjaIdentityCard } from "@/components/NinjaIdentityCard";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -55,7 +56,7 @@ export function About() {
               ))}
             </div>
 
-            <div className="lg:col-span-5 sticky top-32">
+            <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-8">
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -74,6 +75,8 @@ export function About() {
                   <p className="text-xs text-muted-foreground mt-2 leading-relaxed">Master of Computer Applications, specialized in systems and software architecture.</p>
                 </div>
               </motion.div>
+
+              <NinjaIdentityCard />
             </div>
           </div>
         </div>

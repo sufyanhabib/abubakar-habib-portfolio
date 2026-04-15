@@ -259,11 +259,16 @@ Currently, I am focused on strengthening my frontend development skills while ex
         hinglish: "Command line ek text-based interface hai jo aapke computer ke operating system ke liye hota hai. Keyboard se commands chalana seekhein.",
         english: "The command line is a text-based interface for your computer's operating system. Learn how to run commands directly from your keyboard."
       },
-      category: "Tutorials",
-      tags: ["CLI", "Systems", "Basics"],
-      readTime: "10 min read",
-      publishedAt: "Oct 15, 2023",
-      featured: true,
+      meta: {
+        author: "Habib",
+        publishedAt: "Oct 15, 2023",
+        readTime: "10 min read",
+        category: "Tutorials",
+        tags: ["CLI", "Systems", "Basics"],
+        likes: 85,
+        views: 920
+      },
+      featured: false,
       content: {
         hinglish: [
           {
@@ -299,10 +304,16 @@ Currently, I am focused on strengthening my frontend development skills while ex
         hinglish: "Command line interface (CLI) ke basics se lekar advanced manipulation tak. Filesystem navigate karna aur files manage karna seekhein.",
         english: "From CLI basics to advanced file manipulation. Learn to navigate the filesystem and manage files like a pro."
       },
-      category: "Tutorials",
-      tags: ["CLI", "Terminal", "Bash", "Systems"],
-      readTime: "25 min read",
-      publishedAt: "Oct 20, 2023",
+      meta: {
+        author: "Habib",
+        publishedAt: "Oct 20, 2023",
+        readTime: "25 min read",
+        category: "Tutorials",
+        tags: ["CLI", "Terminal", "Bash", "Systems"],
+        likes: 124,
+        views: 1420
+      },
+      featured: true,
       content: {
         hinglish: [
            {
@@ -340,8 +351,12 @@ Currently, I am focused on strengthening my frontend development skills while ex
     { type: "paragraph", value: "... ko apne naam se replace karein aur Enter press karein aur dekhein command line aapka naam print karegi!" },
     { type: "paragraph", value: "Bonus: Agar aap Mac par hain, to ek special text-to-speech say command bhi hai. Kuch aise run karke dekhein:" },
     { type: "code", value: "$ say Hi! My name is ..." },
-    { type: "paragraph", value: "Aur aapka computer literally aapse baat karega speakers ke through! 🤯" },
-    { type: "heading", value: "02. Filesystem" },
+    { type: "paragraph", value: "Aur aapka computer literally aapse baat karega speakers ke through! 🤯" }
+  ]
+},
+{
+  heading: "02. Filesystem",
+  blocks: [
     { type: "paragraph", value: "Directories Aapka computer essentially ek filesystem hai jo folders aur files se bana hota hai:"},
     { type: "image", src: "https://user7921.na.imgto.link/public/20260414/cli-directory-structure-and-commands-guide.avif", alt: "cli-directory-structure-and-commands-guide" },    
      { type: "paragraph", value: "Command line ke context me, hum folders ko directories ke roop me refer karte hain."},
@@ -524,8 +539,12 @@ Currently, I am focused on strengthening my frontend development skills while ex
               { type: "paragraph", value: "... replace with your name and press Enter and see the command line will print your name!" },
               { type: "paragraph", value: "Bonus: If you are on a Mac, there is also a special text-to-speech say command. Try running it like this:" },
               { type: "code", value: "$ say Hi! My name is ..." },
-              { type: "paragraph", value: "And your computer will literally talk to you through the speakers! 🤯" },
-              { type: "heading", value: "02. Filesystem" },
+              { type: "paragraph", value: "And your computer will literally talk to you through the speakers! 🤯" }
+            ]
+          },
+          {
+            heading: "02. Filesystem",
+            blocks: [
               { type: "paragraph", value: "Directories Your computer is essentially a filesystem made of folders and files:" },
               { type: "image", src: "https://user7921.na.imgto.link/public/20260414/cli-directory-structure-and-commands-guide.avif", alt: "cli-directory-structure-and-commands-guide" },
               { type: "paragraph", value: "In the context of the command line, we refer to folders as directories." },
@@ -676,10 +695,15 @@ Currently, I am focused on strengthening my frontend development skills while ex
         hinglish: "Jab aap browser me google.com type karte ho, toh piche kya hota hai? DNS ke concepts ko Hinglish me samjhein.",
         english: "What happens behind the scenes when you type google.com? Understand DNS concepts in a simple way."
       },
-      category: "Networking",
-      tags: ["DNS", "Networking", "Web"],
-      readTime: "8 min read",
-      publishedAt: "Oct 05, 2023",
+      meta: {
+        author: "Habib",
+        publishedAt: "Oct 05, 2023",
+        readTime: "8 min read",
+        category: "Networking",
+        tags: ["DNS", "Networking", "Web"],
+        likes: 42,
+        views: 560
+      },
       content: {
         hinglish: [
           {
@@ -705,10 +729,15 @@ Currently, I am focused on strengthening my frontend development skills while ex
         hinglish: "LLMs ko modern UI patterns me integrate karna. AI-driven components banane ki practical guide.",
         english: "Integrating LLMs into modern UI patterns. A practical guide to building AI-driven components."
       },
-      category: "AI",
-      tags: ["React", "AI", "Gemini"],
-      readTime: "12 min read",
-      publishedAt: "Sep 28, 2023",
+      meta: {
+        author: "Habib",
+        publishedAt: "Sep 28, 2023",
+        readTime: "12 min read",
+        category: "AI",
+        tags: ["React", "AI", "Gemini"],
+        likes: 67,
+        views: 890
+      },
       content: {
         hinglish: [
           {

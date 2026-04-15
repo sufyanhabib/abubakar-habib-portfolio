@@ -1,31 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export function useActiveSection(itemIds: string[]) {
+export function useActiveSection(itemIds: string[], containerId?: string) {
   const [activeId, setActiveId] = useState<string>('');
+  const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-20% 0% -35% 0%', threshold: 0 }
-    );
+    const container = containerId ? document.getElementById(containerId) : null;
+
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      const visibleEntry = entries.find((entry) => entry.isIntersecting);
+      if (visibleEntry) {
+        setActiveId(visibleEntry.target.id);
+      }
+    };
+
+    observer.current = new IntersectionObserver(handleIntersect, {
+      root: container,
+      rootMargin: '-20% 0% -70% 0%',
+      threshold: 0.1,
+    });
 
     itemIds.forEach((id) => {
       const element = document.getElementById(id);
-      if (element) observer.observe(element);
+      if (element) observer.current?.observe(element);
     });
 
-    return () => {
-      itemIds.forEach((id) => {
-        const element = document.getElementById(id);
-        if (element) observer.unobserve(element);
-      });
-    };
+    return () => observer.current?.disconnect();
   }, [itemIds]);
 
   return activeId;

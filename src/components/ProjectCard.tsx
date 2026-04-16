@@ -25,7 +25,7 @@ interface GitHubMetadata {
   language: string;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
   const [githubData, setGithubData] = useState<GitHubMetadata | null>(null);
   const [isLoading, setIsLoading] = useState(project.type === "github");
 
@@ -142,4 +142,4 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       </Card>
     </motion.div>
   );
-}
+});

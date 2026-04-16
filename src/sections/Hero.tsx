@@ -2,9 +2,10 @@ import { motion, useScroll, useTransform, useReducedMotion } from "motion/react"
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Codepen, ArrowRight, Download } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
-import { useRef } from "react";
-import { HeroGlobe } from "@/components/HeroGlobe";
+import { useRef, Suspense, lazy } from "react";
 import { useSound } from "@/components/SoundProvider";
+
+const LazyHeroGlobe = lazy(() => import("@/components/HeroGlobe").then(m => ({ default: m.HeroGlobe })));
 
 export function Hero() {
   const { identity } = portfolioData;
@@ -25,6 +26,7 @@ export function Hero() {
 
   return (
     <section 
+      id="hero"
       ref={containerRef}
       className="relative min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background transition-colors duration-700"
     >
@@ -207,7 +209,9 @@ export function Hero() {
 
             {/* Premium Circular Frame */}
             <div className="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl shadow-primary/10 bg-muted/30 backdrop-blur-sm">
-              <HeroGlobe />
+              <Suspense fallback={<div className="w-full h-full bg-muted/20 animate-pulse" />}>
+                <LazyHeroGlobe />
+              </Suspense>
             </div>
 
             {/* Floating Labels (Pills) */}

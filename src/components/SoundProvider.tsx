@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState, useCallback, useMemo } from 'react';
 
 interface SoundContextType {
   playClick: () => void;
@@ -85,10 +85,10 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     source.start();
   };
 
-  const playClick = () => playSound(clickBuffer.current, 0.15);
-  const playHover = () => playSound(hoverBuffer.current, 0.05);
+  const playClick = useCallback(() => playSound(clickBuffer.current, 0.15), [isMuted]);
+  const playHover = useCallback(() => playSound(hoverBuffer.current, 0.05), [isMuted]);
 
-  const playThemeSound = (targetTheme: "light" | "dark") => {
+  const playThemeSound = useCallback((targetTheme: "light" | "dark") => {
     if (isMuted || !audioContext.current) return;
 
     try {
@@ -118,9 +118,9 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     } catch (e) {
       console.error("Audio error:", e);
     }
-  };
+  }, [isMuted]);
 
-  const toggleMute = () => {
+  const toggleMute = useCallback(() => {
     setIsMuted(prev => {
       const newState = !prev;
       localStorage.setItem('portfolio-muted', String(newState));
@@ -145,10 +145,18 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       
       return newState;
     });
-  };
+  }, []);
+
+  const value = useMemo(() => ({
+    playClick,
+    playHover,
+    playThemeSound,
+    isMuted,
+    toggleMute
+  }), [playClick, playHover, playThemeSound, isMuted, toggleMute]);
 
   return (
-    <SoundContext.Provider value={{ playClick, playHover, playThemeSound, isMuted, toggleMute }}>
+    <SoundContext.Provider value={value}>
       {children}
     </SoundContext.Provider>
   );

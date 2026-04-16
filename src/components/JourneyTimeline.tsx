@@ -1,9 +1,9 @@
 import { motion, useInView } from "motion/react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, memo } from "react";
 import { portfolioData } from "@/data/portfolio";
 import { Briefcase, MapPin, Calendar, HelpCircle, ArrowUpRight } from "lucide-react";
 
-export function JourneyTimeline() {
+export const JourneyTimeline = memo(function JourneyTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { amount: 0.05, once: false });
   const [startAnimation, setStartAnimation] = useState(false);
@@ -206,4 +206,4 @@ export function JourneyTimeline() {
       </div>
     </div>
   );
-}
+});

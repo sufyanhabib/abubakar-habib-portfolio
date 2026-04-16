@@ -1,32 +1,44 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-export function useActiveSection(itemIds: string[], containerId?: string) {
-  const [activeId, setActiveId] = useState<string>('');
-  const observer = useRef<IntersectionObserver | null>(null);
+export function useActiveSection(sectionIds: string[], optionsOrRootId?: IntersectionObserverInit | string) {
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
-    const container = containerId ? document.getElementById(containerId) : null;
-
-    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-      const visibleEntry = entries.find((entry) => entry.isIntersecting);
-      if (visibleEntry) {
-        setActiveId(visibleEntry.target.id);
-      }
+    let options: IntersectionObserverInit = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0,
     };
 
-    observer.current = new IntersectionObserver(handleIntersect, {
-      root: container,
-      rootMargin: '-20% 0% -70% 0%',
-      threshold: 0.1,
-    });
+    if (typeof optionsOrRootId === 'string') {
+      const root = document.getElementById(optionsOrRootId);
+      if (root) {
+        options.root = root;
+      }
+    } else if (optionsOrRootId) {
+      options = { ...options, ...optionsOrRootId };
+    }
 
-    itemIds.forEach((id) => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
+
+    sectionIds.forEach((id) => {
       const element = document.getElementById(id);
-      if (element) observer.current?.observe(element);
+      if (element) observer.observe(element);
     });
 
-    return () => observer.current?.disconnect();
-  }, [itemIds]);
+    return () => {
+      sectionIds.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) observer.unobserve(element);
+      });
+    };
+  }, [sectionIds, optionsOrRootId]);
 
-  return activeId;
+  return activeSection;
 }

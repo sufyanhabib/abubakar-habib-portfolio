@@ -1,10 +1,12 @@
 import { Section } from "@/components/Section";
 import { portfolioData } from "@/data/portfolio";
-import { LocationCard } from "@/components/LocationCard";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
+import { Suspense, lazy } from "react";
+
+const LazyLocationCard = lazy(() => import("@/components/LocationCard").then(m => ({ default: m.LocationCard })));
 
 export function About() {
   const { about } = portfolioData;
@@ -114,7 +116,9 @@ export function About() {
               A real-time visualization of my origin and your current node in the global network.
             </p>
           </div>
-          <LocationCard />
+          <Suspense fallback={<div className="h-[400px] rounded-[2.5rem] bg-secondary/5 animate-pulse flex items-center justify-center text-muted-foreground font-mono text-xs uppercase tracking-widest">Initializing Map...</div>}>
+            <LazyLocationCard />
+          </Suspense>
         </div>
       </div>
     </Section>

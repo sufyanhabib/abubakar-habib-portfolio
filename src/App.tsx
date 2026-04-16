@@ -9,13 +9,25 @@ import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 import { SoundProvider } from "@/components/SoundProvider";
 import { NinjaProfilePage } from "@/pages/NinjaProfilePage";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+
+// Lazy load heavy sections
+const LazyExperience = lazy(() => import("@/sections/Experience").then(m => ({ default: m.Experience })));
+const LazyProjects = lazy(() => import("@/sections/Projects").then(m => ({ default: m.Projects })));
+const LazyArticles = lazy(() => import("@/sections/Articles").then(m => ({ default: m.Articles })));
+const LazyContact = lazy(() => import("@/sections/Contact").then(m => ({ default: m.Contact })));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
+    // Disable browser scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    
+    // Force scroll to top on route change or refresh
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -30,10 +42,18 @@ function Portfolio() {
         <Hero />
         <About />
         <Skills />
-        <Experience />
-        <Projects />
-        <Articles />
-        <Contact />
+        <Suspense fallback={<div className="h-[50vh] flex items-center justify-center text-muted-foreground font-mono text-xs uppercase tracking-widest">Loading Experience...</div>}>
+          <LazyExperience />
+        </Suspense>
+        <Suspense fallback={<div className="h-[50vh] flex items-center justify-center text-muted-foreground font-mono text-xs uppercase tracking-widest">Loading Projects...</div>}>
+          <LazyProjects />
+        </Suspense>
+        <Suspense fallback={<div className="h-[50vh] flex items-center justify-center text-muted-foreground font-mono text-xs uppercase tracking-widest">Loading Articles...</div>}>
+          <LazyArticles />
+        </Suspense>
+        <Suspense fallback={<div className="h-[50vh] flex items-center justify-center text-muted-foreground font-mono text-xs uppercase tracking-widest">Loading Contact...</div>}>
+          <LazyContact />
+        </Suspense>
       </main>
       <Footer />
     </div>

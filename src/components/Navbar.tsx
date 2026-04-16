@@ -124,27 +124,63 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          className="md:hidden bg-background border-b border-border absolute top-full left-0 right-0 px-6 py-8 flex flex-col gap-6"
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-lg font-medium text-muted-foreground hover:text-foreground"
-            >
-              {link.name}
-            </a>
-          ))}
-          <Button className="w-full" asChild>
-            <a href="#contact">Hire Me</a>
-          </Button>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="md:hidden fixed inset-0 z-[998] bg-background/95 backdrop-blur-xl pt-24 px-6 pb-12 flex flex-col justify-between"
+          >
+            <div className="flex flex-col gap-8">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    playClick();
+                  }}
+                  className="text-3xl font-display font-bold text-foreground/80 hover:text-primary transition-colors"
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+            </div>
+            
+            <div className="space-y-8">
+              <div className="h-px bg-border/50 w-full" />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  {[
+                    { icon: Github, href: "#" },
+                    { icon: Linkedin, href: "#" },
+                    { icon: Mail, href: "#" }
+                  ].map((social, i) => (
+                    <motion.a
+                      key={i}
+                      href={social.href}
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 + i * 0.1 }}
+                      className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <social.icon className="w-5 h-5" />
+                    </motion.a>
+                  ))}
+                </div>
+                <Button size="lg" className="rounded-full px-8" asChild onClick={() => setIsMobileMenuOpen(false)}>
+                  <a href="#contact">Hire Me</a>
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

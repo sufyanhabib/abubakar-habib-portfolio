@@ -17,14 +17,14 @@ export function BlockRenderer({ block }: BlockRendererProps) {
       );
     case "paragraph":
       return (
-        <p className="text-muted-foreground/90 text-lg md:text-xl leading-[1.8] font-light mb-10 selection:bg-primary/10">
+        <p className="text-muted-foreground/90 text-base sm:text-lg md:text-xl leading-[1.8] font-light mb-8 sm:mb-10 selection:bg-primary/10">
           {block.value as string}
         </p>
       );
     case "blockquote":
       return (
-        <blockquote className="my-12 pl-8 border-l-4 border-primary/30 italic">
-          <p className="text-2xl md:text-3xl text-foreground/80 font-display font-light leading-relaxed">
+        <blockquote className="my-8 sm:my-12 pl-6 sm:pl-8 border-l-4 border-primary/30 italic">
+          <p className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-display font-light leading-relaxed">
             {block.value as string}
           </p>
           {block.author && (
@@ -52,10 +52,10 @@ export function BlockRenderer({ block }: BlockRendererProps) {
       );
     case "bullets":
       return (
-        <ul className="space-y-4 my-10 ml-2">
+        <ul className="space-y-4 my-8 sm:my-10 ml-2">
           {(block.value as string[]).map((item, iIdx) => (
-            <li key={iIdx} className="flex gap-4 text-muted-foreground/90 text-lg md:text-xl font-light leading-relaxed">
-              <div className="h-1.5 w-1.5 rounded-full bg-primary/40 mt-3.5 shrink-0" />
+            <li key={iIdx} className="flex gap-4 text-muted-foreground/90 text-base sm:text-lg md:text-xl font-light leading-relaxed">
+              <div className="h-1.5 w-1.5 rounded-full bg-primary/40 mt-3 sm:mt-3.5 shrink-0" />
               <span>{item}</span>
             </li>
           ))}
@@ -73,13 +73,13 @@ export function BlockRenderer({ block }: BlockRendererProps) {
       );
     case "table":
       return (
-        <div className="my-12 overflow-hidden rounded-2xl border border-border/30 bg-muted/5 shadow-sm">
-          <table className="w-full text-left border-collapse">
+        <div className="my-8 sm:my-12 overflow-x-auto rounded-2xl border border-border/30 bg-muted/5 shadow-sm">
+          <table className="w-full text-left border-collapse min-w-[500px]">
             <tbody className="divide-y divide-border/30">
               {(block.value as string[][]).map((row, rIdx) => (
                 <tr key={rIdx} className="hover:bg-muted/10 transition-colors">
                   {row.map((cell, cIdx) => (
-                    <td key={cIdx} className={`p-6 text-base ${cIdx === 0 ? 'font-mono text-primary/70 font-bold w-1/3' : 'text-muted-foreground/80 font-light'}`}>
+                    <td key={cIdx} className={`p-4 sm:p-6 text-sm sm:text-base ${cIdx === 0 ? 'font-mono text-primary/70 font-bold w-1/3' : 'text-muted-foreground/80 font-light'}`}>
                       {cell}
                     </td>
                   ))}
@@ -105,9 +105,9 @@ export function BlockRenderer({ block }: BlockRendererProps) {
       };
       
       return (
-        <div className={`my-10 p-8 rounded-3xl border flex gap-6 ${colors[block.variant || "info"]}`}>
+        <div className={`my-8 sm:my-10 p-6 sm:p-8 rounded-2xl sm:rounded-3xl border flex flex-col sm:flex-row gap-4 sm:gap-6 ${colors[block.variant || "info"]}`}>
           <Icon className="w-6 h-6 shrink-0 mt-1" />
-          <div className="text-lg font-light leading-relaxed text-foreground/80">
+          <div className="text-base sm:text-lg font-light leading-relaxed text-foreground/80">
             {block.value as string}
           </div>
         </div>

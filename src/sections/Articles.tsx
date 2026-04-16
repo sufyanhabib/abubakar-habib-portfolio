@@ -45,7 +45,7 @@ export function Articles() {
   };
 
   return (
-    <section id="articles" className="py-32 px-6 md:px-12 lg:px-24 bg-background relative overflow-hidden transition-colors duration-500">
+    <section id="articles" className="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-background relative overflow-hidden transition-colors duration-500">
       {/* Background Accents */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
@@ -68,7 +68,7 @@ export function Articles() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-6xl font-display font-bold tracking-tight mb-8 text-foreground"
+              className="text-4xl sm:text-5xl md:text-6xl font-display font-bold tracking-tight mb-6 md:mb-8 text-foreground"
             >
               Tutorials <span className="text-muted-foreground/40">&</span> Deep Dives
             </motion.h2>
@@ -78,7 +78,7 @@ export function Articles() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-muted-foreground text-xl leading-relaxed font-light max-w-xl"
+              className="text-muted-foreground text-lg sm:text-xl leading-relaxed font-light max-w-xl"
             >
               Authentic technical education written in Hinglish. 
               Bridging the gap between complex systems and clear explanations.
@@ -147,13 +147,13 @@ export function Articles() {
             >
               <div className="absolute -inset-6 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 rounded-[2.5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               
-              <div className="relative bg-card border border-border/50 rounded-[2rem] p-10 md:p-12 overflow-hidden shadow-2xl shadow-primary/5">
-                <div className="flex flex-wrap items-center justify-between gap-6 mb-10">
-                  <div className="flex items-center gap-6">
-                    <span className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20 flex items-center gap-2">
-                      <Sparkles className="h-3.5 w-3.5" /> Featured
+              <div className="relative bg-card border border-border/50 rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-10 md:p-12 overflow-hidden shadow-2xl shadow-primary/5">
+                <div className="flex flex-wrap items-center justify-between gap-4 sm:gap-6 mb-8 sm:mb-10">
+                  <div className="flex items-center gap-4 sm:gap-6">
+                    <span className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-primary/10 text-primary text-[9px] sm:text-[10px] font-bold uppercase tracking-widest border border-primary/20 flex items-center gap-1.5 sm:gap-2">
+                      <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> Featured
                     </span>
-                    <span className="text-muted-foreground text-[10px] font-mono uppercase tracking-[0.3em]">{featuredArticle.meta.publishedAt}</span>
+                    <span className="text-muted-foreground text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.3em]">{featuredArticle.meta.publishedAt}</span>
                   </div>
                   
                   <button 
@@ -173,30 +173,30 @@ export function Articles() {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                   >
-                    <h3 className="text-3xl md:text-5xl font-display font-bold mb-8 group-hover:text-primary transition-colors duration-500 leading-[1.15] text-foreground tracking-tight">
+                    <h3 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold mb-6 sm:mb-8 group-hover:text-primary transition-colors duration-500 leading-[1.2] md:leading-[1.15] text-foreground tracking-tight">
                       {featuredArticle.title[language]}
                     </h3>
                     
-                    <p className="text-muted-foreground text-xl mb-10 leading-relaxed font-light whitespace-pre-wrap max-w-2xl">
+                    <p className="text-muted-foreground text-base sm:text-lg md:text-xl mb-8 sm:mb-10 leading-relaxed font-light whitespace-pre-wrap max-w-2xl">
                       {featuredArticle.excerpt[language]}
                     </p>
                   </motion.div>
                 </AnimatePresence>
 
-                <div className="flex flex-wrap items-center justify-between gap-8 pt-10 border-t border-border/50">
-                  <div className="flex items-center gap-8 text-[10px] text-muted-foreground font-mono uppercase tracking-[0.2em]">
-                    <span className="flex items-center gap-2.5"><Clock className="h-4 w-4 text-primary/50" /> {featuredArticle.meta.readTime}</span>
-                    <span className="flex items-center gap-2.5"><Tag className="h-4 w-4 text-primary/50" /> {featuredArticle.meta.category}</span>
+                <div className="flex flex-col sm:flex-row flex-wrap items-center justify-between gap-6 sm:gap-8 pt-8 sm:pt-10 border-t border-border/50">
+                  <div className="flex items-center gap-6 sm:gap-8 text-[9px] sm:text-[10px] text-muted-foreground font-mono uppercase tracking-[0.2em]">
+                    <span className="flex items-center gap-2 sm:gap-2.5"><Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary/50" /> {featuredArticle.meta.readTime}</span>
+                    <span className="flex items-center gap-2 sm:gap-2.5"><Tag className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary/50" /> {featuredArticle.meta.category}</span>
                   </div>
                   
                   <Button 
-                    className="group/btn rounded-full bg-foreground text-background hover:bg-primary hover:text-primary-foreground transition-all duration-500 px-10 h-14 text-xs font-bold uppercase tracking-widest shadow-lg shadow-foreground/10"
+                    className="w-full sm:w-auto group/btn rounded-full bg-foreground text-background hover:bg-primary hover:text-primary-foreground transition-all duration-500 px-8 sm:px-10 h-12 sm:h-14 text-[10px] sm:text-xs font-bold uppercase tracking-widest shadow-lg shadow-foreground/10"
                     onClick={() => {
                       setSelectedArticle(featuredArticle);
                       playClick();
                     }}
                   >
-                    Read Tutorial <ArrowRight className="ml-3 h-4 w-4 group-hover/btn:translate-x-2 transition-transform duration-500" />
+                    Read Tutorial <ArrowRight className="ml-2 sm:ml-3 h-3.5 w-3.5 sm:h-4 sm:w-4 group-hover/btn:translate-x-2 transition-transform duration-500" />
                   </Button>
                 </div>
               </div>

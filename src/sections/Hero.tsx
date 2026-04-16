@@ -26,7 +26,7 @@ export function Hero() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen flex items-center pt-20 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background transition-colors duration-700"
+      className="relative min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background transition-colors duration-700"
     >
       {/* Premium Background System */}
       <div className="absolute inset-0 z-0">
@@ -87,7 +87,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-display font-bold tracking-tighter leading-[0.85] mb-8"
+            className="text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] lg:text-[5rem] font-display font-bold tracking-tighter leading-[0.9] md:leading-[0.85] mb-6 md:mb-8"
           >
             <span className="text-tricolor animate-gradient-x inline-block">
               {identity.name}
@@ -98,7 +98,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-2xl font-display font-medium text-foreground/70 mb-4 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+            className="text-base sm:text-lg md:text-2xl font-display font-medium text-foreground/70 mb-4 max-w-xl mx-auto lg:mx-0 leading-relaxed"
           >
             {identity.title}
           </motion.h2>
@@ -126,14 +126,14 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-5 mb-16"
+            className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 sm:gap-5 mb-12 md:mb-16"
           >
-            <Button size="xl" className="rounded-full px-10 bg-primary text-primary-foreground hover:opacity-90 transition-all duration-300 shadow-xl shadow-primary/20" asChild>
+            <Button size="xl" className="w-full sm:w-auto rounded-full px-10 bg-primary text-primary-foreground hover:opacity-90 transition-all duration-300 shadow-xl shadow-primary/20" asChild>
               <a href="#projects">
                 View Projects <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
-            <Button size="xl" variant="outline" className="rounded-full px-10 border-foreground/20 hover:bg-foreground/5 transition-all duration-300" asChild>
+            <Button size="xl" variant="outline" className="w-full sm:w-auto rounded-full px-10 border-foreground/20 hover:bg-foreground/5 transition-all duration-300" asChild>
               <a href="#contact">Contact Me</a>
             </Button>
           </motion.div>
@@ -179,7 +179,7 @@ export function Hero() {
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative px-8 lg:px-0 flex justify-center lg:justify-end"
         >
-          <div className="relative w-full max-w-[320px] md:max-w-lg aspect-square group lg:-mt-20">
+          <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-lg aspect-square group lg:-mt-20">
             {/* Background Abstract Waves (Inspired by Josh but techy) */}
             <div className="absolute inset-0 z-0 overflow-visible pointer-events-none">
               <svg viewBox="0 0 400 400" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] opacity-20 dark:opacity-30">

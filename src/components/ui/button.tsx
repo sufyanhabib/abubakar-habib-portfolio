@@ -54,10 +54,11 @@ function Button({
   ...props
 }: ButtonProps) {
   if (asChild && React.isValidElement(props.children)) {
-    return React.cloneElement(props.children as React.ReactElement, {
-      className: cn(buttonVariants({ variant, size, className }), (props.children as React.ReactElement).props.className),
+    const child = props.children as React.ReactElement<any>;
+    return React.cloneElement(child, {
+      className: cn(buttonVariants({ variant, size, className }), child.props.className),
       ...props,
-      children: (props.children as React.ReactElement).props.children
+      children: child.props.children
     })
   }
 

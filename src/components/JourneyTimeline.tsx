@@ -36,7 +36,7 @@ export function JourneyTimeline() {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-7xl mx-auto py-12 px-6 overflow-visible min-h-[2400px]">
+    <div ref={containerRef} className="relative w-full max-w-7xl mx-auto py-12 px-6 overflow-visible min-h-[2200px] lg:min-h-[2400px]">
       {/* The Path (Centered Background) */}
       <div className="absolute left-1/2 -translate-x-1/2 top-12 bottom-12 w-[400px] hidden lg:block pointer-events-none">
         <svg
@@ -134,11 +134,11 @@ export function JourneyTimeline() {
       </div>
 
       {/* The Content (Alternating) */}
-      <div className="space-y-32 relative z-10 pt-12"> 
+      <div className="space-y-12 lg:space-y-32 relative z-10 pt-12"> 
         {milestones.map((milestone, i) => (
           <div 
             key={i} 
-            className={`flex flex-col lg:flex-row items-center justify-between gap-12 ${
+            className={`flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 ${
               i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
             }`}
           >
@@ -149,36 +149,36 @@ export function JourneyTimeline() {
               transition={{ duration: 0.8, delay: milestone.delay, ease: [0.16, 1, 0.3, 1] }}
               className="w-full lg:w-[42%] group"
             >
-              <div className="relative bg-secondary/5 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-10 hover:bg-secondary/10 transition-all duration-500 shadow-2xl shadow-black/30 overflow-hidden">
+              <div className="relative bg-secondary/5 backdrop-blur-2xl border border-white/10 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] p-6 sm:p-8 lg:p-10 hover:bg-secondary/10 transition-all duration-500 shadow-2xl shadow-black/30 overflow-hidden">
                 {/* Glass Highlight */}
                 <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
                 
-                <div className="flex items-center gap-3 text-[#FF9933] font-mono text-[11px] uppercase tracking-[0.4em] mb-6 font-bold">
-                  <Calendar className="h-4 w-4" />
+                <div className="flex items-center gap-3 text-[#FF9933] font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.4em] mb-4 sm:mb-6 font-bold">
+                  <Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   {milestone.period}
                 </div>
                 
-                <h3 className="text-3xl md:text-4xl font-display font-bold mb-3 group-hover:text-[#FF9933] transition-colors duration-300">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold mb-3 group-hover:text-[#FF9933] transition-colors duration-300">
                   {milestone.role}
                 </h3>
                 
-                <div className="flex flex-wrap items-center gap-5 text-muted-foreground mb-8 text-sm">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-muted-foreground mb-6 sm:mb-8 text-xs sm:text-sm">
                   <span className="flex items-center gap-2">
-                    <Briefcase className="h-4 w-4" /> {milestone.company}
+                    <Briefcase className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {milestone.company}
                   </span>
                   <span className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4" /> {milestone.location}
+                    <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {milestone.location}
                   </span>
                 </div>
 
-                <p className="text-muted-foreground mb-10 leading-relaxed font-light text-lg">
+                <p className="text-muted-foreground mb-6 sm:mb-10 leading-relaxed font-light text-base sm:text-lg">
                   {milestone.description}
                 </p>
 
-                <ul className="space-y-5">
+                <ul className="space-y-3 sm:space-y-5">
                   {milestone.achievements.map((achievement, j) => (
-                    <li key={j} className="flex items-start gap-4 text-base text-muted-foreground/90">
-                      <div className="h-2 w-2 rounded-full bg-[#FF9933]/60 mt-2 shrink-0 shadow-[0_0_10px_#FF9933]" />
+                    <li key={j} className="flex items-start gap-3 sm:gap-4 text-sm sm:text-base text-muted-foreground/90">
+                      <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#FF9933]/60 mt-2 shrink-0 shadow-[0_0_10px_#FF9933]" />
                       {achievement}
                     </li>
                   ))}

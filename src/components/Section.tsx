@@ -22,12 +22,12 @@ export function Section({ children, id, className, title, subtitle }: SectionPro
           className="mb-16"
         >
           {title && (
-            <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold tracking-tight mb-4">
               {title}
             </h2>
           )}
           {subtitle && (
-            <p className="text-muted-foreground text-lg max-w-2xl">
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl">
               {subtitle}
             </p>
           )}

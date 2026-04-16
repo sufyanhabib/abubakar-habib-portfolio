@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function Skills() {
   return (
-    <Section id="skills" className="relative overflow-hidden">
+    <Section id="skills" className="relative overflow-hidden px-6 md:px-12 lg:px-24">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 -z-10 opacity-20 blur-3xl">
         <div className="w-[500px] h-[500px] bg-primary/10 rounded-full" />
@@ -29,9 +29,9 @@ export function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6"
         >
-          A multi-disciplinary <br className="hidden md:block" />
+          A multi-disciplinary <br className="hidden sm:block md:block" />
           <span className="text-muted-foreground">toolkit for modern engineering.</span>
         </motion.h2>
       </div>
@@ -53,17 +53,17 @@ export function Skills() {
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
             <div className="relative z-10">
-              <div className="flex items-start justify-between mb-8">
+              <div className="flex items-start justify-between mb-6 sm:mb-8">
                 <div className="p-3 bg-background/50 rounded-2xl border border-border/50 group-hover:border-primary/30 transition-colors duration-500">
-                  <skillGroup.icon className="h-6 w-6 text-primary/80 group-hover:text-primary transition-colors duration-500" />
+                  <skillGroup.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary/80 group-hover:text-primary transition-colors duration-500" />
                 </div>
                 <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   Category 0{i + 1}
                 </span>
               </div>
 
-              <h3 className="text-2xl font-display font-bold mb-3 tracking-tight">{skillGroup.category}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-8 max-w-md">
+              <h3 className="text-xl sm:text-2xl font-display font-bold mb-3 tracking-tight">{skillGroup.category}</h3>
+              <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 max-w-md">
                 {skillGroup.description}
               </p>
 

@@ -47,7 +47,7 @@ export default function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Portfolio />} />
-          <Route path="/ninja-profile" element={<NinjaProfilePage />} />
+          <Route path="/dossier" element={<NinjaProfilePage />} />
         </Routes>
       </BrowserRouter>
     </SoundProvider>

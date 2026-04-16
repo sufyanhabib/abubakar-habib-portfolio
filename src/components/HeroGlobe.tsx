@@ -3,7 +3,7 @@ import Globe from "react-globe.gl";
 import { useReducedMotion } from "motion/react";
 
 export function HeroGlobe() {
-  const globeRef = useRef<any>();
+  const globeRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 400, height: 400 });
   const shouldReduceMotion = useReducedMotion();

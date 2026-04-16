@@ -31,36 +31,36 @@ export function TutorialHero({ title, excerpt, meta, language }: TutorialHeroPro
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.1] tracking-tight max-w-4xl">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.2] md:leading-[1.1] tracking-tight max-w-4xl">
           {title}
         </h1>
 
         {/* Excerpt */}
-        <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-3xl border-l-2 border-primary/20 pl-8 italic">
+        <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-3xl border-l-2 border-primary/20 pl-6 sm:pl-8 italic">
           {excerpt}
         </p>
 
         {/* Meta Info Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-8 pt-10 border-t border-border/50">
-          <div className="flex items-center gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 pt-10 border-t border-border/50">
+          <div className="flex items-center gap-4 sm:gap-6">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-tr from-primary to-blue-500 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity" />
-              <div className="relative w-14 h-14 rounded-full bg-card border border-border/50 flex items-center justify-center text-primary overflow-hidden shadow-xl">
-                <User className="w-7 h-7" />
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-card border border-border/50 flex items-center justify-center text-primary overflow-hidden shadow-xl">
+                <User className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
             </div>
             <div>
-              <p className="text-sm font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
+              <p className="text-xs sm:text-sm font-bold text-foreground uppercase tracking-widest flex items-center gap-2">
                 {meta.author} <Sparkles className="w-3.5 h-3.5 text-primary" />
               </p>
-              <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-[0.2em]">Principal Engineer</p>
+              <p className="text-[9px] sm:text-[10px] text-muted-foreground font-mono uppercase tracking-[0.2em]">Principal Engineer</p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-8 text-[10px] font-mono text-muted-foreground uppercase tracking-[0.3em]">
-            <span className="flex items-center gap-2.5"><Calendar className="w-4 h-4 text-primary/50" /> {meta.publishedAt}</span>
-            <span className="flex items-center gap-2.5"><Clock className="w-4 h-4 text-primary/50" /> {meta.readTime}</span>
-            <span className="flex items-center gap-2.5"><Eye className="w-4 h-4 text-primary/50" /> {meta.views || 0} views</span>
+          <div className="flex flex-wrap items-center gap-6 sm:gap-8 text-[9px] sm:text-[10px] font-mono text-muted-foreground uppercase tracking-[0.3em]">
+            <span className="flex items-center gap-2.5"><Calendar className="w-3.5 h-3.5 sm:w-4 sm:w-4 text-primary/50" /> {meta.publishedAt}</span>
+            <span className="flex items-center gap-2.5"><Clock className="w-3.5 h-3.5 sm:w-4 sm:w-4 text-primary/50" /> {meta.readTime}</span>
+            <span className="flex items-center gap-2.5"><Eye className="w-3.5 h-3.5 sm:w-4 sm:w-4 text-primary/50" /> {meta.views || 0} views</span>
           </div>
         </div>
       </motion.div>

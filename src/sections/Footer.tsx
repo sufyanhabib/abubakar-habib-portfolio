@@ -7,8 +7,8 @@ export function Footer() {
 
   return (
     <footer className="py-12 px-6 border-t border-border/50">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex flex-col items-center md:items-start">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-8 text-center lg:text-left">
+        <div className="flex flex-col items-center lg:items-start">
           <p className="text-xl font-display font-bold tracking-tighter">
             {portfolioData.identity.name}<span className="text-primary">.</span>
           </p>
@@ -38,7 +38,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex items-center gap-8 text-sm font-medium text-muted-foreground">
+        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 text-xs sm:text-sm font-medium text-muted-foreground">
           <a href="#about" className="hover:text-foreground transition-colors">About</a>
           <a href="#projects" className="hover:text-foreground transition-colors">Projects</a>
           <a href="#articles" className="hover:text-foreground transition-colors">Articles</a>

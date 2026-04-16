@@ -85,7 +85,7 @@ export const NinjaProfileCard: React.FC<NinjaProfileCardProps> = ({ className })
             </div>
             
             <button 
-              onClick={() => window.open('/ninja-profile', '_blank')}
+              onClick={() => window.open('/dossier', '_blank')}
               className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#00FF9F]/40 transition-all group/btn"
               title="Open Full Profile"
             >

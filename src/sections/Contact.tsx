@@ -7,13 +7,13 @@ export function Contact() {
   const { identity } = portfolioData;
 
   return (
-    <Section id="contact" title="Let's Connect" subtitle="Interested in working together or just want to talk tech?">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <Section id="contact" title="Let's Connect" subtitle="Interested in working together or just want to talk tech?" className="px-6 md:px-12 lg:px-24">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
         <div>
-          <h3 className="text-3xl font-display font-bold mb-6">
+          <h3 className="text-2xl sm:text-3xl font-display font-bold mb-6">
             Building the future of <span className="text-primary italic">systems</span> and <span className="text-primary italic">interfaces</span>.
           </h3>
-          <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+          <p className="text-muted-foreground text-base sm:text-lg mb-10 leading-relaxed">
             I'm currently open to Frontend Developer and Network Engineer roles. If you're looking for an engineer with a systems mindset and a passion for polished UI, let's talk.
           </p>
           
@@ -43,35 +43,35 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="bg-secondary/20 border border-border/50 rounded-3xl p-8 md:p-12">
+        <div className="bg-secondary/20 border border-border/50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12">
           <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Name</label>
+                <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Name</label>
                 <input 
                   type="text" 
-                  className="w-full bg-background border border-border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                   placeholder="Your Name"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Email</label>
+                <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Email</label>
                 <input 
                   type="email" 
-                  className="w-full bg-background border border-border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                   placeholder="your@email.com"
                 />
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Message</label>
+              <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Message</label>
               <textarea 
                 rows={4}
-                className="w-full bg-background border border-border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
+                className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
                 placeholder="How can I help you?"
               />
             </div>
-            <Button size="lg" className="w-full rounded-xl py-6">
+            <Button size="lg" className="w-full rounded-xl py-6 text-xs font-bold uppercase tracking-widest">
               Send Message <Send className="ml-2 h-4 w-4" />
             </Button>
           </form>

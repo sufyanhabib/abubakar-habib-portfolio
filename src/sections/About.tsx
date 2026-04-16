@@ -1,10 +1,10 @@
 import { Section } from "@/components/Section";
 import { portfolioData } from "@/data/portfolio";
 import { LocationCard } from "@/components/LocationCard";
-import { NinjaIdentityCard } from "@/components/NinjaIdentityCard";
-import { NinjaProfileCard } from "@/components/ninja-card/NinjaProfileCard";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
+import { ExternalLink } from "lucide-react";
 
 export function About() {
   const { about } = portfolioData;
@@ -15,7 +15,7 @@ export function About() {
   const labels = ["The Foundation", "The Practical Path", "The Transition", "Current Focus"];
 
   return (
-    <Section id="about" className="relative">
+    <Section id="about" className="relative px-6 md:px-12 lg:px-24">
       <div className="space-y-20 lg:space-y-32">
         {/* Top Section: Narrative Storytelling */}
         <div className="space-y-16">
@@ -29,8 +29,8 @@ export function About() {
               <div className="h-px w-8 bg-primary/40" />
               <span className="text-primary font-mono text-[10px] uppercase tracking-[0.3em]">The Narrative</span>
             </motion.div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight">
-              Bridging the gap between <br />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight">
+              Bridging the gap between <br className="hidden sm:block" />
               <span className="text-muted-foreground">systems and interfaces.</span>
             </h2>
           </div>
@@ -50,15 +50,34 @@ export function About() {
                   <span className="block text-[10px] font-mono uppercase tracking-widest text-primary/60 mb-3">
                     {labels[i] || "Chapter"}
                   </span>
-                  <p className="text-lg md:text-xl leading-relaxed text-muted-foreground font-light group-hover:text-foreground transition-colors duration-500">
+                  <p className="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground font-light group-hover:text-foreground transition-colors duration-500">
                     {block}
                   </p>
                 </motion.div>
               ))}
 
-              <div className="pt-12">
-                <NinjaProfileCard />
-              </div>
+              {/* 5th Timeline Item: Interactive Link to Dossier */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Link 
+                  to="/dossier" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative block pl-8 border-l border-border/50 hover:border-primary/30 transition-colors duration-500"
+                >
+                  <div className="absolute -left-[5px] top-0 h-2.5 w-2.5 rounded-full bg-border group-hover:bg-primary transition-colors duration-500 shadow-[0_0_10px_rgba(0,0,0,0)] group-hover:shadow-primary/50" />
+                  <span className="block text-[10px] font-mono uppercase tracking-widest text-primary/60 mb-3 group-hover:text-primary transition-colors">
+                    ACTIVE STATUS
+                  </span>
+                  <p className="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground font-light group-hover:text-foreground transition-all duration-500 flex items-center gap-2 group-hover:translate-x-1">
+                    Abubakar Habib - View Shinobi Profile <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  </p>
+                </Link>
+              </motion.div>
             </div>
 
             <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-8">
@@ -70,18 +89,16 @@ export function About() {
               >
                 <div className="group">
                   <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary/50 mb-3 group-hover:text-primary transition-colors">Current Base</h4>
-                  <p className="text-2xl font-display font-bold text-foreground">{portfolioData.identity.location}</p>
+                  <p className="text-xl sm:text-2xl font-display font-bold text-foreground">{portfolioData.identity.location}</p>
                   <p className="text-xs text-muted-foreground mt-2 leading-relaxed">Operating from the heart of India, bringing systems-thinking to global interfaces.</p>
                 </div>
                 <div className="h-px bg-border/50 w-full" />
                 <div className="group">
                   <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary/50 mb-3 group-hover:text-primary transition-colors">Academic Path</h4>
-                  <p className="text-2xl font-display font-bold text-foreground">MCA, Bihar University</p>
+                  <p className="text-xl sm:text-2xl font-display font-bold text-foreground">MCA, Bihar University</p>
                   <p className="text-xs text-muted-foreground mt-2 leading-relaxed">Master of Computer Applications, specialized in systems and software architecture.</p>
                 </div>
               </motion.div>
-
-              <NinjaIdentityCard />
             </div>
           </div>
         </div>

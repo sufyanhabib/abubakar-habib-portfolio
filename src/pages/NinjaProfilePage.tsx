@@ -61,37 +61,34 @@ export const NinjaProfilePage: React.FC = () => {
       <div className="fixed top-0 left-0 w-full h-[500px] bg-[#00FF9F]/5 blur-[150px] -translate-y-1/2 pointer-events-none" />
       <div className="fixed bottom-0 right-0 w-full h-[500px] bg-[#00C2FF]/5 blur-[150px] translate-y-1/2 pointer-events-none" />
 
-      {/* Floating Ornaments (Manga Accents) */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {/* REIMAGINED GLOBAL BACKGROUND ORNAMENTS (Thematic Depth) */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+        {/* Itachi & Sasuke (Young) Background Scrawl */}
         <motion.img 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -400]) }}
-          src={DOSSIER_ASSETS.ornaments.kakashiReading}
-          className="absolute -left-20 top-[20%] w-64 opacity-[0.05] grayscale -rotate-12"
+          initial={{ opacity: 0, scale: 0.8, x: -100 }}
+          animate={{ opacity: 0.04, scale: 1, x: 0 }}
+          transition={{ duration: 2 }}
+          src={SHINOBI_IMAGES.ornaments.ornament3}
+          className="absolute -left-20 top-[15%] w-[800px] grayscale -rotate-12 blur-[1px]"
+          alt=""
         />
+        {/* Naruto Hero Action Background Scrawl */}
         <motion.img 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 400]) }}
-          src={DOSSIER_ASSETS.ornaments.narutoSuit}
-          className="absolute -right-20 top-[40%] w-72 opacity-[0.05] grayscale rotate-12"
+          initial={{ opacity: 0, scale: 0.8, x: 100 }}
+          animate={{ opacity: 0.04, scale: 1, x: 0 }}
+          transition={{ duration: 2, delay: 0.5 }}
+          src={SHINOBI_IMAGES.ornaments.ornament2}
+          className="absolute -right-20 top-[45%] w-[700px] grayscale rotate-12 blur-[1px]"
+          alt=""
         />
+        {/* Sai Ink Scrawl Accent */}
         <motion.img 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -600]) }}
-          src={DOSSIER_ASSETS.ornaments.itachiSasuke}
-          className="absolute left-[10%] bottom-[10%] w-80 opacity-[0.04] grayscale"
-        />
-        <motion.img 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]) }}
-          src={DOSSIER_ASSETS.ornaments.konohamaru}
-          className="absolute right-[15%] top-[10%] w-48 opacity-[0.03] grayscale -rotate-6"
-        />
-        <motion.img 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 300]) }}
-          src={DOSSIER_ASSETS.ornaments.narutoJitsu}
-          className="absolute left-[5%] top-[50%] w-56 opacity-[0.03] grayscale rotate-6"
-        />
-        <motion.img 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -150]) }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.03 }}
+          transition={{ duration: 3, delay: 1 }}
           src={SHINOBI_IMAGES.ornaments.ornament1}
-          className="absolute right-[5%] bottom-[20%] w-40 opacity-[0.02] grayscale -rotate-12"
+          className="absolute left-[10%] bottom-[5%] w-[600px] grayscale"
+          alt=""
         />
       </div>
 
@@ -100,22 +97,6 @@ export const NinjaProfilePage: React.FC = () => {
         <div className="absolute top-1/4 left-10 text-[8px] font-mono text-white/10 [writing-mode:vertical-lr] uppercase tracking-[0.5em]">SYSTEM_ARCH_LOG</div>
         <div className="absolute top-1/2 right-4 text-[8px] font-mono text-white/5 [writing-mode:vertical-lr] uppercase tracking-[0.5em]">K BUREAU_SHADOW</div>
         <div className="absolute bottom-[10%] left-10 text-[8px] font-mono text-white/10 [writing-mode:vertical-lr] uppercase tracking-[0.5em]">ARCHIVE_SEAL_LOCKED</div>
-      </div>
-
-      {/* Manga Panel Background Textures (Low Opacity) */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden mix-blend-overlay">
-        {MANGA_CALLOUTS.map((callout) => (
-          <motion.div
-            key={callout.id}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 0.15 }}
-            className={cn("absolute w-64 h-64 grayscale opacity-10", callout.pos)}
-            style={{ y: useTransform(scrollYProgress, [0, 1], [100, -100]) }}
-          >
-             <img src={callout.image} className="w-full h-full object-contain" alt="" />
-             <div className="absolute top-0 right-0 px-2 py-0.5 bg-white/20 text-[8px] font-mono tracking-widest uppercase">{callout.text}</div>
-          </motion.div>
-        ))}
       </div>
 
       {/* Top Navigation */}
@@ -160,22 +141,6 @@ export const NinjaProfilePage: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden bg-[#020617]">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[#020617]/50 z-20 pointer-events-none" />
-          {/* Interactive Mouse Layer */}
-          <motion.div 
-            style={{ x: springX, y: springY }}
-            className="absolute inset-x-0 bottom-0 top-0 z-[15] pointer-events-none"
-          >
-            <img 
-              src={SHINOBI_IMAGES.ornaments.ornament3} 
-              className="absolute -right-40 top-1/2 w-[500px] opacity-[0.05] grayscale -translate-y-1/2 rotate-12"
-              alt=""
-            />
-            <img 
-              src={SHINOBI_IMAGES.ornaments.ornament2} 
-              className="absolute -left-40 top-1/4 w-[400px] opacity-[0.05] grayscale -rotate-12"
-              alt=""
-            />
-          </motion.div>
 
           <motion.video 
             initial={{ scale: 1.2, opacity: 0 }}
@@ -229,7 +194,7 @@ export const NinjaProfilePage: React.FC = () => {
             </motion.h1>
             
             <div className="relative inline-block">
-               <motion.p 
+              <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -237,13 +202,6 @@ export const NinjaProfilePage: React.FC = () => {
               >
                 A deep-dive into the technical archive of a digital strategist, specializing in system architectures and interface jutsu.
               </motion.p>
-              {/* Decorative accent */}
-              <motion.img 
-                animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                src={SHINOBI_IMAGES.ornaments.ornament1}
-                className="absolute -top-12 -right-12 w-16 h-16 opacity-30 pointer-events-none hidden sm:block grayscale"
-              />
             </div>
             
             <motion.div 
@@ -310,6 +268,24 @@ export const NinjaProfilePage: React.FC = () => {
 
       {/* 2. Tactical Profile (The Card) */}
       <section id="dossier-section" className="relative py-24 px-6 overflow-hidden">
+        {/* Reimagined Background Ornaments (Post-Video Context) */}
+        <div className="absolute inset-0 pointer-events-none opacity-10 mix-blend-overlay">
+          <motion.img 
+            initial={{ opacity: 0, rotate: -45, scale: 0.8 }}
+            whileInView={{ opacity: 0.4, rotate: -12, scale: 1 }}
+            transition={{ duration: 1.2 }}
+            src={DOSSIER_ASSETS.ornaments.itachiSasuke}
+            className="absolute -left-32 top-0 w-[600px] grayscale"
+          />
+          <motion.img 
+            initial={{ opacity: 0, rotate: 45, scale: 0.8 }}
+            whileInView={{ opacity: 0.3, rotate: 12, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            src={DOSSIER_ASSETS.ornaments.narutoSuit}
+            className="absolute -right-32 bottom-0 w-[500px] grayscale"
+          />
+        </div>
+
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
              initial={{ opacity: 0, x: -30 }}
@@ -368,6 +344,15 @@ export const NinjaProfilePage: React.FC = () => {
 
       {/* 2.5 Latest Directives (Official Site News Vibes) */}
       <section className="relative py-24 px-6 overflow-hidden bg-[#020617]">
+        {/* Reimagined Background Ornament (Scroll Triggered) */}
+        <motion.img 
+          initial={{ opacity: 0, scale: 1.2, x: 100 }}
+          whileInView={{ opacity: 0.1, scale: 1, x: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          src={DOSSIER_ASSETS.ornaments.kakashiReading}
+          className="absolute -right-40 -top-20 w-[600px] grayscale rotate-[45deg] pointer-events-none"
+        />
+
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col sm:flex-row justify-between items-end gap-6 border-b-4 border-[#00FF9F] pb-8">
             <div className="space-y-2">
@@ -621,43 +606,78 @@ export const NinjaProfilePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Footer / Final Dossier Seal */}
-      <footer className="relative py-32 px-6 text-center">
-        <div className="max-w-xl mx-auto space-y-8">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="flex justify-center relative"
-          >
-            <motion.img 
-              src={SHINOBI_IMAGES.ornaments.ornament2}
-              className="absolute -top-12 -left-12 w-24 h-24 opacity-10 grayscale "
-            />
-            <div className="relative p-8 rounded-full border border-dashed border-[#00FF9F]/30 animate-[spin_20s_linear_infinite]">
-               <Activity className="w-8 h-8 text-[#00FF9F]" />
-            </div>
-             <motion.img 
-              src={SHINOBI_IMAGES.ornaments.ornament3}
-              className="absolute -bottom-12 -right-12 w-24 h-24 opacity-10 grayscale -rotate-12"
-            />
-          </motion.div>
-          
-          <div className="space-y-4">
-            <h3 className="text-2xl font-display font-bold text-white tracking-widest uppercase">Archive Locked</h3>
-            <p className="text-white/40 font-mono text-[10px] uppercase leading-loose">
-              Operative: Abubakar Habib // Access Token: VALID <br />
-              Last Update: {new Date().toLocaleDateString()} // Konoha Intelligence Bureau
-            </p>
-          </div>
-
-          <Link 
-            to="/"
-            className="inline-flex items-center gap-2 text-[#00FF9F] text-xs font-mono uppercase tracking-[0.3em] hover:opacity-80 transition-opacity"
-          >
-            [ Close Dossier ]
-          </Link>
+      {/* 5. Footer / Final Dossier Seal (REIMAGINED) */}
+      <footer className="relative py-48 px-6 text-center bg-[#02030a] overflow-hidden border-t-2 border-white/5">
+        {/* Exploding Background Seals for Footer */}
+        <div className="absolute inset-x-0 top-0 h-full flex items-center justify-center pointer-events-none">
+          <motion.img 
+            initial={{ opacity: 0, scale: 0.5, rotate: -30 }}
+            whileInView={{ opacity: 0.08, scale: 1.2, rotate: 10 }}
+            src={SHINOBI_IMAGES.ornaments.ornament3}
+            className="absolute left-1/4 w-[500px] grayscale"
+          />
+          <motion.img 
+            initial={{ opacity: 0, scale: 0.5, rotate: 30 }}
+            whileInView={{ opacity: 0.08, scale: 1.2, rotate: -10 }}
+            src={SHINOBI_IMAGES.ornaments.ornament2}
+            className="absolute right-1/4 w-[500px] grayscale"
+          />
         </div>
+
+        <div className="max-w-xl mx-auto space-y-12 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center gap-10"
+          >
+            <div className="relative group">
+              <div className="absolute -inset-16 bg-[#00FF9F]/20 blur-3xl rounded-full animate-pulse group-hover:bg-[#00FF9F]/30 transition-colors" />
+              
+              {/* Outer Circular Tech Border */}
+              <div className="relative p-12 sm:p-16 rounded-full border-2 border-dashed border-[#00FF9F]/40 animate-[spin_30s_linear_infinite]">
+                 <div className="absolute inset-0 border-2 border-[#00FF9F]/10 rounded-full scale-125" />
+              </div>
+              
+              {/* Inner Logo Seal */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="p-8 rounded-full bg-[#020617] border border-[#00FF9F] shadow-[0_0_50px_rgba(0,255,159,0.3)]">
+                  <Activity className="w-12 h-12 text-[#00FF9F]" />
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <h3 className="text-4xl sm:text-6xl font-display font-black text-white tracking-[0.2em] uppercase italic -skew-x-12">
+                Archive <span className="text-white/20">Locked</span>
+              </h3>
+              
+              <div className="space-y-2 py-6 border-y border-white/5">
+                <p className="text-[#00FF9F] font-mono text-[10px] uppercase tracking-[0.5em] italic">Access State: Encrypted_Final_Seal</p>
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-white/40 font-mono text-[9px] uppercase tracking-widest leading-loose">
+                  <span>Operative: Abubakar Habib</span>
+                  <span className="text-[#00FF9F]">Access Token: VALID_NODE</span>
+                  <span>Last Update: {new Date().toLocaleDateString()}</span>
+                  <span>Bureau: Konoha Intelligence</span>
+                </div>
+              </div>
+            </div>
+
+            <Link 
+              to="/"
+              className="group relative inline-flex items-center gap-4 px-10 py-4 bg-white/5 border border-white/10 rounded-full transition-all hover:bg-[#00FF9F]/10 hover:border-[#00FF9F]/30"
+            >
+              <div className="absolute inset-0 bg-[#00FF9F]/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-full blur-xl" />
+              <span className="text-[#00FF9F] text-sm font-mono font-bold uppercase tracking-[0.4em]">
+                [ Close Dossier ]
+              </span>
+              <div className="w-8 h-px bg-gradient-to-r from-[#00FF9F] to-transparent group-hover:w-12 transition-all" />
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Bottom decorative bar */}
+        <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#00FF9F]/40 to-transparent" />
       </footer>
     </div>
   );

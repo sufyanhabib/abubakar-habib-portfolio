@@ -1,5 +1,6 @@
 import { Section } from "@/components/Section";
 import { portfolioData } from "@/data/portfolio";
+import { SHINOBI_IMAGES } from "@/constants/assetRegistry";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
@@ -18,6 +19,27 @@ export function About() {
 
   return (
     <section id="about" className="relative overflow-hidden bg-background pt-32 pb-24 border-y border-border/5">
+      {/* Reimagined Background Ornaments (Ninja Scroll Styling) - Naruto & Itachi focus */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, x: -100, rotate: -20 }}
+          whileInView={{ opacity: 0.06, x: 0, rotate: -10 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute -left-32 top-10"
+        >
+          <img src={SHINOBI_IMAGES.ornaments.ornament3} className="w-[800px] grayscale" alt="" referrerPolicy="no-referrer" />
+        </motion.div>
+        
+        <motion.div 
+          initial={{ opacity: 0, x: 100, rotate: 20 }}
+          whileInView={{ opacity: 0.06, x: 0, rotate: 10 }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+          className="absolute -right-32 bottom-10"
+        >
+          <img src={SHINOBI_IMAGES.ornaments.ornament2} className="w-[800px] grayscale" alt="" referrerPolicy="no-referrer" />
+        </motion.div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 space-y-20 lg:space-y-32 relative z-10">
         {/* Top Section: Narrative Storytelling */}
         <div className="space-y-16">
@@ -28,12 +50,12 @@ export function About() {
               viewport={{ once: true }}
               className="flex items-center gap-3"
             >
-              <div className="h-1 shadow-[0_0_10px_#00FF9F] w-12 bg-primary" />
-              <span className="text-primary font-mono text-xs uppercase tracking-[0.5em] italic">The Narrative // 001</span>
+              <div className="h-px w-8 bg-primary/40" />
+              <span className="text-primary font-mono text-[10px] uppercase tracking-[0.3em]">The Narrative</span>
             </motion.div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tight uppercase italic -skew-x-12 leading-[0.9]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight">
               Bridging the gap between <br className="hidden sm:block" />
-              <span className="text-muted-foreground/30">systems and interfaces.</span>
+              <span className="text-muted-foreground">systems and interfaces.</span>
             </h2>
           </div>
 
@@ -75,6 +97,16 @@ export function About() {
                   rel="noopener noreferrer"
                   className="group relative block p-8 bg-secondary/5 border-2 border-dashed border-border/50 hover:border-primary hover:bg-primary/[0.02] transition-all duration-500 rounded-2xl overflow-hidden"
                 >
+                  {/* Reimagined Card Background */}
+                  <div className="absolute inset-x-0 bottom-0 top-0 pointer-events-none opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700">
+                    <img 
+                      src={SHINOBI_IMAGES.ornaments.ornament5} 
+                      className="absolute -right-10 -bottom-10 w-64 grayscale rotate-12 group-hover:rotate-0 transition-transform duration-700" 
+                      alt="" 
+                      referrerPolicy="no-referrer" 
+                    />
+                  </div>
+
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   
                   <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">

@@ -39,23 +39,35 @@ export const DOSSIER_ASSETS = {
   }
 };
 
+export const MANGA_CALLOUTS = [
+  { id: 1, image: SHINOBI_IMAGES.sections.goods, text: "GEAR_LOADOUT", pos: "top-1/4 left-5" },
+  { id: 2, image: SHINOBI_IMAGES.sections.event, text: "FIELD_REPORT", pos: "top-1/2 right-0" },
+  { id: 3, image: SHINOBI_IMAGES.sections.special, text: "ELITE_SQUAD", pos: "bottom-1/4 left-10" },
+];
+
 export const STORY_SECTIONS = [
   {
     id: "identity",
-    title: "Shinobi Identity",
-    content: "Abubakar Habib. A Jōnin-level architect operating within the Digital Konohagakure network. Tasked with the design of high-concurrency tactical systems and the manifestation of fluid user interfaces. Known for extreme precision in debugging and the strategic application of the Shadow Clone Integration technique.",
+    title: "SHINOBI_PROFILE",
+    label: "CLASSIFIED",
+    tags: ["LEAF_VILLAGE", "JONIN_RANK"],
+    content: "Abubakar Habib. A high-rank architect operating within the digital shadows of Konohagakure. Specializing in the manifestation of complex system jutsu and the fluid control of multi-threaded state. An expert in tactical debugging and the strategic deployment of the Shadow Clone Integration technique.",
     image: SHINOBI_IMAGES.sections.anime
   },
   {
     id: "origin",
-    title: "The Code Academy",
-    content: "Before the high-rank missions, there was the grind of the fundamental arts. Mastering the HTML seals and the CSS hand signs. It was here that the initial fire of the Nara Clan intellect met the tireless determination of a rogue dev in the making.",
+    title: "THE_ACADEMY_GRIND",
+    label: "DATA_ROOTS",
+    tags: ["HTML_SEALS", "CSS_HAND_SIGNS"],
+    content: "The journey began in the fundamental arts. Mastering the core seals of the web. It was through relentless determination and a rogue developer's fire that the Nara Clan's tactical intellect was forged into a professional-grade arsenal.",
     image: SHINOBI_IMAGES.sections.comics
   },
   {
     id: "affinities",
-    title: "Elemental Mastery",
-    content: "Affinities determine the strength of an operative's code. Lightning Release yields unmatched performance optimization, while Water Release ensures the fluid movement of state across complex application branches.",
+    title: "ELEMENTAL_ARSENAL",
+    label: "CHAKRA_FLOW",
+    tags: ["PERFORMANCE", "SCALABILITY"],
+    content: "An operative's efficiency is determined by their elemental alignment. Through mastery of Lightning and Water Release, Habib achieves unmatched speed in optimization and fluid movement across distributed architectures.",
     types: [
       { element: "Lightning Release", skill: "Performance Engine", level: 95 },
       { element: "Water Release", skill: "State Fluidity", level: 92 },
@@ -66,8 +78,18 @@ export const STORY_SECTIONS = [
   },
   {
     id: "missions",
-    title: "Legendary Logbook",
-    content: "A summary of the most critical engagements. Many of these missions required the full breadth of the Technical Arsenal, often involving multi-village collaboration and high-stakes deadlines.",
+    title: "MISSION_LOG",
+    label: "S_RANK_OPS",
+    tags: ["GLOBAL_SCALE", "CRITICAL_PATH"],
+    content: "A summary of the most demanding engagements. These S-rank missions required the full breadth of the technical scroll, often involving Cross-Village collaboration under high-stakes conditions.",
+    missions: [
+      { title: "Project: Global Nexus", rank: "S-Rank", description: "Architected a real-time communication platform for 1M+ active shinobi using high-speed WebSocket jitsu." },
+      { title: "Scroll of Infinite Scroll", rank: "A-Rank", description: "Developed a virtualized list component capable of rendering 100k+ data nodes without performance lag." },
+      { title: "Operation: Dark Mode Siege", rank: "B-Rank", description: "Refactored legacy UI systems into modern, design-token driven architectures." }
+    ],
+    image: SHINOBI_IMAGES.sections.news
+  }
+];
     missions: [
       { title: "Project: Global Nexus (S-Rank)", rank: "S-Rank", description: "Architected a real-time communication platform for 1M+ active shinobi using high-speed WebSocket jitsu." },
       { title: "Scroll of Infinite Scroll (A-Rank)", rank: "A-Rank", description: "Developed a virtualized list component capable of rendering 100k+ data nodes without performance lag." },

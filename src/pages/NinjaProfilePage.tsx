@@ -5,8 +5,9 @@ import { ChevronLeft, Share2, Award, Zap, Shield, Target, Scroll as ScrollIcon, 
 import { Link } from 'react-router-dom';
 import { useSound } from '@/components/SoundProvider';
 import { Volume2, VolumeX } from 'lucide-react';
-import { DOSSIER_ASSETS, STORY_SECTIONS } from '@/constants/dossierData';
+import { DOSSIER_ASSETS, STORY_SECTIONS, MANGA_CALLOUTS } from '@/constants/dossierData';
 import { cn } from '@/lib/utils';
+import { SHINOBI_IMAGES } from '@/constants/assetRegistry';
 
 export const NinjaProfilePage: React.FC = () => {
   const { isMuted, toggleMute, playExport } = useSound();
@@ -46,20 +47,58 @@ export const NinjaProfilePage: React.FC = () => {
       {/* Floating Ornaments (Manga Accents) */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <motion.img 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]) }}
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -400]) }}
           src={DOSSIER_ASSETS.ornaments.kakashiReading}
-          className="absolute -left-20 top-[20%] w-64 opacity-[0.03] grayscale -rotate-12"
+          className="absolute -left-20 top-[20%] w-64 opacity-[0.05] grayscale -rotate-12"
         />
         <motion.img 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 200]) }}
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 400]) }}
           src={DOSSIER_ASSETS.ornaments.narutoSuit}
-          className="absolute -right-20 top-[40%] w-72 opacity-[0.03] grayscale rotate-12"
+          className="absolute -right-20 top-[40%] w-72 opacity-[0.05] grayscale rotate-12"
         />
         <motion.img 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -300]) }}
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -600]) }}
           src={DOSSIER_ASSETS.ornaments.itachiSasuke}
-          className="absolute left-[10%] bottom-[10%] w-80 opacity-[0.02] grayscale"
+          className="absolute left-[10%] bottom-[10%] w-80 opacity-[0.04] grayscale"
         />
+        <motion.img 
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]) }}
+          src={DOSSIER_ASSETS.ornaments.konohamaru}
+          className="absolute right-[15%] top-[10%] w-48 opacity-[0.03] grayscale -rotate-6"
+        />
+        <motion.img 
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 300]) }}
+          src={DOSSIER_ASSETS.ornaments.narutoJitsu}
+          className="absolute left-[5%] top-[50%] w-56 opacity-[0.03] grayscale rotate-6"
+        />
+        <motion.img 
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -150]) }}
+          src={SHINOBI_IMAGES.ornaments.ornament1}
+          className="absolute right-[5%] bottom-[20%] w-40 opacity-[0.02] grayscale -rotate-12"
+        />
+      </div>
+
+      {/* Floating Tactical Labels */}
+      <div className="fixed inset-0 pointer-events-none z-[55] overflow-hidden select-none">
+        <div className="absolute top-1/4 left-10 text-[8px] font-mono text-white/10 [writing-mode:vertical-lr] uppercase tracking-[0.5em]">SYSTEM_ARCH_LOG</div>
+        <div className="absolute top-1/2 right-4 text-[8px] font-mono text-white/5 [writing-mode:vertical-lr] uppercase tracking-[0.5em]">K BUREAU_SHADOW</div>
+        <div className="absolute bottom-[10%] left-10 text-[8px] font-mono text-white/10 [writing-mode:vertical-lr] uppercase tracking-[0.5em]">ARCHIVE_SEAL_LOCKED</div>
+      </div>
+
+      {/* Manga Panel Background Textures (Low Opacity) */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden mix-blend-overlay">
+        {MANGA_CALLOUTS.map((callout) => (
+          <motion.div
+            key={callout.id}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 0.15 }}
+            className={cn("absolute w-64 h-64 grayscale opacity-10", callout.pos)}
+            style={{ y: useTransform(scrollYProgress, [0, 1], [100, -100]) }}
+          >
+             <img src={callout.image} className="w-full h-full object-contain" alt="" />
+             <div className="absolute top-0 right-0 px-2 py-0.5 bg-white/20 text-[8px] font-mono tracking-widest uppercase">{callout.text}</div>
+          </motion.div>
+        ))}
       </div>
 
       {/* Top Navigation */}
@@ -143,6 +182,7 @@ export const NinjaProfilePage: React.FC = () => {
               transition={{ delay: 0.3 }}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#00FF9F]/5 border border-[#00FF9F]/10 text-[#00FF9F] text-[10px] font-mono uppercase tracking-[0.3em]"
             >
+              <Target className="w-3 h-3" />
               Classification: TOP SECRET // JŌNIN-LEVEL ACCESS
             </motion.div>
             <motion.h1 
@@ -153,14 +193,24 @@ export const NinjaProfilePage: React.FC = () => {
             >
               Abubakar <span className="text-white/20">Habib</span>
             </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="max-w-2xl mx-auto text-white/40 text-xs sm:text-sm font-mono tracking-widest uppercase leading-relaxed"
-            >
-              A deep-dive into the technical archive of a digital strategist, specializing in system architectures and interface jutsu.
-            </motion.p>
+            
+            <div className="relative inline-block">
+               <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="max-w-2xl mx-auto text-white/40 text-xs sm:text-sm font-mono tracking-widest uppercase leading-relaxed"
+              >
+                A deep-dive into the technical archive of a digital strategist, specializing in system architectures and interface jutsu.
+              </motion.p>
+              {/* Decorative accent */}
+              <motion.img 
+                animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                src={SHINOBI_IMAGES.ornaments.ornament1}
+                className="absolute -top-12 -right-12 w-16 h-16 opacity-30 pointer-events-none hidden sm:block grayscale"
+              />
+            </div>
             
             <motion.div 
                initial={{ opacity: 0, y: 20 }}
@@ -219,10 +269,23 @@ export const NinjaProfilePage: React.FC = () => {
              initial={{ opacity: 0, x: -30 }}
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
-             className="space-y-8"
+             className="relative space-y-8"
           >
+            {/* Playful Image Accent */}
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+              whileInView={{ opacity: 0.25, scale: 1, rotate: -10 }}
+              transition={{ type: "spring", stiffness: 100 }}
+              src={SHINOBI_IMAGES.ornaments.ornament3}
+              className="absolute -top-16 -left-16 w-32 h-32 grayscale hover:grayscale-0 transition-all duration-500"
+            />
+
             <div className="space-y-4">
-              <h2 className="text-4xl sm:text-6xl font-display font-bold text-white tracking-widest uppercase">
+              <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[8px] font-mono uppercase tracking-widest text-white/40">
+                <Shield className="w-2 h-2" />
+                Active_Dossier_Link
+              </div>
+              <h2 className="group relative text-4xl sm:text-6xl font-display font-bold text-white tracking-widest uppercase">
                 The <span className="text-[#00FF9F]">Dossier</span>
               </h2>
               <div className="h-px w-32 bg-gradient-to-r from-[#00FF9F] to-transparent" />
@@ -273,10 +336,22 @@ export const NinjaProfilePage: React.FC = () => {
             >
               <div className="flex-1 space-y-6">
                 <div className="flex items-center gap-4">
-                  <span className="text-3xl sm:text-4xl font-display font-bold text-white/20">0{index + 1}</span>
-                  <div className="h-px flex-1 bg-white/10" />
+                  <div className="px-2 py-0.5 rounded bg-[#00FF9F]/10 border border-[#00FF9F]/20 text-[8px] font-mono text-[#00FF9F] tracking-[0.2em]">
+                    {section.label}
+                  </div>
+                  <div className="h-px flex-1 bg-white/5" />
+                  <span className="text-3xl sm:text-4xl font-display font-bold text-white/10">0{index + 1}</span>
                 </div>
-                <h3 className="text-3xl sm:text-5xl font-display font-bold text-white">{section.title}</h3>
+                
+                <div className="space-y-2">
+                  <h3 className="text-3xl sm:text-5xl font-display font-bold text-white uppercase tracking-tight">{section.title}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {section.tags?.map(tag => (
+                      <span key={tag} className="text-[7px] font-mono text-white/30 tracking-widest uppercase">#{tag}</span>
+                    ))}
+                  </div>
+                </div>
+
                 <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-mono">
                   {section.content}
                 </p>
@@ -318,20 +393,35 @@ export const NinjaProfilePage: React.FC = () => {
               </div>
 
               <div className="flex-1 w-full flex justify-center">
-                <div className="relative">
-                  <div className="absolute -inset-4 rounded-3xl bg-[#00FF9F]/5 blur-2xl pointer-events-none" />
-                  <div className="relative w-full max-w-sm aspect-square p-2 rounded-[2rem] border border-white/10 bg-white/5 rotate-3 hover:rotate-0 transition-transform duration-700">
+                <motion.div 
+                  initial={{ rotate: 10 }}
+                  whileInView={{ rotate: index % 2 === 0 ? 3 : -3 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", duration: 1 }}
+                  className="relative group"
+                >
+                  <div className="absolute -inset-4 rounded-3xl bg-[#00FF9F]/5 blur-2xl pointer-events-none group-hover:bg-[#00FF9F]/10 transition-colors" />
+                  <div className="relative w-full max-w-sm aspect-square p-2 rounded-[2rem] border border-white/10 bg-white/5 hover:border-[#00FF9F]/30 transition-all duration-700">
                     <img 
                       src={section.image} 
-                      className="w-full h-full object-contain rounded-2xl drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" 
+                      className="w-full h-full object-contain rounded-2xl drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] grayscale group-hover:grayscale-0 transition-all duration-700" 
                       alt={section.title}
                     />
                     {/* Tactical UI elements */}
-                    <div className="absolute top-4 right-4 p-2 rounded-lg bg-white/10 backdrop-blur-md">
+                    <div className="absolute top-4 right-4 p-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/5 group-hover:border-[#00FF9F]/40 transition-colors">
                       <Terminal className="w-4 h-4 text-[#00FF9F]" />
                     </div>
+                    
+                    {/* Floating Manga Tag */}
+                    <motion.div 
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                      className="absolute -bottom-4 -left-4 px-3 py-1 bg-[#020617] border border-[#00FF9F]/20 rounded-lg shadow-xl"
+                    >
+                      <span className="text-[7px] font-mono text-[#00FF9F] uppercase tracking-tighter">DATA_{section.id.toUpperCase()}</span>
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
@@ -339,11 +429,29 @@ export const NinjaProfilePage: React.FC = () => {
       </section>
 
       {/* 4. The Alliance Corridor (Supporting Characters) */}
-      <section className="relative py-24 px-6 bg-[#020617]/50 border-y border-white/5">
-        <div className="max-w-7xl mx-auto space-y-16">
+      <section className="relative py-24 px-6 bg-[#020617]/50 border-y border-white/5 overflow-hidden">
+        {/* Background Accent Image */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] grayscale pointer-events-none">
+          <img src={SHINOBI_IMAGES.sections.news} className="w-full h-full object-cover" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-white">Technologic Alliances</h2>
-            <p className="text-white/40 font-mono text-xs uppercase tracking-widest">Mastery through collaboration across the five tech villages</p>
+            <motion.img 
+              animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              src={SHINOBI_IMAGES.ornaments.ornament5}
+              className="w-24 mx-auto opacity-20 grayscale border border-white/10 rounded-full p-2"
+            />
+            <div className="space-y-2">
+              <h2 className="text-3xl sm:text-5xl font-display font-bold text-white uppercase tracking-tighter">Technologic Alliances</h2>
+              <div className="flex justify-center gap-2">
+                <div className="h-px w-12 bg-[#00FF9F]/40" />
+                <div className="h-px w-12 bg-white/10" />
+                <div className="h-px w-12 bg-[#00C2FF]/40" />
+              </div>
+            </div>
+            <p className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">Mastery through collaboration across the five tech villages</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -376,11 +484,19 @@ export const NinjaProfilePage: React.FC = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex justify-center"
+            className="flex justify-center relative"
           >
+            <motion.img 
+              src={SHINOBI_IMAGES.ornaments.ornament2}
+              className="absolute -top-12 -left-12 w-24 h-24 opacity-10 grayscale "
+            />
             <div className="relative p-8 rounded-full border border-dashed border-[#00FF9F]/30 animate-[spin_20s_linear_infinite]">
                <Activity className="w-8 h-8 text-[#00FF9F]" />
             </div>
+             <motion.img 
+              src={SHINOBI_IMAGES.ornaments.ornament3}
+              className="absolute -bottom-12 -right-12 w-24 h-24 opacity-10 grayscale -rotate-12"
+            />
           </motion.div>
           
           <div className="space-y-4">

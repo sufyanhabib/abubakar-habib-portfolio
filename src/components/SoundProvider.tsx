@@ -4,6 +4,7 @@ interface SoundContextType {
   playClick: () => void;
   playHover: () => void;
   playThemeSound: (targetTheme: "light" | "dark") => void;
+  playExport: () => void;
   isMuted: boolean;
   toggleMute: () => void;
 }
@@ -27,6 +28,7 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const audioContext = useRef<AudioContext | null>(null);
   const clickBuffer = useRef<AudioBuffer | null>(null);
   const hoverBuffer = useRef<AudioBuffer | null>(null);
+  const exportBuffer = useRef<AudioBuffer | null>(null);
 
   useEffect(() => {
     // Initialize AudioContext lazily
@@ -36,10 +38,10 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       }
 
       // Preload/Decode sounds
-      // For production, these would be small .mp3 or .wav files in /public/sounds/
-      // Using a generated synth sound for this implementation to ensure it works immediately
       clickBuffer.current = createSynthBuffer(audioContext.current, 800, 0.1);
       hoverBuffer.current = createSynthBuffer(audioContext.current, 400, 0.05);
+      // Create a "scroll" like synth sound: multiple rapid soft clicks or a whoosh
+      exportBuffer.current = createExportBuffer(audioContext.current);
     };
 
     const handleFirstInteraction = () => {
@@ -66,6 +68,23 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return buffer;
   };
 
+  const createExportBuffer = (ctx: AudioContext) => {
+    const duration = 0.5;
+    const sampleRate = ctx.sampleRate;
+    const frameCount = sampleRate * duration;
+    const buffer = ctx.createBuffer(1, frameCount, sampleRate);
+    const data = buffer.getChannelData(0);
+
+    for (let i = 0; i < frameCount; i++) {
+      const t = i / sampleRate;
+      // White noise with envelope for a "paper" sound
+      const noise = Math.random() * 2 - 1;
+      const envelope = Math.exp(-t * 10) * (1 - Math.exp(-t * 100)); // Rise and fall
+      data[i] = noise * envelope * 0.1;
+    }
+    return buffer;
+  };
+
   const playSound = (buffer: AudioBuffer | null, volume = 0.5) => {
     if (isMuted || !audioContext.current || !buffer) return;
 
@@ -87,6 +106,7 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const playClick = useCallback(() => playSound(clickBuffer.current, 0.15), [isMuted]);
   const playHover = useCallback(() => playSound(hoverBuffer.current, 0.05), [isMuted]);
+  const playExport = useCallback(() => playSound(exportBuffer.current, 0.3), [isMuted]);
 
   const playThemeSound = useCallback((targetTheme: "light" | "dark") => {
     if (isMuted || !audioContext.current) return;
@@ -151,9 +171,10 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     playClick,
     playHover,
     playThemeSound,
+    playExport,
     isMuted,
     toggleMute
-  }), [playClick, playHover, playThemeSound, isMuted, toggleMute]);
+  }), [playClick, playHover, playThemeSound, playExport, isMuted, toggleMute]);
 
   return (
     <SoundContext.Provider value={value}>

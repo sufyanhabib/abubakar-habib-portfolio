@@ -31,7 +31,7 @@ export function Hero() {
       className="relative min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background transition-colors duration-700"
     >
       {/* Premium Background System */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 text-foreground">
         {/* Layered Radial Glows - Dark Mode */}
         <motion.div 
           style={{ y: shouldReduceMotion ? 0 : y1 }}

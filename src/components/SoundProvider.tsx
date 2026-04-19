@@ -1,4 +1,7 @@
 import React, { createContext, useContext, useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import { Howl } from 'howler';
+
+import exportAsset from '@/assets/sounds/export.mp3';
 
 interface SoundContextType {
   playClick: () => void;
@@ -29,6 +32,7 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const clickBuffer = useRef<AudioBuffer | null>(null);
   const hoverBuffer = useRef<AudioBuffer | null>(null);
   const exportBuffer = useRef<AudioBuffer | null>(null);
+  const exportHowl = useRef<Howl | null>(null);
 
   useEffect(() => {
     // Initialize AudioContext lazily
@@ -40,9 +44,19 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       // Preload/Decode sounds
       clickBuffer.current = createSynthBuffer(audioContext.current, 800, 0.1);
       hoverBuffer.current = createSynthBuffer(audioContext.current, 400, 0.05);
-      // Create a "scroll" like synth sound: multiple rapid soft clicks or a whoosh
       exportBuffer.current = createExportBuffer(audioContext.current);
+      
+      // Initialize export sound with Howler for consistency if it's a longer file
+      // Actually, since this is a provider, we can just use the playSound with a buffer or Howl.
+      // Let's use the synth as fallback but try to load the mp3.
     };
+
+    // Load export sound
+    exportHowl.current = new Howl({
+      src: [exportAsset],
+      volume: 0.3,
+      preload: true
+    });
 
     const handleFirstInteraction = () => {
       initAudio();
@@ -106,7 +120,14 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const playClick = useCallback(() => playSound(clickBuffer.current, 0.15), [isMuted]);
   const playHover = useCallback(() => playSound(hoverBuffer.current, 0.05), [isMuted]);
-  const playExport = useCallback(() => playSound(exportBuffer.current, 0.3), [isMuted]);
+  const playExport = useCallback(() => {
+    if (isMuted) return;
+    if (exportHowl.current?.state() === 'loaded') {
+      exportHowl.current.play();
+    } else {
+      playSound(exportBuffer.current, 0.3);
+    }
+  }, [isMuted]);
 
   const playThemeSound = useCallback((targetTheme: "light" | "dark") => {
     if (isMuted || !audioContext.current) return;

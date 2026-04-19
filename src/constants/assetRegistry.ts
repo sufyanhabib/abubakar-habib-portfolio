@@ -11,27 +11,30 @@ import ornament2 from '@/assets/web-img/ornament2.webp';
 import ornament3 from '@/assets/web-img/ornament3.webp';
 import ornament5 from '@/assets/web-img/ornament5.webp';
 
-// Picking a sample of unique WhatsApp images as character assets
+// Character Assets - Using high-quality Habib character interactions
+import Habib_Naruto from '@/assets/ninja-assets/HabibandNaruto.jpg';
+import Habib_Kakashi from '@/assets/ninja-assets/HabibandKakashi.jpg';
+import Habib_Sakura from '@/assets/ninja-assets/HabibandSakura.jpg';
+import Habib_Sai from '@/assets/ninja-assets/HabibandSai.jpg';
+import Habib_LadyTsunade from '@/assets/ninja-assets/HabibandLadyTsunade.jpg';
+import Habib_Hinata from '@/assets/ninja-assets/HabibandHinata.jpg';
+import Habib_Kiba from '@/assets/ninja-assets/HabibandKiba.jpg';
+import Habib_Shino from '@/assets/ninja-assets/HabibandShino.jpg';
+import Habib_Tenten from '@/assets/ninja-assets/HabibandTenten.jpg';
+import Habib_RockLee from '@/assets/ninja-assets/HabibandRockLee.jpg';
+import Habib_MightyGuy from '@/assets/ninja-assets/HabibandmightyGuy.jpg';
+import Habib_Asuma from '@/assets/ninja-assets/HabibandAsuma.jpg';
+import Habib_Kurenai from '@/assets/ninja-assets/HabibandKurenai.jpg';
+import Habib_Joji from '@/assets/ninja-assets/HabibandJoji.jpg';
+import Habib_Sord from '@/assets/ninja-assets/Habib_sord.jpg';
+import Abubakar_Habib from '@/assets/ninja-assets/Abubakar_Habib.jpg';
+
+// Picking a sample of unique WhatsApp images as secondary assets
 import n1 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.21 PM.jpeg';
 import n2 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.23 PM.jpeg';
 import n3 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.31 PM.jpeg';
 import n4 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.33 PM.jpeg';
-import n5 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.35 PM.jpeg';
-import n6 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.37 PM.jpeg';
-import n7 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.39 PM.jpeg';
-import n8 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.42 PM.jpeg';
-import n9 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.44 PM.jpeg';
-import n10 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.46 PM.jpeg';
-import n11 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.48 PM.jpeg';
-import n12 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.50 PM.jpeg';
-import n13 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.52 PM.jpeg';
-import n14 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.54 PM.jpeg';
-import n15 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.55 PM.jpeg';
-import n16 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.32 PM.jpeg';
-import n17 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.36 PM.jpeg';
-import n18 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.40 PM.jpeg';
-import n19 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.43 PM.jpeg';
-import n20 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.47 PM.jpeg';
+
 import teamPortait from '@/assets/ninja-assets/Habib-kakashi-sakura.jpg';
 import profileImage from '@/assets/ninja-assets/Profile.jpg';
 import teamBackgroundVideo from '@/assets/web-img/TeamBackGround.mp4';
@@ -53,10 +56,23 @@ export const SHINOBI_IMAGES = {
     ornament5,
   },
   ninjas: [
-    n1, n2, n3, n4, n5,
-    n6, n7, n8, n9, n10,
-    n11, n12, n13, n14, n15,
-    n16, n17, n18, n19, n20,
+    Habib_Kakashi,
+    Habib_MightyGuy,
+    Habib_Naruto,
+    Habib_Sord,
+    Habib_RockLee,
+    Habib_Kiba,
+    Habib_Hinata,
+    Habib_Sai,
+    Habib_Asuma,
+    Habib_Shino,
+    Habib_Sakura,
+    Habib_LadyTsunade,
+    Habib_Tenten,
+    Habib_Kurenai,
+    Habib_Joji,
+    Abubakar_Habib,
+    n1, n2, n3, n4,
     teamPortait,
   ],
   hero: profileImage,

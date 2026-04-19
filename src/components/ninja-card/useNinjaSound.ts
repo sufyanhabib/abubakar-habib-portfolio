@@ -2,6 +2,14 @@ import { useEffect, useCallback, useRef } from 'react';
 import { Howl, Howler } from 'howler';
 import { useSound } from '../SoundProvider';
 
+import levelUpAsset from '@/assets/sounds/naruto-jutsu-sound.mp3';
+import lightningAsset from '@/assets/sounds/chidori.mp3';
+import waterAsset from '@/assets/sounds/tra.mp3'; 
+import handSignsAsset from '@/assets/sounds/naruto-hand-signs.mp3';
+import teleportAsset from '@/assets/sounds/teleport-sasuke.mp3';
+import sasukeAsset from '@/assets/sounds/saaaske.mp3';
+import katonAsset from '@/assets/sounds/katon.mp3';
+
 export const useNinjaSound = () => {
   const { isMuted } = useSound();
   const levelUpSound = useRef<Howl | null>(null);
@@ -9,6 +17,10 @@ export const useNinjaSound = () => {
   const sharinganSound = useRef<Howl | null>(null);
   const lightningSound = useRef<Howl | null>(null);
   const waterSound = useRef<Howl | null>(null);
+  const handSignsSound = useRef<Howl | null>(null);
+  const teleportSound = useRef<Howl | null>(null);
+  const sasukeSound = useRef<Howl | null>(null);
+  const katonSound = useRef<Howl | null>(null);
 
   // Synth fallback for reliability
   const playSynthSparks = useCallback(() => {
@@ -73,11 +85,15 @@ export const useNinjaSound = () => {
       });
     };
 
-    levelUpSound.current = createSound('https://assets.mixkit.co/sfx/preview/mixkit-magical-surprise-606.mp3', 0.3);
+    levelUpSound.current = createSound(levelUpAsset, 0.4);
     hoverSound.current = createSound('https://assets.mixkit.co/sfx/preview/mixkit-fast-small-sweep-transition-166.mp3', 0.15);
     sharinganSound.current = createSound('https://assets.mixkit.co/sfx/preview/mixkit-deep-ambient-hum-2144.mp3', 0.2, true);
-    lightningSound.current = createSound('https://assets.mixkit.co/sfx/preview/mixkit-electrical-explosion-short-1582.mp3', 0.6);
-    waterSound.current = createSound('https://assets.mixkit.co/sfx/preview/mixkit-waves-on-the-beach-heavy-1188.mp3', 0.6);
+    lightningSound.current = createSound(lightningAsset, 0.7);
+    waterSound.current = createSound(waterAsset, 0.6);
+    handSignsSound.current = createSound(handSignsAsset, 0.6);
+    teleportSound.current = createSound(teleportAsset, 0.6);
+    sasukeSound.current = createSound(sasukeAsset, 0.7);
+    katonSound.current = createSound(katonAsset, 0.7);
 
     return () => {
       levelUpSound.current?.unload();
@@ -85,6 +101,10 @@ export const useNinjaSound = () => {
       sharinganSound.current?.unload();
       lightningSound.current?.unload();
       waterSound.current?.unload();
+      handSignsSound.current?.unload();
+      teleportSound.current?.unload();
+      sasukeSound.current?.unload();
+      katonSound.current?.unload();
     };
   }, []);
 
@@ -139,5 +159,44 @@ export const useNinjaSound = () => {
     }
   }, [isMuted, ensureAudioUnlocked, playSynthWave]);
 
-  return { playLevelUp, playHover, playSharingan, stopSharingan, playLightning, playWater };
+  const playHandSigns = useCallback(() => {
+    if (!isMuted) {
+      ensureAudioUnlocked();
+      handSignsSound.current?.play();
+    }
+  }, [isMuted, ensureAudioUnlocked]);
+
+  const playTeleport = useCallback(() => {
+    if (!isMuted) {
+      ensureAudioUnlocked();
+      teleportSound.current?.play();
+    }
+  }, [isMuted, ensureAudioUnlocked]);
+
+  const playSasuke = useCallback(() => {
+    if (!isMuted) {
+      ensureAudioUnlocked();
+      sasukeSound.current?.play();
+    }
+  }, [isMuted, ensureAudioUnlocked]);
+
+  const playKaton = useCallback(() => {
+    if (!isMuted) {
+      ensureAudioUnlocked();
+      katonSound.current?.play();
+    }
+  }, [isMuted, ensureAudioUnlocked]);
+
+  return { 
+    playLevelUp, 
+    playHover, 
+    playSharingan, 
+    stopSharingan, 
+    playLightning, 
+    playWater,
+    playHandSigns,
+    playTeleport,
+    playSasuke,
+    playKaton
+  };
 };

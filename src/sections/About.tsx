@@ -17,8 +17,8 @@ export function About() {
   const labels = ["The Foundation", "The Practical Path", "The Transition", "Current Focus"];
 
   return (
-    <Section id="about" className="relative px-6 md:px-12 lg:px-24">
-      <div className="space-y-20 lg:space-y-32">
+    <section id="about" className="relative overflow-hidden bg-background pt-32 pb-24 border-y border-border/5">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 space-y-20 lg:space-y-32 relative z-10">
         {/* Top Section: Narrative Storytelling */}
         <div className="space-y-16">
           <div className="space-y-4 max-w-4xl">
@@ -28,17 +28,20 @@ export function About() {
               viewport={{ once: true }}
               className="flex items-center gap-3"
             >
-              <div className="h-px w-8 bg-primary/40" />
-              <span className="text-primary font-mono text-[10px] uppercase tracking-[0.3em]">The Narrative</span>
+              <div className="h-1 shadow-[0_0_10px_#00FF9F] w-12 bg-primary" />
+              <span className="text-primary font-mono text-xs uppercase tracking-[0.5em] italic">The Narrative // 001</span>
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tight uppercase italic -skew-x-12 leading-[0.9]">
               Bridging the gap between <br className="hidden sm:block" />
-              <span className="text-muted-foreground">systems and interfaces.</span>
+              <span className="text-muted-foreground/30">systems and interfaces.</span>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
-            <div className="lg:col-span-7 space-y-10">
+            <div className="lg:col-span-7 space-y-10 relative">
+              {/* Manga Fade Texture */}
+              <div className="absolute -inset-10 bg-[radial-gradient(circle,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20 pointer-events-none" />
+              
               {storyBlocks.map((block, i) => (
                 <motion.div
                   key={i}
@@ -46,38 +49,52 @@ export function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="group relative pl-8 border-l border-border/50 hover:border-primary/30 transition-colors duration-500"
+                  className="group relative pl-8 border-l-2 border-border/20 hover:border-primary transition-colors duration-500"
                 >
-                  <div className="absolute -left-[5px] top-0 h-2.5 w-2.5 rounded-full bg-border group-hover:bg-primary transition-colors duration-500" />
-                  <span className="block text-[10px] font-mono uppercase tracking-widest text-primary/60 mb-3">
+                  <div className="absolute -left-[7px] top-0 h-3 w-3 rounded-sm rotate-45 bg-border group-hover:bg-primary transition-colors duration-500 shadow-[0_0_10px_rgba(0,0,0,0)] group-hover:shadow-primary/50" />
+                  <span className="block text-[10px] font-mono uppercase tracking-widest text-primary/60 mb-3 group-hover:text-primary transition-colors">
                     {labels[i] || "Chapter"}
                   </span>
-                  <p className="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground font-light group-hover:text-foreground transition-colors duration-500">
+                  <p className="text-lg sm:text-xl leading-relaxed text-muted-foreground font-light group-hover:text-foreground transition-colors duration-500">
                     {block}
                   </p>
                 </motion.div>
               ))}
 
-              {/* 5th Timeline Item: Interactive Link to Dossier */}
+              {/* Enhanced Dossier Link: Shinobi Directive UI */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
+                className="pt-8"
               >
                 <Link 
                   to="/dossier" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="group relative block pl-8 border-l border-border/50 hover:border-primary/30 transition-colors duration-500"
+                  className="group relative block p-8 bg-secondary/5 border-2 border-dashed border-border/50 hover:border-primary hover:bg-primary/[0.02] transition-all duration-500 rounded-2xl overflow-hidden"
                 >
-                  <div className="absolute -left-[5px] top-0 h-2.5 w-2.5 rounded-full bg-border group-hover:bg-primary transition-colors duration-500 shadow-[0_0_10px_rgba(0,0,0,0)] group-hover:shadow-primary/50" />
-                  <span className="block text-[10px] font-mono uppercase tracking-widest text-primary/60 mb-3 group-hover:text-primary transition-colors">
-                    ACTIVE STATUS
-                  </span>
-                  <p className="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground font-light group-hover:text-foreground transition-all duration-500 flex items-center gap-2 group-hover:translate-x-1">
-                    Abubakar Habib - View Shinobi Profile <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
-                  </p>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  
+                  <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+                        <span className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Classified Directive</span>
+                      </div>
+                      <h4 className="text-2xl sm:text-3xl font-display font-black text-foreground uppercase italic -skew-x-6">Archived Shinobi Dossier</h4>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="text-right hidden sm:block">
+                        <p className="text-[10px] font-mono text-muted-foreground uppercase">Status</p>
+                        <p className="text-xs font-mono font-bold text-primary uppercase">Active_Link</p>
+                      </div>
+                      <div className="p-4 rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
+                        <ExternalLink className="w-6 h-6" />
+                      </div>
+                    </div>
+                  </div>
                 </Link>
               </motion.div>
             </div>
@@ -121,6 +138,6 @@ export function About() {
           </Suspense>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

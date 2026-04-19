@@ -90,11 +90,3 @@ export const STORY_SECTIONS = [
     image: SHINOBI_IMAGES.sections.news
   }
 ];
-    missions: [
-      { title: "Project: Global Nexus (S-Rank)", rank: "S-Rank", description: "Architected a real-time communication platform for 1M+ active shinobi using high-speed WebSocket jitsu." },
-      { title: "Scroll of Infinite Scroll (A-Rank)", rank: "A-Rank", description: "Developed a virtualized list component capable of rendering 100k+ data nodes without performance lag." },
-      { title: "Operation: Dark Mode Siege (B-Rank)", rank: "B-Rank", description: "Refactored legacy UI systems into modern, design-token driven architectures." }
-    ],
-    image: SHINOBI_IMAGES.sections.news
-  }
-];

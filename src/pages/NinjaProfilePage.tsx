@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'motion/react';
 import { NinjaProfileCard } from '@/components/ninja-card/NinjaProfileCard';
-import { ChevronLeft, Share2, Award, Zap, Shield, Target, Scroll as ScrollIcon, Terminal, Activity, FileText } from 'lucide-react';
+import { ChevronLeft, Share2, Award, Zap, Shield, Target, Scroll as ScrollIcon, Terminal, Activity, FileText, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSound } from '@/components/SoundProvider';
 import { Volume2, VolumeX } from 'lucide-react';
@@ -18,6 +18,19 @@ export const NinjaProfilePage: React.FC = () => {
   });
 
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+  // Mouse Parallax for Hero
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    mouseX.set((clientX / innerWidth - 0.5) * 50);
+    mouseY.set((clientY / innerHeight - 0.5) * 50);
+  };
 
   const [isExporting, setIsExporting] = useState(false);
 
@@ -36,7 +49,11 @@ export const NinjaProfilePage: React.FC = () => {
   };
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#020617] text-slate-100 selection:bg-[#00FF9F]/30 selection:text-[#00FF9F] overflow-x-hidden">
+    <div 
+      ref={containerRef} 
+      onMouseMove={handleMouseMove}
+      className="min-h-screen bg-[#020617] text-slate-100 selection:bg-[#00FF9F]/30 selection:text-[#00FF9F] overflow-x-hidden"
+    >
       {/* Cinematic Background Scanlines */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
       
@@ -143,6 +160,23 @@ export const NinjaProfilePage: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden bg-[#020617]">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[#020617]/50 z-20 pointer-events-none" />
+          {/* Interactive Mouse Layer */}
+          <motion.div 
+            style={{ x: springX, y: springY }}
+            className="absolute inset-x-0 bottom-0 top-0 z-[15] pointer-events-none"
+          >
+            <img 
+              src={SHINOBI_IMAGES.ornaments.ornament3} 
+              className="absolute -right-40 top-1/2 w-[500px] opacity-[0.05] grayscale -translate-y-1/2 rotate-12"
+              alt=""
+            />
+            <img 
+              src={SHINOBI_IMAGES.ornaments.ornament2} 
+              className="absolute -left-40 top-1/4 w-[400px] opacity-[0.05] grayscale -rotate-12"
+              alt=""
+            />
+          </motion.div>
+
           <motion.video 
             initial={{ scale: 1.2, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.2 }}
@@ -262,6 +296,18 @@ export const NinjaProfilePage: React.FC = () => {
         </div>
       </section>
 
+      {/* 1.5 Energetic Marquee Section */}
+      <div className="relative py-8 bg-[#00FF9F] overflow-hidden border-y-4 border-black rotate-1 sm:rotate-2 scale-105 z-40">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="flex items-center gap-8 px-4">
+              <span className="text-4xl sm:text-6xl font-display font-black text-[#020617] uppercase italic">The Road to Mastery Never Ends //</span>
+              <span className="text-4xl sm:text-6xl font-display font-black text-transparent stroke-black stroke-2 uppercase italic" style={{ WebkitTextStroke: '2px #020617' }}>Habib_Architect_Shinobi //</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* 2. Tactical Profile (The Card) */}
       <section id="dossier-section" className="relative py-24 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -285,10 +331,10 @@ export const NinjaProfilePage: React.FC = () => {
                 <Shield className="w-2 h-2" />
                 Active_Dossier_Link
               </div>
-              <h2 className="group relative text-4xl sm:text-6xl font-display font-bold text-white tracking-widest uppercase">
+              <h2 className="group relative text-5xl sm:text-7xl font-display font-black text-white tracking-widest uppercase italic -skew-x-12">
                 The <span className="text-[#00FF9F]">Dossier</span>
               </h2>
-              <div className="h-px w-32 bg-gradient-to-r from-[#00FF9F] to-transparent" />
+              <div className="h-1 w-48 bg-[#00FF9F] shadow-[0_0_10px_#00FF9F]" />
             </div>
             
             <p className="text-slate-400 font-mono text-sm leading-loose">
@@ -320,6 +366,55 @@ export const NinjaProfilePage: React.FC = () => {
         </div>
       </section>
 
+      {/* 2.5 Latest Directives (Official Site News Vibes) */}
+      <section className="relative py-24 px-6 overflow-hidden bg-[#020617]">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="flex flex-col sm:flex-row justify-between items-end gap-6 border-b-4 border-[#00FF9F] pb-8">
+            <div className="space-y-2">
+              <span className="text-[#00FF9F] font-mono text-xs uppercase tracking-[0.5em]">// ARCHIVE_UPDATES</span>
+              <h2 className="text-4xl sm:text-7xl font-display font-black text-white uppercase italic -skew-x-6 leading-none">Lastest <br /> <span className="text-white/20">Directives</span></h2>
+            </div>
+            <div className="flex items-center gap-4 text-white/40 font-mono text-[10px] uppercase tracking-widest bg-white/5 px-4 py-2 rounded-lg border border-white/10 italic">
+              <Activity className="w-3 h-3 text-[#00FF9F] animate-pulse" />
+              Real-time_Sync_Active
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { id: "01", title: "Project Phoenix Launch", category: "S-RANK", date: "20.APR.26", desc: "Initiating the next generation of cloud-based jutsu protocols." },
+              { id: "02", title: "State Fluidity Patch", category: "TECHNICAL", date: "18.APR.26", desc: "Optimizing the chakra flow across multi-region data nodes." },
+              { id: "03", title: "Village Security Audit", category: "SECURITY", date: "15.APR.26", desc: "Strengthening the perimeter seals against unauthorized chakra leaks." },
+            ].map((directive, i) => (
+              <motion.div
+                key={directive.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ y: -10 }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative h-full flex flex-col p-8 bg-white/5 border-2 border-white/5 hover:border-[#00FF9F] transition-all duration-500 rounded-2xl overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-4 font-display font-black text-6xl text-white/5 group-hover:text-[#00FF9F]/10 transition-colors uppercase italic -skew-x-12">{directive.id}</div>
+                <div className="relative z-10 space-y-6 flex-1 flex flex-col">
+                  <div className="flex justify-between items-center">
+                    <span className="px-2 py-0.5 bg-[#00FF9F]/10 border border-[#00FF9F]/20 text-[8px] font-mono text-[#00FF9F] tracking-[0.2em]">{directive.category}</span>
+                    <span className="text-[10px] font-mono text-white/20">{directive.date}</span>
+                  </div>
+                  <h4 className="text-2xl font-display font-bold text-white uppercase leading-tight group-hover:text-[#00FF9F] transition-colors">{directive.title}</h4>
+                  <p className="text-xs text-white/40 font-mono leading-relaxed flex-1">{directive.desc}</p>
+                  <button className="flex items-center gap-2 text-[#00FF9F] text-[9px] font-mono uppercase tracking-[0.3em] pt-4 group-hover:translate-x-2 transition-transform italic">
+                    [ Read_Scroll ]
+                    <ChevronRight className="w-3 h-3" />
+                  </button>
+                </div>
+                {/* Decorative Pattern */}
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-[radial-gradient(#00FF9F_1px,transparent_1px)] bg-[size:10px_10px] opacity-10" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 3. Narrative Chronicles (Interactive Story) */}
       <section className="relative py-24 px-6">
         <div className="max-w-5xl mx-auto space-y-32">
@@ -344,10 +439,10 @@ export const NinjaProfilePage: React.FC = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <h3 className="text-3xl sm:text-5xl font-display font-bold text-white uppercase tracking-tight">{section.title}</h3>
-                  <div className="flex flex-wrap gap-2">
+                  <h3 className="text-4xl sm:text-6xl font-display font-black text-white uppercase tracking-tighter italic -skew-x-6">{section.title}</h3>
+                  <div className="flex flex-wrap gap-3">
                     {section.tags?.map(tag => (
-                      <span key={tag} className="text-[7px] font-mono text-white/30 tracking-widest uppercase">#{tag}</span>
+                      <span key={tag} className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono text-[#00FF9F] tracking-widest uppercase">#{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -428,6 +523,42 @@ export const NinjaProfilePage: React.FC = () => {
         </div>
       </section>
 
+      {/* 3.5 Character Quote Section (Official Site Punchiness) */}
+      <section className="relative py-32 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00FF9F]/5 to-transparent pointer-events-none" />
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="relative inline-block"
+          >
+            <div className="absolute -inset-8 bg-[#00FF9F]/20 blur-3xl rounded-full animate-pulse" />
+            <ScrollIcon className="w-16 h-16 text-[#00FF9F] relative z-10" />
+          </motion.div>
+          
+          <div className="space-y-6">
+            <h2 className="text-4xl sm:text-7xl font-display font-black text-white leading-none uppercase italic">
+              "It's not about the <br />
+              <span className="text-[#00FF9F]">jutsu you know</span>,<br />
+              but how you <span className="text-white/20">scale it</span>."
+            </h2>
+            <div className="flex items-center justify-center gap-4">
+              <div className="h-px w-12 bg-[#00FF9F]/20" />
+              <span className="text-xs font-mono text-white/40 uppercase tracking-[0.5em]">The Unwritten Scroll // Vol. 82</span>
+              <div className="h-px w-12 bg-[#00FF9F]/20" />
+            </div>
+          </div>
+        </div>
+        
+        {/* Background Accent Ornament */}
+        <motion.img 
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 0.1 }}
+          src={SHINOBI_IMAGES.ornaments.ornament5}
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-96 grayscale -mr-20 pointer-events-none"
+        />
+      </section>
+
       {/* 4. The Alliance Corridor (Supporting Characters) */}
       <section className="relative py-24 px-6 bg-[#020617]/50 border-y border-white/5 overflow-hidden">
         {/* Background Accent Image */}
@@ -435,42 +566,55 @@ export const NinjaProfilePage: React.FC = () => {
           <img src={SHINOBI_IMAGES.sections.news} className="w-full h-full object-cover" />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto space-y-16">
-          <div className="text-center space-y-4">
+        <div className="relative z-10 max-w-7xl mx-auto space-y-20">
+          <div className="text-center space-y-6">
             <motion.img 
               animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
               src={SHINOBI_IMAGES.ornaments.ornament5}
-              className="w-24 mx-auto opacity-20 grayscale border border-white/10 rounded-full p-2"
+              className="w-32 mx-auto opacity-40 grayscale border-2 border-[#00FF9F]/30 rounded-full p-4 bg-[#020617] shadow-[0_0_30px_rgba(0,255,159,0.2)]"
             />
-            <div className="space-y-2">
-              <h2 className="text-3xl sm:text-5xl font-display font-bold text-white uppercase tracking-tighter">Technologic Alliances</h2>
-              <div className="flex justify-center gap-2">
-                <div className="h-px w-12 bg-[#00FF9F]/40" />
-                <div className="h-px w-12 bg-white/10" />
-                <div className="h-px w-12 bg-[#00C2FF]/40" />
+            <div className="space-y-4">
+              <h2 className="text-4xl sm:text-7xl font-display font-black text-white uppercase tracking-tighter italic -skew-x-12">Elite Alliances</h2>
+              <div className="flex justify-center gap-3">
+                <div className="h-1.5 w-16 bg-[#00FF9F]" />
+                <div className="h-1.5 w-16 bg-white/20" />
+                <div className="h-1.5 w-16 bg-[#00C2FF]" />
               </div>
             </div>
-            <p className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">Mastery through collaboration across the five tech villages</p>
+            <p className="text-white/60 font-mono text-xs uppercase tracking-[0.5em] max-w-2xl mx-auto">Mastery through high-rank collaboration across the five Great Tech Villages</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {Object.entries(DOSSIER_ASSETS.alliances).slice(0, 20).map(([name, url], i) => (
               <motion.div
                 key={name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                whileHover={{ scale: 1.05, zIndex: 30 }}
+                transition={{ delay: i * 0.05 }}
                 viewport={{ once: true }}
                 className="group relative"
               >
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden grayscale hover:grayscale-0 border border-white/10 group-hover:border-[#00FF9F]/30 transition-all duration-700">
+                <div className="aspect-[3/4] rounded-xl overflow-hidden grayscale hover:grayscale-0 border-2 border-white/5 group-hover:border-[#00FF9F] transition-all duration-500 shadow-2xl relative">
                   <img src={url} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={name} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60" />
-                  <div className="absolute bottom-4 left-4">
-                    <p className="text-[10px] font-mono uppercase tracking-widest text-white/60 group-hover:text-[#00FF9F] transition-colors">{name}</p>
+                  
+                  {/* Squad ID Overlay */}
+                  <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-black/80 backdrop-blur-md rounded border border-white/10 text-[7px] font-mono text-white/50 group-hover:text-[#00FF9F] transition-colors">
+                    SQUAD_ID_{i + 1}
+                  </div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90 group-hover:opacity-40 transition-opacity" />
+                  
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-[10px] font-mono uppercase tracking-widest text-white/40 group-hover:text-white transition-colors truncate">{name}</p>
+                    <div className="h-0.5 w-0 group-hover:w-full bg-[#00FF9F] transition-all duration-500 mt-1" />
                   </div>
                 </div>
+                
+                {/* Decorative UI nodes on hover */}
+                <div className="absolute -top-1 -left-1 w-2 h-2 bg-[#00FF9F] opacity-0 group-hover:opacity-100 transition-opacity rounded-full shadow-[0_0_10px_#00FF9F]" />
+                <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-[#00FF9F] opacity-0 group-hover:opacity-100 transition-opacity rounded-full shadow-[0_0_10px_#00FF9F]" />
               </motion.div>
             ))}
           </div>

@@ -218,6 +218,10 @@ export const NinjaProfileCard: React.FC<NinjaProfileCardProps> = ({ className })
                     alt="Abubakar Habib Shinobi" 
                     className="w-full h-full object-cover transition-all duration-700 brightness-90 saturate-[0.8] group-hover:saturate-100"
                   />
+                  {/* Official Site Style Stamp */}
+                  <div className="absolute top-2 left-2 rotate-[-15deg] opacity-60 pointer-events-none z-20">
+                    <div className="px-2 py-0.5 border-2 border-[#00FF9F] text-[#00FF9F] font-display font-black text-[10px] uppercase italic bg-[#020617]/40 backdrop-blur-sm">VERIFIED</div>
+                  </div>
                   {/* Sharingan Effect Layer */}
                   <SharinganEffect onActivate={playSharingan} />
                 </div>

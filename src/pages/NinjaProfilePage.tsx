@@ -61,36 +61,8 @@ export const NinjaProfilePage: React.FC = () => {
       <div className="fixed top-0 left-0 w-full h-[500px] bg-[#00FF9F]/5 blur-[150px] -translate-y-1/2 pointer-events-none" />
       <div className="fixed bottom-0 right-0 w-full h-[500px] bg-[#00C2FF]/5 blur-[150px] translate-y-1/2 pointer-events-none" />
 
-      {/* REIMAGINED GLOBAL BACKGROUND ORNAMENTS (Thematic Depth) */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
-        {/* Itachi & Sasuke (Young) Background Scrawl */}
-        <motion.img 
-          initial={{ opacity: 0, scale: 0.8, x: -100 }}
-          animate={{ opacity: 0.04, scale: 1, x: 0 }}
-          transition={{ duration: 2 }}
-          src={SHINOBI_IMAGES.ornaments.ornament3}
-          className="absolute -left-20 top-[15%] w-[800px] grayscale -rotate-12 blur-[1px]"
-          alt=""
-        />
-        {/* Naruto Hero Action Background Scrawl */}
-        <motion.img 
-          initial={{ opacity: 0, scale: 0.8, x: 100 }}
-          animate={{ opacity: 0.04, scale: 1, x: 0 }}
-          transition={{ duration: 2, delay: 0.5 }}
-          src={SHINOBI_IMAGES.ornaments.ornament2}
-          className="absolute -right-20 top-[45%] w-[700px] grayscale rotate-12 blur-[1px]"
-          alt=""
-        />
-        {/* Sai Ink Scrawl Accent */}
-        <motion.img 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.03 }}
-          transition={{ duration: 3, delay: 1 }}
-          src={SHINOBI_IMAGES.ornaments.ornament1}
-          className="absolute left-[10%] bottom-[5%] w-[600px] grayscale"
-          alt=""
-        />
-      </div>
+      {/* Global Ambient Accents */}
+      <div className="fixed inset-0 pointer-events-none z-[5] opacity-[0.03] bg-[radial-gradient(#00FF9F_1px,transparent_1px)] bg-[size:32px_32px]" />
 
       {/* Floating Tactical Labels */}
       <div className="fixed inset-0 pointer-events-none z-[55] overflow-hidden select-none">
@@ -257,10 +229,12 @@ export const NinjaProfilePage: React.FC = () => {
       {/* 1.5 Energetic Marquee Section */}
       <div className="relative py-8 bg-[#00FF9F] overflow-hidden border-y-4 border-black rotate-1 sm:rotate-2 scale-105 z-40">
         <div className="flex whitespace-nowrap animate-marquee">
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className="flex items-center gap-8 px-4">
-              <span className="text-4xl sm:text-6xl font-display font-black text-[#020617] uppercase italic">The Road to Mastery Never Ends //</span>
-              <span className="text-4xl sm:text-6xl font-display font-black text-transparent stroke-black stroke-2 uppercase italic" style={{ WebkitTextStroke: '2px #020617' }}>Habib_Architect_Shinobi //</span>
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex items-center gap-16 px-8">
+              <span className="text-4xl sm:text-6xl font-display font-black text-[#020617] uppercase italic">"Believe it!" //</span>
+              <span className="text-2xl sm:text-4xl font-display font-bold text-[#020617] uppercase italic">Hard work is worthless for those that don't believe in themselves //</span>
+              <span className="text-4xl sm:text-6xl font-display font-black text-[#020617] uppercase italic">The Road to Mastery Never Ends: Habib_Architect_Shinobi //</span>
+              <span className="text-4xl sm:text-6xl font-display font-black text-transparent stroke-black uppercase italic" style={{ WebkitTextStroke: '2px #020617' }}>Full-Stack_Shinobi // System_Architect //</span>
             </div>
           ))}
         </div>
@@ -269,20 +243,20 @@ export const NinjaProfilePage: React.FC = () => {
       {/* 2. Tactical Profile (The Card) */}
       <section id="dossier-section" className="relative py-24 px-6 overflow-hidden">
         {/* Reimagined Background Ornaments (Post-Video Context) */}
-        <div className="absolute inset-0 pointer-events-none opacity-10 mix-blend-overlay">
+        <div className="absolute inset-0 pointer-events-none opacity-5 overflow-hidden">
           <motion.img 
             initial={{ opacity: 0, rotate: -45, scale: 0.8 }}
-            whileInView={{ opacity: 0.4, rotate: -12, scale: 1 }}
-            transition={{ duration: 1.2 }}
+            whileInView={{ opacity: 0.3, rotate: -5, scale: 1 }}
+            transition={{ duration: 1.5 }}
             src={DOSSIER_ASSETS.ornaments.itachiSasuke}
-            className="absolute -left-32 top-0 w-[600px] grayscale"
+            className="absolute left-0 top-0 w-[400px] lg:w-[600px] grayscale opacity-40 translate-x-[-10%] translate-y-[10%]"
           />
           <motion.img 
             initial={{ opacity: 0, rotate: 45, scale: 0.8 }}
-            whileInView={{ opacity: 0.3, rotate: 12, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.2 }}
+            whileInView={{ opacity: 0.25, rotate: 5, scale: 1 }}
+            transition={{ duration: 1.5, delay: 0.2 }}
             src={DOSSIER_ASSETS.ornaments.narutoSuit}
-            className="absolute -right-32 bottom-0 w-[500px] grayscale"
+            className="absolute right-0 bottom-0 w-[400px] lg:w-[500px] grayscale opacity-40 translate-x-[10%] translate-y-[-10%]"
           />
         </div>
 
@@ -293,15 +267,6 @@ export const NinjaProfilePage: React.FC = () => {
              viewport={{ once: true }}
              className="relative space-y-8"
           >
-            {/* Playful Image Accent */}
-            <motion.img 
-              initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-              whileInView={{ opacity: 0.25, scale: 1, rotate: -10 }}
-              transition={{ type: "spring", stiffness: 100 }}
-              src={SHINOBI_IMAGES.ornaments.ornament3}
-              className="absolute -top-16 -left-16 w-32 h-32 grayscale hover:grayscale-0 transition-all duration-500"
-            />
-
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[8px] font-mono uppercase tracking-widest text-white/40">
                 <Shield className="w-2 h-2" />
@@ -344,20 +309,20 @@ export const NinjaProfilePage: React.FC = () => {
 
       {/* 2.5 Latest Directives (Official Site News Vibes) */}
       <section className="relative py-24 px-6 overflow-hidden bg-[#020617]">
-        {/* Reimagined Background Ornament (Scroll Triggered) */}
+        {/* Bottom-Right Background Ornament */}
         <motion.img 
-          initial={{ opacity: 0, scale: 1.2, x: 100 }}
-          whileInView={{ opacity: 0.1, scale: 1, x: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          src={DOSSIER_ASSETS.ornaments.kakashiReading}
-          className="absolute -right-40 -top-20 w-[600px] grayscale rotate-[45deg] pointer-events-none"
+          initial={{ opacity: 0, scale: 0.9, x: 50 }}
+          whileInView={{ opacity: 0.25, scale: 1.1, x: 0 }}
+          transition={{ duration: 1.5 }}
+          src={SHINOBI_IMAGES.sections.special}
+          className="absolute -right-20 bottom-0 w-[500px] lg:w-[700px] grayscale pointer-events-none opacity-60"
         />
 
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col sm:flex-row justify-between items-end gap-6 border-b-4 border-[#00FF9F] pb-8">
             <div className="space-y-2">
               <span className="text-[#00FF9F] font-mono text-xs uppercase tracking-[0.5em]">// ARCHIVE_UPDATES</span>
-              <h2 className="text-4xl sm:text-7xl font-display font-black text-white uppercase italic -skew-x-6 leading-none">Lastest <br /> <span className="text-white/20">Directives</span></h2>
+              <h2 className="text-4xl sm:text-7xl font-display font-black text-white uppercase italic -skew-x-6 leading-none">Latest <br /> <span className="text-white/20">Directives</span></h2>
             </div>
             <div className="flex items-center gap-4 text-white/40 font-mono text-[10px] uppercase tracking-widest bg-white/5 px-4 py-2 rounded-lg border border-white/10 italic">
               <Activity className="w-3 h-3 text-[#00FF9F] animate-pulse" />
@@ -365,7 +330,7 @@ export const NinjaProfilePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 sm:mt-24">
             {[
               { id: "01", title: "Project Phoenix Launch", category: "S-RANK", date: "20.APR.26", desc: "Initiating the next generation of cloud-based jutsu protocols." },
               { id: "02", title: "State Fluidity Patch", category: "TECHNICAL", date: "18.APR.26", desc: "Optimizing the chakra flow across multi-region data nodes." },
@@ -537,18 +502,25 @@ export const NinjaProfilePage: React.FC = () => {
         
         {/* Background Accent Ornament */}
         <motion.img 
-          initial={{ x: 100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 0.1 }}
+          initial={{ x: 50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 0.08 }}
           src={SHINOBI_IMAGES.ornaments.ornament5}
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-96 grayscale -mr-20 pointer-events-none"
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-64 lg:w-96 grayscale pointer-events-none"
         />
       </section>
 
       {/* 4. The Alliance Corridor (Supporting Characters) */}
       <section className="relative py-24 px-6 bg-[#020617]/50 border-y border-white/5 overflow-hidden">
         {/* Background Accent Image */}
-        <div className="absolute inset-0 z-0 opacity-[0.03] grayscale pointer-events-none">
+        <div className="absolute inset-0 z-0 opacity-[0.03] grayscale pointer-events-none overflow-hidden">
           <img src={SHINOBI_IMAGES.sections.news} className="w-full h-full object-cover" />
+          {/* Subtle Side Ornament to add character without overlap */}
+          <motion.img 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 0.05, x: 0 }}
+            src={SHINOBI_IMAGES.ornaments.ornament2}
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] grayscale"
+          />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto space-y-20">
@@ -611,16 +583,16 @@ export const NinjaProfilePage: React.FC = () => {
         {/* Exploding Background Seals for Footer */}
         <div className="absolute inset-x-0 top-0 h-full flex items-center justify-center pointer-events-none">
           <motion.img 
-            initial={{ opacity: 0, scale: 0.5, rotate: -30 }}
-            whileInView={{ opacity: 0.08, scale: 1.2, rotate: 10 }}
+            initial={{ opacity: 0, scale: 0.9, rotate: -15 }}
+            whileInView={{ opacity: 0.15, scale: 1, rotate: 0 }}
             src={SHINOBI_IMAGES.ornaments.ornament3}
-            className="absolute left-1/4 w-[500px] grayscale"
+            className="absolute left-5 bottom-5 w-[300px] sm:w-[350px] lg:w-[400px] grayscale transition-all duration-700"
           />
           <motion.img 
-            initial={{ opacity: 0, scale: 0.5, rotate: 30 }}
-            whileInView={{ opacity: 0.08, scale: 1.2, rotate: -10 }}
-            src={SHINOBI_IMAGES.ornaments.ornament2}
-            className="absolute right-1/4 w-[500px] grayscale"
+            initial={{ opacity: 0, scale: 0.9, rotate: 15 }}
+            whileInView={{ opacity: 0.15, scale: 1, rotate: 0 }}
+            src={SHINOBI_IMAGES.ornaments.ornament1}
+            className="absolute right-5 top-5 w-[300px] sm:w-[350px] lg:w-[400px] grayscale transition-all duration-700"
           />
         </div>
 

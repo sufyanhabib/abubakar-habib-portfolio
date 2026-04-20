@@ -37,7 +37,7 @@ export const NinjaProfileCard: React.FC<NinjaProfileCardProps> = ({ className })
 
   const stats = useMemo(() => [
     { label: "Rank", value: "Early Jōnin", icon: Award },
-    { label: "Village", value: "Konohagakure", icon: Shield },
+    { label: "Village", value: "Konohagakure-(Bihar)", icon: Shield },
     { label: "Clan", value: "Nara Clan", icon: Scroll },
     { label: "Dōjutsu", value: "Sharingan (1-Tomoe)", icon: Eye, hasEffect: true },
   ], []);

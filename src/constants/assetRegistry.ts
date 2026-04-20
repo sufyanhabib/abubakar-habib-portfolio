@@ -25,7 +25,7 @@ import Habib_RockLee from '@/assets/ninja-assets/HabibandRockLee.jpg';
 import Habib_MightyGuy from '@/assets/ninja-assets/HabibandmightyGuy.jpg';
 import Habib_Asuma from '@/assets/ninja-assets/HabibandAsuma.jpg';
 import Habib_Kurenai from '@/assets/ninja-assets/HabibandKurenai.jpg';
-import Habib_Joji from '@/assets/ninja-assets/HabibandJoji.jpg';
+import Habib_Chōji from '@/assets/ninja-assets/HabibandJoji.jpg';
 import Habib_Sord from '@/assets/ninja-assets/Habib_sord.jpg';
 import Abubakar_Habib from '@/assets/ninja-assets/Abubakar_Habib.jpg';
 
@@ -70,7 +70,7 @@ export const SHINOBI_IMAGES = {
     Habib_LadyTsunade,
     Habib_Tenten,
     Habib_Kurenai,
-    Habib_Joji,
+    Habib_Chōji,
     Abubakar_Habib,
     n1, n2, n3, n4,
     teamPortait,

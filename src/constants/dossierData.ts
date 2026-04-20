@@ -21,7 +21,7 @@ export const DOSSIER_ASSETS = {
     tsunade: SHINOBI_IMAGES.ninjas[11],
     tenten: SHINOBI_IMAGES.ninjas[12],
     kurenai: SHINOBI_IMAGES.ninjas[13],
-    joji: SHINOBI_IMAGES.ninjas[14],
+    choji: SHINOBI_IMAGES.ninjas[14],
     abubakar: SHINOBI_IMAGES.ninjas[15],
   },
   ornaments: {

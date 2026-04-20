@@ -228,9 +228,9 @@ export const NinjaProfilePage: React.FC = () => {
 
       {/* 1.5 Energetic Marquee Section */}
       <div className="relative py-8 bg-[#00FF9F] overflow-hidden border-y-4 border-black rotate-1 sm:rotate-2 scale-105 z-40">
-        <div className="flex whitespace-nowrap animate-marquee">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex items-center gap-16 px-8">
+        <div className="flex whitespace-nowrap animate-marquee w-max">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-16 px-8 flex-shrink-0">
               <span className="text-4xl sm:text-6xl font-display font-black text-[#020617] uppercase italic">"Believe it!" //</span>
               <span className="text-2xl sm:text-4xl font-display font-bold text-[#020617] uppercase italic">Hard work is worthless for those that don't believe in themselves //</span>
               <span className="text-4xl sm:text-6xl font-display font-black text-[#020617] uppercase italic">The Road to Mastery Never Ends: Habib_Architect_Shinobi //</span>

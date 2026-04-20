@@ -19,27 +19,6 @@ export function About() {
 
   return (
     <section id="about" className="relative overflow-hidden bg-background pt-32 pb-24 border-y border-border/5">
-      {/* Reimagined Background Ornaments (Ninja Scroll Styling) - Naruto & Itachi focus */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0, x: -100, rotate: -20 }}
-          whileInView={{ opacity: 0.06, x: 0, rotate: -10 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute -left-32 top-10"
-        >
-          <img src={SHINOBI_IMAGES.ornaments.ornament3} className="w-[800px] grayscale" alt="" referrerPolicy="no-referrer" />
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, x: 100, rotate: 20 }}
-          whileInView={{ opacity: 0.06, x: 0, rotate: 10 }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
-          className="absolute -right-32 bottom-10"
-        >
-          <img src={SHINOBI_IMAGES.ornaments.ornament2} className="w-[800px] grayscale" alt="" referrerPolicy="no-referrer" />
-        </motion.div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 space-y-20 lg:space-y-32 relative z-10">
         {/* Top Section: Narrative Storytelling */}
         <div className="space-y-16">

@@ -11,6 +11,7 @@ import { SoundProvider } from "@/components/SoundProvider";
 import { NinjaProfilePage } from "@/pages/NinjaProfilePage";
 import { useEffect, useLayoutEffect, Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { MotionConfig } from "motion/react";
 
 // Lazy load heavy sections
 const LazyExperience = lazy(() => import("@/sections/Experience").then(m => ({ default: m.Experience })));
@@ -36,9 +37,9 @@ function ScrollToTop() {
 
 function Portfolio() {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary">
+    <div className="relative min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary">
       <Navbar />
-      <main>
+      <main className="relative">
         <Hero />
         <About />
         <Skills />
@@ -62,14 +63,16 @@ function Portfolio() {
 
 export default function App() {
   return (
-    <SoundProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Portfolio />} />
-          <Route path="/dossier" element={<NinjaProfilePage />} />
-        </Routes>
-      </BrowserRouter>
-    </SoundProvider>
+    <MotionConfig reducedMotion="never">
+      <SoundProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Portfolio />} />
+            <Route path="/dossier" element={<NinjaProfilePage />} />
+          </Routes>
+        </BrowserRouter>
+      </SoundProvider>
+    </MotionConfig>
   );
 }

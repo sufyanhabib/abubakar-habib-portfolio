@@ -43,8 +43,23 @@ export function Hero() {
         />
 
         {/* Layered Shapes - Light Mode */}
-        <div className="absolute inset-0 opacity-100 dark:opacity-0 transition-opacity duration-700">
-          <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-sky-50/50 via-white to-white" />
+        <div className="absolute inset-0 opacity-100 dark:opacity-100 md:dark:opacity-0 transition-opacity duration-700">
+          <div className="absolute top-0 right-0 w-full h-full overflow-hidden">
+            {/* The Dynamic Base Layer */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-[hsl(200,70%,78%)]/10 to-[#020617] md:bg-gradient-to-br md:from-[hsl(200,70%,78%)]/30 md:via-white md:to-white" />
+            
+            {/* The Technical Grid - Visible in Dark Mode */}
+            <div className="absolute inset-0 dossier-grid opacity-20 dark:opacity-30 pointer-events-none" />
+            <div className="absolute inset-0 dossier-grid-dense opacity-10 dark:opacity-20 pointer-events-none" />
+            
+            {/* Cyberpunk Accents - Radiant Glows */}
+            <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-primary/20 blur-[140px] rounded-full mix-blend-screen opacity-0 dark:opacity-40 animate-pulse pointer-events-none" />
+            <div className="absolute bottom-0 -left-1/4 w-[500px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full mix-blend-screen opacity-0 dark:opacity-30 animate-pulse delay-700 pointer-events-none" />
+            
+            {/* Horizontal "Scanner" Lines */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent blur-sm animate-[move_5s_linear_infinite]" style={{ top: '20%' }} />
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent blur-sm animate-[move_8s_linear_infinite_reverse]" style={{ top: '60%' }} />
+          </div>
           <motion.div 
             animate={{ 
               scale: [1, 1.05, 1],

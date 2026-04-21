@@ -36,6 +36,11 @@
   }
 }
 
+@keyframes move {
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
+}
+
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }

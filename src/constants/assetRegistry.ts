@@ -12,22 +12,22 @@ import ornament3 from '@/assets/web-img/ornament3.webp';
 import ornament5 from '@/assets/web-img/ornament5.webp';
 
 // Character Assets - Using high-quality Habib character interactions
-import Habib_Naruto from '@/assets/ninja-assets/HabibandNaruto.jpg';
-import Habib_Kakashi from '@/assets/ninja-assets/HabibandKakashi.jpg';
-import Habib_Sakura from '@/assets/ninja-assets/HabibandSakura.jpg';
-import Habib_Sai from '@/assets/ninja-assets/HabibandSai.jpg';
-import Habib_LadyTsunade from '@/assets/ninja-assets/HabibandLadyTsunade.jpg';
-import Habib_Hinata from '@/assets/ninja-assets/HabibandHinata.jpg';
-import Habib_Kiba from '@/assets/ninja-assets/HabibandKiba.jpg';
-import Habib_Shino from '@/assets/ninja-assets/HabibandShino.jpg';
-import Habib_Tenten from '@/assets/ninja-assets/HabibandTenten.jpg';
-import Habib_RockLee from '@/assets/ninja-assets/HabibandRockLee.jpg';
-import Habib_MightyGuy from '@/assets/ninja-assets/HabibandmightyGuy.jpg';
-import Habib_Asuma from '@/assets/ninja-assets/HabibandAsuma.jpg';
-import Habib_Kurenai from '@/assets/ninja-assets/HabibandKurenai.jpg';
-import Habib_Chōji from '@/assets/ninja-assets/HabibandJoji.jpg';
-import Habib_Sord from '@/assets/ninja-assets/Habib_sord.jpg';
-import Abubakar_Habib from '@/assets/ninja-assets/Abubakar_Habib.jpg';
+import Habib_Naruto from '@/assets/ninja-assets/habib_naruto.jpg';
+import Habib_Kakashi from '@/assets/ninja-assets/habib_kakashi.jpg';
+import Habib_Sakura from '@/assets/ninja-assets/habib_sakura.jpg';
+import Habib_Sai from '@/assets/ninja-assets/habib_sai.jpg';
+import Habib_LadyTsunade from '@/assets/ninja-assets/habib_lady_tsunade.jpg';
+import Habib_Hinata from '@/assets/ninja-assets/habib_hinata.jpg';
+import Habib_Kiba from '@/assets/ninja-assets/habib_kiba.jpg';
+import Habib_Shino from '@/assets/ninja-assets/habib_shino.jpg';
+import Habib_Tenten from '@/assets/ninja-assets/habib_tenten.jpg';
+import Habib_RockLee from '@/assets/ninja-assets/habib_rock_lee.jpg';
+import Habib_MightyGuy from '@/assets/ninja-assets/habib_mighty_guy.jpg';
+import Habib_Asuma from '@/assets/ninja-assets/habib_asuma.jpg';
+import Habib_Kurenai from '@/assets/ninja-assets/habib_kurenai.jpg';
+import Habib_Chōji from '@/assets/ninja-assets/habib_joji.jpg';
+import Habib_Sord from '@/assets/ninja-assets/habib_sword.jpg';
+import Abubakar_Habib from '@/assets/ninja-assets/abubakar_habib.jpg';
 
 // Picking a sample of unique WhatsApp images as secondary assets
 import n1 from '@/assets/ninja-assets/n1.jpeg';
@@ -35,9 +35,9 @@ import n2 from '@/assets/ninja-assets/n2.jpeg';
 import n3 from '@/assets/ninja-assets/n3.jpeg';
 import n4 from '@/assets/ninja-assets/n4.jpeg';
 
-import teamPortait from '@/assets/ninja-assets/Habib-kakashi-sakura.jpg';
-import profileImage from '@/assets/ninja-assets/Profile.jpg';
-import teamBackgroundVideo from '@/assets/web-img/TeamBackGround.mp4';
+import teamPortait from '@/assets/ninja-assets/habib_team.jpg';
+import profileImage from '@/assets/ninja-assets/profile.jpg';
+import teamBackgroundVideo from '@/assets/web-img/team_background.mp4';
 
 export const SHINOBI_IMAGES = {
   sections: {

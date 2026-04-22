@@ -12,7 +12,6 @@ import { NinjaProfilePage } from "@/pages/NinjaProfilePage";
 import { useEffect, useLayoutEffect, Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { MotionConfig } from "motion/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Lazy load heavy sections
 const LazyExperience = lazy(() => import("@/sections/Experience").then(m => ({ default: m.Experience })));
@@ -72,7 +71,6 @@ export default function App() {
             <Route path="/" element={<Portfolio />} />
             <Route path="/dossier" element={<NinjaProfilePage />} />
           </Routes>
-          <SpeedInsights />
         </BrowserRouter>
       </SoundProvider>
     </MotionConfig>

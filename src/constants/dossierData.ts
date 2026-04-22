@@ -10,7 +10,7 @@ export const DOSSIER_ASSETS = {
     kakashi: SHINOBI_IMAGES.ninjas[0],
     guy: SHINOBI_IMAGES.ninjas[1],
     naruto: SHINOBI_IMAGES.ninjas[2],
-    sord: SHINOBI_IMAGES.ninjas[3],
+    sword: SHINOBI_IMAGES.ninjas[3],
     lee: SHINOBI_IMAGES.ninjas[4],
     kiba: SHINOBI_IMAGES.ninjas[5],
     hinata: SHINOBI_IMAGES.ninjas[6],

@@ -55,6 +55,6 @@ export const SHINOBI_IMAGES = {
     '/images/ninja-assets/wa_15.jpeg',
     '/images/ninja-assets/wa_16.jpeg',
   ],
-  hero: 'public/images/ninja-assets/profile.jpg',
+  hero: '/images/ninja-assets/profile.jpg',
   videoBg: '/images/web-img/team_background.mp4',
 };

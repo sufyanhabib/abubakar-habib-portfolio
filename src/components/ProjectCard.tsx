@@ -72,7 +72,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) 
             src={project.image} 
             alt={project.title} 
             className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
-            referrerPolicy="no-referrer"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-background/40 group-hover:bg-background/10 transition-colors duration-500" />

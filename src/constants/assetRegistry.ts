@@ -30,10 +30,10 @@ import Habib_Sord from '@/assets/ninja-assets/Habib_sord.jpg';
 import Abubakar_Habib from '@/assets/ninja-assets/Abubakar_Habib.jpg';
 
 // Picking a sample of unique WhatsApp images as secondary assets
-import n1 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.21 PM.jpeg';
-import n2 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.23 PM.jpeg';
-import n3 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.31 PM.jpeg';
-import n4 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.33 PM.jpeg';
+import n1 from '@/assets/ninja-assets/n1.jpeg';
+import n2 from '@/assets/ninja-assets/n2.jpeg';
+import n3 from '@/assets/ninja-assets/n3.jpeg';
+import n4 from '@/assets/ninja-assets/n4.jpeg';
 
 import teamPortait from '@/assets/ninja-assets/Habib-kakashi-sakura.jpg';
 import profileImage from '@/assets/ninja-assets/Profile.jpg';

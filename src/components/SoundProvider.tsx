@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { Howl } from 'howler';
 
-const exportAsset = '/audio/export.mp3';
+const exportAsset = '/assets/audio/export.mp3';
 
 interface SoundContextType {
   playClick: () => void;

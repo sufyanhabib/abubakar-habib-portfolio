@@ -26,7 +26,7 @@ export const portfolioData = {
     linkedin: "#", // Placeholder
     codepen: "https://codepen.io/sufyanhabib",
     resumeUrl: "#", // Placeholder
-    avatarUrl: "/images/ninja-assets/profile.jpg",
+    avatarUrl: "/assets/ninja-assets/profile.jpg",
     valueProp: "Engineering robust systems and crafting refined interfaces, backed by real-world networking experience, with a growing interest in Artificial Intelligence."
   },
   about: {

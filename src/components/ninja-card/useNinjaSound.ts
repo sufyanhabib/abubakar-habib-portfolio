@@ -2,13 +2,13 @@ import { useEffect, useCallback, useRef } from 'react';
 import { Howl, Howler } from 'howler';
 import { useSound } from '../SoundProvider';
 
-const levelUpAsset = '/audio/naruto-jutsu-sound.mp3';
-const lightningAsset = '/audio/chidori.mp3';
-const waterAsset = '/audio/tra.mp3'; 
-const handSignsAsset = '/audio/naruto-hand-signs.mp3';
-const teleportAsset = '/audio/teleport-sasuke.mp3';
-const sasukeAsset = '/audio/saaaske.mp3';
-const katonAsset = '/audio/katon.mp3';
+const levelUpAsset = '/assets/audio/naruto-jutsu-sound.mp3';
+const lightningAsset = '/assets/audio/chidori.mp3';
+const waterAsset = '/assets/audio/tra.mp3'; 
+const handSignsAsset = '/assets/audio/naruto-hand-signs.mp3';
+const teleportAsset = '/assets/audio/teleport-sasuke.mp3';
+const sasukeAsset = '/assets/audio/saaaske.mp3';
+const katonAsset = '/assets/audio/katon.mp3';
 
 export const useNinjaSound = () => {
   const { isMuted } = useSound();

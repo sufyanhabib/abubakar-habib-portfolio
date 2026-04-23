@@ -41,6 +41,7 @@ export function BlockRenderer({ block }: BlockRendererProps) {
             src={block.src} 
             alt={block.alt} 
             className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-[1.05]" 
+            referrerPolicy="no-referrer"
           />
           {block.alt && (
             <figcaption className="p-5 text-center text-[10px] text-muted-foreground font-mono uppercase tracking-[0.3em] border-t border-border/50 bg-card/50">

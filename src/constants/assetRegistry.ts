@@ -1,60 +1,80 @@
 
+import anime from '@/assets/web-img/img_anime.webp';
+import comics from '@/assets/web-img/img_comics.webp';
+import event from '@/assets/web-img/img_event.webp';
+import game from '@/assets/web-img/img_game.webp';
+import goods from '@/assets/web-img/img_goods-1.webp';
+import news from '@/assets/web-img/img_news.webp';
+import special from '@/assets/web-img/img_special.webp';
+import ornament1 from '@/assets/web-img/ornament1.webp';
+import ornament2 from '@/assets/web-img/ornament2.webp';
+import ornament3 from '@/assets/web-img/ornament3.webp';
+import ornament5 from '@/assets/web-img/ornament5.webp';
+
+// Character Assets - Using high-quality Habib character interactions
+import Habib_Naruto from '@/assets/ninja-assets/HabibandNaruto.jpg';
+import Habib_Kakashi from '@/assets/ninja-assets/HabibandKakashi.jpg';
+import Habib_Sakura from '@/assets/ninja-assets/HabibandSakura.jpg';
+import Habib_Sai from '@/assets/ninja-assets/HabibandSai.jpg';
+import Habib_LadyTsunade from '@/assets/ninja-assets/HabibandLadyTsunade.jpg';
+import Habib_Hinata from '@/assets/ninja-assets/HabibandHinata.jpg';
+import Habib_Kiba from '@/assets/ninja-assets/HabibandKiba.jpg';
+import Habib_Shino from '@/assets/ninja-assets/HabibandShino.jpg';
+import Habib_Tenten from '@/assets/ninja-assets/HabibandTenten.jpg';
+import Habib_RockLee from '@/assets/ninja-assets/HabibandRockLee.jpg';
+import Habib_MightyGuy from '@/assets/ninja-assets/HabibandmightyGuy.jpg';
+import Habib_Asuma from '@/assets/ninja-assets/HabibandAsuma.jpg';
+import Habib_Kurenai from '@/assets/ninja-assets/HabibandKurenai.jpg';
+import Habib_Chōji from '@/assets/ninja-assets/HabibandJoji.jpg';
+import Habib_Sord from '@/assets/ninja-assets/Habib_sord.jpg';
+import Abubakar_Habib from '@/assets/ninja-assets/Abubakar_Habib.jpg';
+
+// Picking a sample of unique WhatsApp images as secondary assets
+import n1 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.21 PM.jpeg';
+import n2 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.23 PM.jpeg';
+import n3 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.31 PM.jpeg';
+import n4 from '@/assets/ninja-assets/WhatsApp Image 2026-04-19 at 3.35.33 PM.jpeg';
+
+import teamPortait from '@/assets/ninja-assets/Habib-kakashi-sakura.jpg';
+import profileImage from '@/assets/ninja-assets/Profile.jpg';
+import teamBackgroundVideo from '@/assets/web-img/TeamBackGround.mp4';
+
 export const SHINOBI_IMAGES = {
   sections: {
-    anime: '/assets/web-img/img_anime.webp',
-    comics: '/assets/web-img/img_comics.webp',
-    event: '/assets/web-img/img_event.webp',
-    game: '/assets/web-img/img_game.webp',
-    goods: '/assets/web-img/img_goods-1.webp',
-    news: '/assets/web-img/img_news.webp',
-    special: '/assets/web-img/img_special.webp',
+    anime,
+    comics,
+    event,
+    game,
+    goods,
+    news,
+    special,
   },
   ornaments: {
-    ornament1: '/assets/web-img/ornament1.webp',
-    ornament2: '/assets/web-img/ornament2.webp',
-    ornament3: '/assets/web-img/ornament3.webp',
-    ornament5: '/assets/web-img/ornament5.webp',
+    ornament1,
+    ornament2,
+    ornament3,
+    ornament5,
   },
   ninjas: [
-    '/assets/ninja-assets/habib_kakashi.jpg',
-    '/assets/ninja-assets/habib_mighty_guy.jpg',
-    '/assets/ninja-assets/habib_naruto.jpg',
-    '/assets/ninja-assets/habib_sword.jpg',
-    '/assets/ninja-assets/habib_rock_lee.jpg',
-    '/assets/ninja-assets/habib_kiba.jpg',
-    '/assets/ninja-assets/habib_hinata.jpg',
-    '/assets/ninja-assets/habib_sai.jpg',
-    '/assets/ninja-assets/habib_asuma.jpg',
-    '/assets/ninja-assets/habib_shino.jpg',
-    '/assets/ninja-assets/habib_sakura.jpg',
-    '/assets/ninja-assets/habib_lady_tsunade.jpg',
-    '/assets/ninja-assets/habib_tenten.jpg',
-    '/assets/ninja-assets/habib_kurenai.jpg',
-    '/assets/ninja-assets/habib_joji.jpg',
-    '/assets/ninja-assets/abubakar_habib.jpg',
-    '/assets/ninja-assets/n1.jpeg',
-    '/assets/ninja-assets/n2.jpeg',
-    '/assets/ninja-assets/n3.jpeg',
-    '/assets/ninja-assets/n4.jpeg',
-    '/assets/ninja-assets/habib_team.jpg',
-    '/assets/ninja-assets/habib_kakashi_1.jpg',
-    '/assets/ninja-assets/wa_1.jpeg',
-    '/assets/ninja-assets/wa_2.jpeg',
-    '/assets/ninja-assets/wa_3.jpeg',
-    '/assets/ninja-assets/wa_4.jpeg',
-    '/assets/ninja-assets/wa_5.jpeg',
-    '/assets/ninja-assets/wa_6.jpeg',
-    '/assets/ninja-assets/wa_7.jpeg',
-    '/assets/ninja-assets/wa_8.jpeg',
-    '/assets/ninja-assets/wa_9.jpeg',
-    '/assets/ninja-assets/wa_10.jpeg',
-    '/assets/ninja-assets/wa_11.jpeg',
-    '/assets/ninja-assets/wa_12.jpeg',
-    '/assets/ninja-assets/wa_13.jpeg',
-    '/assets/ninja-assets/wa_14.jpeg',
-    '/assets/ninja-assets/wa_15.jpeg',
-    '/assets/ninja-assets/wa_16.jpeg',
+    Habib_Kakashi,
+    Habib_MightyGuy,
+    Habib_Naruto,
+    Habib_Sord,
+    Habib_RockLee,
+    Habib_Kiba,
+    Habib_Hinata,
+    Habib_Sai,
+    Habib_Asuma,
+    Habib_Shino,
+    Habib_Sakura,
+    Habib_LadyTsunade,
+    Habib_Tenten,
+    Habib_Kurenai,
+    Habib_Chōji,
+    Abubakar_Habib,
+    n1, n2, n3, n4,
+    teamPortait,
   ],
-  hero: '/assets/ninja-assets/profile.jpg',
-  videoBg: '/assets/web-img/team_background.mp4',
+  hero: profileImage,
+  videoBg: teamBackgroundVideo,
 };

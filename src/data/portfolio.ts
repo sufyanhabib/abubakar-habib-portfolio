@@ -26,7 +26,7 @@ export const portfolioData = {
     linkedin: "#", // Placeholder
     codepen: "https://codepen.io/sufyanhabib",
     resumeUrl: "#", // Placeholder
-    avatarUrl: "/assets/ninja-assets/profile.jpg",
+    avatarUrl: "input_file_0.png",
     valueProp: "Engineering robust systems and crafting refined interfaces, backed by real-world networking experience, with a growing interest in Artificial Intelligence."
   },
   about: {
@@ -131,7 +131,7 @@ Currently, I am focused on strengthening my frontend development skills while ex
       type: "github",
       codeUrl: "https://github.com/Abhishek-090/FoxFoods",
       liveUrl: "https://fox-foods.vercel.app/",
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
+      image: "https://private-user-images.githubusercontent.com/99119749/398713284-1b21c185-6a00-4531-adc9-72db9681a1de.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYwNzM0ODQsIm5iZiI6MTc3NjA3MzE4NCwicGF0aCI6Ii85OTExOTc0OS8zOTg3MTMyODQtMWIyMWMxODUtNmEwMC00NTMxLWFkYzktNzJkYjk2ODFhMWRlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNDEzVDA5Mzk0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBlMWJhNjYwNWM1YjA3ZmVlNzNmYWE3MzA2NTY2ODhlZTllZTczZWY0ZThmODY2YjYzYTdhYWFhMDQxOTYwNDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.VjgJgnVIIoGPuSu8zxPCFaBlks8plAUYhKFEV1aR0ag"
     },
     {
       title: "Brooklyn Stoop Sale",
@@ -140,7 +140,7 @@ Currently, I am focused on strengthening my frontend development skills while ex
       type: "github",
       codeUrl: "https://github.com/sufyanhabib/Brooklyn-Stoop_Sale",
       liveUrl: "brooklyn-stoop-sale-khaki.vercel.app",
-      image: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=800&q=80"
+      image: "https://private-user-images.githubusercontent.com/26720225/348476571-1de2b6b2-e0ea-4cb7-96bb-a83987ae0a88.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYwNzM3NjUsIm5iZiI6MTc3NjA3MzQ2NSwicGF0aCI6Ii8yNjcyMDIyNS8zNDg0NzY1NzEtMWRlMmI2YjItZTBlYS00Y2I3LTk2YmItYTgzOTg3YWUwYTg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNDEzVDA5NDQyNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJjZDg3ODJjMmRjMDE4OWExZGQ3M2I5OTgwNTQzODkwMjkwZmQxNzMxZTc3YjJjZTNlOTc2ZmQ3Yjc0ZDMyNTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.wvBxfhodiVhK7-We1cucD8bEoeSr59-NUw36YBOKFS0"
     },
     {
       title: "Aro Pharma Website",
@@ -149,7 +149,7 @@ Currently, I am focused on strengthening my frontend development skills while ex
       type: "github",
       codeUrl: "https://github.com/sufyanhabib/-aro-pharma-website",
       liveUrl: "https://aro-pharma.vercel.app/",
-      image: "https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&w=800&q=80"
+      image: "https://codepen.io/sufyanhabib/full/qEadKvx"
     },
     {
       title: "Systems Portfolio",
@@ -158,7 +158,7 @@ Currently, I am focused on strengthening my frontend development skills while ex
       type: "github",
       codeUrl: "https://github.com/sufyanhabib/abubakar-habib-portfolio",
       liveUrl: "https://abubakar-habib.vercel.app/",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
+      image: "https://picsum.photos/seed/portfolio/800/450"
     },
     {
       title: "Interactive UI Component",
@@ -167,7 +167,7 @@ Currently, I am focused on strengthening my frontend development skills while ex
       type: "codepen",
       codeUrl: "https://codepen.io/sufyanhabib/full/qEadKvx",
       liveUrl: "https://codepen.io/sufyanhabib/full/qEadKvx",
-      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
+      image: "https://codepen.io/sufyanhabib/pen/qEadKvx"
     },
     {
       title: "Modern Dashboard Concept",
@@ -176,7 +176,7 @@ Currently, I am focused on strengthening my frontend development skills while ex
       type: "codepen",
       codeUrl: "https://codepen.io/sufyanhabib/full/YPGPEdw",
       liveUrl: "https://codepen.io/sufyanhabib/full/YPGPEdw",
-      image: "https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&w=800&q=80"
+      image: "https://picsum.photos/seed/cp2/800/450"
     },
     {
       title: "Glassmorphism UI Kit",
@@ -185,7 +185,7 @@ Currently, I am focused on strengthening my frontend development skills while ex
       type: "codepen",
       codeUrl: "https://codepen.io/sufyanhabib/full/pvEvdxV",
       liveUrl: "https://codepen.io/sufyanhabib/full/pvEvdxV",
-      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
+      image: "https://picsum.photos/seed/cp3/800/450"
     },
     {
       title: "Dynamic Data Visualization",

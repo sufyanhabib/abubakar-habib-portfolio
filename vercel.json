@@ -2,11 +2,7 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/assets/(.*)",
-      "destination": "/assets/$1"
-    },
-    {
-      "source": "/(.*)",
+      "source": "/((?!assets/|static/|favicon.ico).*)",
       "destination": "/index.html"
     }
   ]

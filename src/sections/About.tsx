@@ -82,7 +82,6 @@ export function About() {
                       src={SHINOBI_IMAGES.ornaments.ornament5} 
                       className="absolute -right-10 -bottom-10 w-64 grayscale rotate-12 group-hover:rotate-0 transition-transform duration-700" 
                       alt="" 
-                      referrerPolicy="no-referrer" 
                     />
                   </div>
 

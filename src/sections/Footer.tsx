@@ -6,9 +6,9 @@ export function Footer() {
   const { identity } = portfolioData;
 
   return (
-    <footer className="py-12 px-6 border-t border-border/50">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-8 text-center lg:text-left">
-        <div className="flex flex-col items-center lg:items-start">
+    <footer className="py-12 border-t border-border/50 bg-background/50">
+      <div className="container-responsive flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-8 text-center lg:text-left">
+        <div className="flex flex-col items-center lg:items-start order-1">
           <p className="text-xl font-display font-bold tracking-tighter">
             {portfolioData.identity.name}<span className="text-primary">.</span>
           </p>
@@ -17,7 +17,7 @@ export function Footer() {
           </p>
         </div>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 order-3 lg:order-2">
           {[
             { icon: Github, href: identity.github, label: "GitHub" },
             { icon: Linkedin, href: identity.linkedin, label: "LinkedIn" },
@@ -38,7 +38,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 text-xs sm:text-sm font-medium text-muted-foreground">
+        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 text-xs sm:text-sm font-medium text-muted-foreground order-2 lg:order-3">
           <a href="#about" className="hover:text-foreground transition-colors">About</a>
           <a href="#projects" className="hover:text-foreground transition-colors">Projects</a>
           <a href="#articles" className="hover:text-foreground transition-colors">Articles</a>

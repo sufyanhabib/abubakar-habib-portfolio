@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Tilt from 'react-parallax-tilt';
 import { Shield, Zap, Droplets, Eye, Scroll, Target, Award, Activity, ChevronRight, ExternalLink, Box, Terminal, Database } from 'lucide-react';
@@ -18,6 +18,15 @@ export const NinjaProfileCard: React.FC<NinjaProfileCardProps> = ({ className })
   const [isLevelingUp, setIsLevelingUp] = useState(false);
   const [activeNature, setActiveNature] = useState<string | null>(null);
   const { playLevelUp, playHover, playSharingan, playLightning, playWater } = useNinjaSound();
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleLevelUp = useCallback(() => {
     if (isLevelingUp) return;
@@ -76,13 +85,13 @@ export const NinjaProfileCard: React.FC<NinjaProfileCardProps> = ({ className })
 
       <Tilt
         perspective={1200}
-        glareEnable={true}
+        glareEnable={!isMobile}
         glareMaxOpacity={0.15}
         glareColor="#ffffff"
         glarePosition="all"
         glareBorderRadius="2.5rem"
-        tiltMaxAngleX={6}
-        tiltMaxAngleY={6}
+        tiltMaxAngleX={isMobile ? 0 : 6}
+        tiltMaxAngleY={isMobile ? 0 : 6}
         transitionSpeed={1500}
         className="relative z-10"
       >
@@ -92,7 +101,7 @@ export const NinjaProfileCard: React.FC<NinjaProfileCardProps> = ({ className })
           viewport={{ once: true }}
           onMouseEnter={playHover}
           className={cn(
-            "relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0B0F19]/90 backdrop-blur-3xl p-8 md:p-10 transition-all duration-500 hover:border-[#00FF9F]/30 shadow-[0_0_50px_rgba(0,0,0,0.5)]",
+            "relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0B0F19]/90 backdrop-blur-3xl p-6 sm:p-8 md:p-10 transition-all duration-500 hover:border-[#00FF9F]/30 shadow-[0_0_50px_rgba(0,0,0,0.5)]",
             activeNature === "Lightning Release" && "animate-shake border-[#00FF9F]/50"
           )}
         >
@@ -176,42 +185,42 @@ export const NinjaProfileCard: React.FC<NinjaProfileCardProps> = ({ className })
           </AnimatePresence>
 
           {/* Tactical HUD Overlay Elements */}
-          <div className="absolute top-0 right-0 p-8 flex flex-col gap-2 opacity-20 group-hover:opacity-40 transition-opacity">
+          <div className="absolute top-0 right-0 p-4 sm:p-8 flex flex-col gap-1 sm:gap-2 opacity-10 sm:opacity-20 group-hover:opacity-40 transition-opacity">
             <div className="flex gap-1">
               {[1, 2, 3, 4].map(i => (
-                <div key={i} className="w-1 h-3 bg-[#00FF9F]" />
+                <div key={i} className="w-0.5 sm:w-1 h-2 sm:h-3 bg-[#00FF9F]" />
               ))}
             </div>
-            <div className="h-[2px] w-12 bg-[#00FF9F]" />
+            <div className="h-[1px] sm:h-[2px] w-8 sm:w-12 bg-[#00FF9F]" />
           </div>
 
           {/* Top Header */}
-          <div className="flex justify-between items-start mb-10 relative z-20">
+          <div className="flex justify-between items-start mb-6 sm:mb-10 relative z-20">
             <div className="space-y-1">
-              <div className="flex items-center gap-3">
-                <span className="flex h-2 w-2 rounded-full bg-[#00FF9F] animate-pulse" />
-                <span className="text-[#00FF9F] font-mono text-[10px] uppercase tracking-[0.4em]">Tactical Feed</span>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="flex h-1.5 w-1.5 rounded-full bg-[#00FF9F] animate-pulse" />
+                <span className="text-[#00FF9F] font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em]">Tactical Feed</span>
               </div>
-              <h3 className="text-3xl font-display font-bold text-white tracking-tight">Abubakar Habib</h3>
-              <p className="text-[10px] text-white/40 font-mono uppercase tracking-[0.2em]">Hash: 0x82f..921k | Status: SHINOBI_ACTIVE</p>
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight">Abubakar Habib</h3>
+              <p className="text-[8px] sm:text-[10px] text-white/40 font-mono uppercase tracking-[0.2em]">Hash: 0x82f..921k | Status: SHINOBI_ACTIVE</p>
             </div>
             
-            <button className="p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#00FF9F]/40 transition-all group/btn">
-              <Terminal className="w-4 h-4 text-white/60 group-hover/btn:text-[#00FF9F] transition-colors" />
+            <button className="p-2 sm:p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#00FF9F]/40 transition-all group/btn">
+              <Terminal className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white/60 group-hover/btn:text-[#00FF9F] transition-colors" />
             </button>
           </div>
 
           {/* Profile Section */}
-          <div className="flex flex-col items-center mb-12 relative">
+          <div className="flex flex-col items-center mb-8 sm:mb-12 relative">
             <div className="relative group/avatar">
               {/* Radial HUD Ring */}
-              <div className="absolute -inset-8 rounded-full border border-white/5 animate-[spin_30s_linear_infinite]" />
-              <div className="absolute -inset-10 rounded-full border border-dashed border-white/5 animate-[spin_20s_linear_infinite_reverse]" />
+              <div className="absolute -inset-6 sm:-inset-8 rounded-full border border-white/5 animate-[spin_30s_linear_infinite]" />
+              <div className="absolute -inset-8 sm:-inset-10 rounded-full border border-dashed border-white/5 animate-[spin_20s_linear_infinite_reverse]" />
               
               {/* Glowing Border */}
-              <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-[#00FF9F] to-[#00C2FF] opacity-10 blur-xl group-hover:opacity-30 transition-opacity duration-700" />
+              <div className="absolute -inset-3 sm:-inset-4 rounded-full bg-gradient-to-tr from-[#00FF9F] to-[#00C2FF] opacity-10 blur-xl group-hover:opacity-30 transition-opacity duration-700" />
               
-              <div className="relative w-40 h-40 rounded-full border-2 border-white/10 p-1 bg-[#0B0F19]">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full border-2 border-white/10 p-1 bg-[#0B0F19]">
                 <div className="w-full h-full rounded-full overflow-hidden bg-white/5 relative">
                   <img 
                     src={DOSSIER_ASSETS.hero} 

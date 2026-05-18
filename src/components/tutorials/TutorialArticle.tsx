@@ -22,7 +22,7 @@ export function TutorialArticle({ sections }: TutorialArticleProps) {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-10 tracking-tight">
+            <h2 className="text-fluid-h2 font-display font-bold text-foreground mb-10 tracking-tight">
               {section.heading}
             </h2>
             

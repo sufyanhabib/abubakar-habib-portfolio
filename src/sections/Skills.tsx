@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function Skills() {
   return (
-    <Section id="skills" className="relative overflow-hidden px-6 md:px-12 lg:px-24">
+    <Section id="skills" className="relative overflow-hidden">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 -z-10 opacity-20 blur-3xl">
         <div className="w-[500px] h-[500px] bg-primary/10 rounded-full" />
@@ -21,7 +21,7 @@ export function Skills() {
           className="flex items-center gap-4 mb-4"
         >
           <div className="h-px w-12 bg-primary/50" />
-          <span className="text-primary font-mono text-xs uppercase tracking-[0.3em]">Technical Arsenal</span>
+          <span className="text-primary font-mono text-[10px] uppercase tracking-[0.3em]">Technical Arsenal</span>
         </motion.div>
         
         <motion.h2 
@@ -29,7 +29,7 @@ export function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6"
+          className="text-fluid-h2 font-display font-bold tracking-tight mb-6"
         >
           A multi-disciplinary <br className="hidden sm:block md:block" />
           <span className="text-muted-foreground">toolkit for modern engineering.</span>

@@ -31,7 +31,7 @@ export function TutorialHero({ title, excerpt, meta, language }: TutorialHeroPro
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.2] md:leading-[1.1] tracking-tight max-w-4xl">
+        <h1 className="text-fluid-h1 font-display font-bold text-foreground leading-tight tracking-tight max-w-4xl">
           {title}
         </h1>
 

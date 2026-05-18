@@ -73,7 +73,7 @@ export const NinjaProfilePage: React.FC = () => {
 
       {/* Top Navigation */}
       <nav className="fixed top-0 inset-x-0 h-20 border-b border-white/5 bg-[#020617]/80 backdrop-blur-xl z-[60]">
-        <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+        <div className="container-responsive h-full flex items-center justify-between">
           <Link 
             to="/" 
             className="flex items-center gap-3 text-white/40 hover:text-[#00FF9F] transition-all group"
@@ -110,7 +110,7 @@ export const NinjaProfilePage: React.FC = () => {
       </nav>
 
       {/* 1. Hero Dossier Entry */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden bg-[#020617]">
+      <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 overflow-hidden bg-[#020617]">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[#020617]/50 z-20 pointer-events-none" />
 
@@ -160,7 +160,7 @@ export const NinjaProfilePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-4xl sm:text-6xl md:text-8xl font-display font-bold tracking-tighter"
+              className="text-fluid-h1 font-display font-bold tracking-tighter"
             >
               Abubakar <span className="text-white/20">Habib</span>
             </motion.h1>
@@ -249,18 +249,18 @@ export const NinjaProfilePage: React.FC = () => {
             whileInView={{ opacity: 0.3, rotate: -5, scale: 1 }}
             transition={{ duration: 1.5 }}
             src={DOSSIER_ASSETS.ornaments.itachiSasuke}
-            className="absolute left-0 top-0 w-[400px] lg:w-[600px] grayscale opacity-40 translate-x-[-10%] translate-y-[10%]"
+            className="absolute left-0 top-0 w-[80vw] sm:w-[400px] lg:w-[600px] grayscale opacity-40 translate-x-[-10%] translate-y-[10%]"
           />
           <motion.img 
             initial={{ opacity: 0, rotate: 45, scale: 0.8 }}
             whileInView={{ opacity: 0.25, rotate: 5, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.2 }}
             src={DOSSIER_ASSETS.ornaments.narutoSuit}
-            className="absolute right-0 bottom-0 w-[400px] lg:w-[500px] grayscale opacity-40 translate-x-[10%] translate-y-[-10%]"
+            className="absolute right-0 bottom-0 w-[80vw] sm:w-[400px] lg:w-[500px] grayscale opacity-40 translate-x-[10%] translate-y-[-10%]"
           />
         </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="container-responsive grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
              initial={{ opacity: 0, x: -30 }}
              whileInView={{ opacity: 1, x: 0 }}
@@ -272,10 +272,10 @@ export const NinjaProfilePage: React.FC = () => {
                 <Shield className="w-2 h-2" />
                 Active_Dossier_Link
               </div>
-              <h2 className="group relative text-5xl sm:text-7xl font-display font-black text-white tracking-widest uppercase italic -skew-x-12">
+              <h2 className="group relative text-fluid-h2 font-display font-black text-white tracking-widest uppercase italic -skew-x-12">
                 The <span className="text-[#00FF9F]">Dossier</span>
               </h2>
-              <div className="h-1 w-48 bg-[#00FF9F] shadow-[0_0_10px_#00FF9F]" />
+              <div className="h-1 w-32 sm:w-48 bg-[#00FF9F] shadow-[0_0_10px_#00FF9F]" />
             </div>
             
             <p className="text-slate-400 font-mono text-sm leading-loose">
@@ -315,14 +315,14 @@ export const NinjaProfilePage: React.FC = () => {
           whileInView={{ opacity: 0.25, scale: 1.1, x: 0 }}
           transition={{ duration: 1.5 }}
           src={SHINOBI_IMAGES.sections.special}
-          className="absolute -right-20 bottom-0 w-[500px] lg:w-[700px] grayscale pointer-events-none opacity-60"
+          className="absolute -right-20 bottom-0 w-[90vw] sm:w-[500px] lg:w-[700px] grayscale pointer-events-none opacity-60"
         />
 
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="flex flex-col sm:flex-row justify-between items-end gap-6 border-b-4 border-[#00FF9F] pb-8">
+        <div className="container-responsive space-y-12">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 border-b-4 border-[#00FF9F] pb-8">
             <div className="space-y-2">
               <span className="text-[#00FF9F] font-mono text-xs uppercase tracking-[0.5em]">// ARCHIVE_UPDATES</span>
-              <h2 className="text-4xl sm:text-7xl font-display font-black text-white uppercase italic -skew-x-6 leading-none">Latest <br /> <span className="text-white/20">Directives</span></h2>
+              <h2 className="text-fluid-h2 font-display font-black text-white uppercase italic -skew-x-6 leading-none">Latest <br /> <span className="text-white/20">Directives</span></h2>
             </div>
             <div className="flex items-center gap-4 text-white/40 font-mono text-[10px] uppercase tracking-widest bg-white/5 px-4 py-2 rounded-lg border border-white/10 italic">
               <Activity className="w-3 h-3 text-[#00FF9F] animate-pulse" />
@@ -389,7 +389,7 @@ export const NinjaProfilePage: React.FC = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <h3 className="text-4xl sm:text-6xl font-display font-black text-white uppercase tracking-tighter italic -skew-x-6">{section.title}</h3>
+                  <h3 className="text-fluid-h3 font-display font-black text-white uppercase tracking-tighter italic -skew-x-6">{section.title}</h3>
                   <div className="flex flex-wrap gap-3">
                     {section.tags?.map(tag => (
                       <span key={tag} className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono text-[#00FF9F] tracking-widest uppercase">#{tag}</span>
@@ -476,18 +476,18 @@ export const NinjaProfilePage: React.FC = () => {
       {/* 3.5 Character Quote Section (Official Site Punchiness) */}
       <section className="relative py-32 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00FF9F]/5 to-transparent pointer-events-none" />
-        <div className="max-w-4xl mx-auto text-center space-y-12">
+        <div className="container-responsive text-center space-y-12">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             className="relative inline-block"
           >
             <div className="absolute -inset-8 bg-[#00FF9F]/20 blur-3xl rounded-full animate-pulse" />
-            <ScrollIcon className="w-16 h-16 text-[#00FF9F] relative z-10" />
+            <ScrollIcon className="w-12 h-12 sm:w-16 sm:h-16 text-[#00FF9F] relative z-10" />
           </motion.div>
           
           <div className="space-y-6">
-            <h2 className="text-4xl sm:text-7xl font-display font-black text-white leading-none uppercase italic">
+            <h2 className="text-fluid-h2 font-display font-black text-white leading-none uppercase italic">
               "It's not about the <br />
               <span className="text-[#00FF9F]">jutsu you know</span>,<br />
               but how you <span className="text-white/20">scale it</span>."
@@ -505,7 +505,7 @@ export const NinjaProfilePage: React.FC = () => {
           initial={{ x: 50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 0.08 }}
           src={SHINOBI_IMAGES.ornaments.ornament5}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-64 lg:w-96 grayscale pointer-events-none"
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-[40vw] sm:w-64 lg:w-96 grayscale pointer-events-none"
         />
       </section>
 
@@ -519,27 +519,27 @@ export const NinjaProfilePage: React.FC = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 0.05, x: 0 }}
             src={SHINOBI_IMAGES.ornaments.ornament2}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] grayscale"
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-[100vw] lg:w-[600px] grayscale"
           />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto space-y-20">
+        <div className="relative z-10 container-responsive space-y-16 sm:space-y-20">
           <div className="text-center space-y-6">
             <motion.img 
               animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
               src={SHINOBI_IMAGES.ornaments.ornament5}
-              className="w-32 mx-auto opacity-40 grayscale border-2 border-[#00FF9F]/30 rounded-full p-4 bg-[#020617] shadow-[0_0_30px_rgba(0,255,159,0.2)]"
+              className="w-24 sm:w-32 mx-auto opacity-40 grayscale border-2 border-[#00FF9F]/30 rounded-full p-3 sm:p-4 bg-[#020617] shadow-[0_0_30px_rgba(0,255,159,0.2)]"
             />
             <div className="space-y-4">
-              <h2 className="text-4xl sm:text-7xl font-display font-black text-white uppercase tracking-tighter italic -skew-x-12">Elite Alliances</h2>
+              <h2 className="text-fluid-h2 font-display font-black text-white uppercase tracking-tighter italic -skew-x-12">Elite Alliances</h2>
               <div className="flex justify-center gap-3">
-                <div className="h-1.5 w-16 bg-[#00FF9F]" />
-                <div className="h-1.5 w-16 bg-white/20" />
-                <div className="h-1.5 w-16 bg-[#00C2FF]" />
+                <div className="h-1 sm:h-1.5 w-12 sm:w-16 bg-[#00FF9F]" />
+                <div className="h-1 sm:h-1.5 w-12 sm:w-16 bg-white/20" />
+                <div className="h-1 sm:h-1.5 w-12 sm:w-16 bg-[#00C2FF]" />
               </div>
             </div>
-            <p className="text-white/60 font-mono text-xs uppercase tracking-[0.5em] max-w-2xl mx-auto">Mastery through high-rank collaboration across the five Great Tech Villages</p>
+            <p className="text-white/60 font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.5em] max-w-2xl mx-auto px-4">Mastery through high-rank collaboration across the five Great Tech Villages</p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -586,17 +586,17 @@ export const NinjaProfilePage: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9, rotate: -15 }}
             whileInView={{ opacity: 0.15, scale: 1, rotate: 0 }}
             src={SHINOBI_IMAGES.ornaments.ornament3}
-            className="absolute left-5 bottom-5 w-[300px] sm:w-[350px] lg:w-[400px] grayscale transition-all duration-700"
+            className="absolute left-5 bottom-5 w-[60vw] sm:w-[350px] lg:w-[400px] grayscale transition-all duration-700"
           />
           <motion.img 
             initial={{ opacity: 0, scale: 0.9, rotate: 15 }}
             whileInView={{ opacity: 0.15, scale: 1, rotate: 0 }}
             src={SHINOBI_IMAGES.ornaments.ornament1}
-            className="absolute right-5 top-5 w-[300px] sm:w-[350px] lg:w-[400px] grayscale transition-all duration-700"
+            className="absolute right-5 top-5 w-[60vw] sm:w-[350px] lg:w-[400px] grayscale transition-all duration-700"
           />
         </div>
 
-        <div className="max-w-xl mx-auto space-y-12 relative z-10">
+        <div className="container-responsive max-w-xl space-y-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -607,20 +607,20 @@ export const NinjaProfilePage: React.FC = () => {
               <div className="absolute -inset-16 bg-[#00FF9F]/20 blur-3xl rounded-full animate-pulse group-hover:bg-[#00FF9F]/30 transition-colors" />
               
               {/* Outer Circular Tech Border */}
-              <div className="relative p-12 sm:p-16 rounded-full border-2 border-dashed border-[#00FF9F]/40 animate-[spin_30s_linear_infinite]">
+              <div className="relative p-10 sm:p-16 rounded-full border-2 border-dashed border-[#00FF9F]/40 animate-[spin_30s_linear_infinite]">
                  <div className="absolute inset-0 border-2 border-[#00FF9F]/10 rounded-full scale-125" />
               </div>
               
               {/* Inner Logo Seal */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="p-8 rounded-full bg-[#020617] border border-[#00FF9F] shadow-[0_0_50px_rgba(0,255,159,0.3)]">
-                  <Activity className="w-12 h-12 text-[#00FF9F]" />
+                <div className="p-6 sm:p-8 rounded-full bg-[#020617] border border-[#00FF9F] shadow-[0_0_50px_rgba(0,255,159,0.3)]">
+                  <Activity className="w-8 h-8 sm:w-12 sm:h-12 text-[#00FF9F]" />
                 </div>
               </div>
             </div>
             
             <div className="space-y-6">
-              <h3 className="text-4xl sm:text-6xl font-display font-black text-white tracking-[0.2em] uppercase italic -skew-x-12">
+              <h3 className="text-fluid-h3 font-display font-black text-white tracking-[0.2em] uppercase italic -skew-x-12">
                 Archive <span className="text-white/20">Locked</span>
               </h3>
               

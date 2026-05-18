@@ -11,20 +11,20 @@ export function BlockRenderer({ block }: BlockRendererProps) {
   switch (block.type) {
     case "heading":
       return (
-        <h3 className="text-2xl font-display font-bold text-foreground/90 mt-16 mb-6 tracking-tight">
+        <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground/90 mt-12 sm:mt-16 mb-4 sm:mb-6 tracking-tight">
           {block.value as string}
         </h3>
       );
     case "paragraph":
       return (
-        <p className="text-muted-foreground/90 text-base sm:text-lg md:text-xl leading-[1.8] font-light mb-8 sm:mb-10 selection:bg-primary/10">
+        <p className="text-muted-foreground/90 text-sm sm:text-lg md:text-xl leading-relaxed sm:leading-[1.8] font-light mb-6 sm:mb-10 selection:bg-primary/10">
           {block.value as string}
         </p>
       );
     case "blockquote":
       return (
-        <blockquote className="my-8 sm:my-12 pl-6 sm:pl-8 border-l-4 border-primary/30 italic">
-          <p className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-display font-light leading-relaxed">
+        <blockquote className="my-6 sm:my-12 pl-4 sm:pl-8 border-l-4 border-primary/30 italic">
+          <p className="text-lg sm:text-2xl md:text-3xl text-foreground/80 font-display font-light leading-relaxed">
             {block.value as string}
           </p>
           {block.author && (

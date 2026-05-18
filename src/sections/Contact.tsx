@@ -7,13 +7,13 @@ export function Contact() {
   const { identity } = portfolioData;
 
   return (
-    <Section id="contact" title="Let's Connect" subtitle="Interested in working together or just want to talk tech?" className="px-6 md:px-12 lg:px-24">
+    <Section id="contact" title="Let's Connect" subtitle="Interested in working together or just want to talk tech?">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
         <div>
-          <h3 className="text-2xl sm:text-3xl font-display font-bold mb-6">
+          <h3 className="text-fluid-h3 font-display font-bold mb-6">
             Building the future of <span className="text-primary italic">systems</span> and <span className="text-primary italic">interfaces</span>.
           </h3>
-          <p className="text-muted-foreground text-base sm:text-lg mb-10 leading-relaxed">
+          <p className="text-muted-foreground text-base sm:text-lg mb-10 leading-relaxed font-light">
             I'm currently open to Frontend Developer and Network Engineer roles. If you're looking for an engineer with a systems mindset and a passion for polished UI, let's talk.
           </p>
           

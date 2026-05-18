@@ -56,31 +56,59 @@ export function TutorialModal({ article, isOpen, onClose, language, onLanguageTo
           className="fixed inset-0 z-[900] bg-background flex flex-col overflow-hidden pt-20"
         >
           {/* Top Navigation Bar */}
-          <header className="h-20 border-b border-border/30 bg-background/60 backdrop-blur-2xl flex items-center justify-between px-6 md:px-12 shrink-0">
-            <div className="flex items-center gap-8">
+          <header className="h-auto min-h-[5rem] py-4 border-b border-border/30 bg-background/60 backdrop-blur-2xl flex flex-col sm:flex-row items-center justify-between px-6 md:px-12 shrink-0 gap-4">
+            <div className="flex items-center justify-between w-full sm:w-auto gap-4">
               <Button
                 variant="ghost"
                 size="sm"
-                className="rounded-2xl hover:bg-muted/50 group/back px-4"
+                className="rounded-2xl hover:bg-muted/50 group/back px-3"
                 onClick={onClose}
               >
-                <ArrowLeft className="w-4 h-4 mr-3 group-hover/back:-translate-x-1 transition-transform" /> 
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Exit Reader</span>
+                <ArrowLeft className="w-4 h-4 mr-2 group-hover/back:-translate-x-1 transition-transform" /> 
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">Exit</span>
               </Button>
               
-              <div className="hidden lg:flex items-center gap-4">
-                <div className="h-4 w-[1px] bg-border/50" />
-                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-primary/60">
-                  {article.meta.category}
-                </span>
-                <div className="h-1 w-1 rounded-full bg-border" />
-                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-muted-foreground/60">
-                  {article.title[language]}
-                </span>
+              <div className="flex sm:hidden items-center p-1 bg-muted/20 border border-border/30 rounded-2xl backdrop-blur-sm">
+                <button
+                  onClick={() => language !== "hinglish" && onLanguageToggle()}
+                  className={`px-3 py-1.5 rounded-xl text-[8px] font-bold uppercase tracking-widest transition-all duration-300 ${
+                    language === "hinglish" ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  Hinglish
+                </button>
+                <button
+                  onClick={() => language !== "english" && onLanguageToggle()}
+                  className={`px-3 py-1.5 rounded-xl text-[8px] font-bold uppercase tracking-widest transition-all duration-300 ${
+                    language === "english" ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  English
+                </button>
               </div>
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="sm:hidden rounded-2xl hover:bg-red-500/10 hover:text-red-500 transition-all duration-300"
+                onClick={onClose}
+              >
+                <X className="w-5 h-5" />
+              </Button>
             </div>
 
-            <div className="flex items-center gap-6">
+            <div className="hidden lg:flex flex-1 items-center gap-4 px-4 overflow-hidden">
+              <div className="h-4 w-[1px] bg-border/50 shrink-0" />
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-primary/60 shrink-0">
+                {article.meta.category}
+              </span>
+              <div className="h-1 w-1 rounded-full bg-border shrink-0" />
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-muted-foreground/60 truncate">
+                {article.title[language]}
+              </span>
+            </div>
+
+            <div className="hidden sm:flex items-center gap-6">
               <div className="flex items-center p-1 bg-muted/20 border border-border/30 rounded-2xl backdrop-blur-sm">
                 <button
                   onClick={() => language !== "hinglish" && onLanguageToggle()}
@@ -100,7 +128,7 @@ export function TutorialModal({ article, isOpen, onClose, language, onLanguageTo
                 </button>
               </div>
               
-              <div className="h-8 w-[1px] bg-border/30 hidden sm:block" />
+              <div className="h-8 w-[1px] bg-border/30" />
               
               <Button
                 variant="ghost"

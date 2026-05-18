@@ -19,7 +19,7 @@ export function About() {
 
   return (
     <section id="about" className="relative overflow-hidden bg-background pt-32 pb-24 border-y border-border/5">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 space-y-20 lg:space-y-32 relative z-10">
+      <div className="container-responsive space-y-20 lg:space-y-32 relative z-10">
         {/* Top Section: Narrative Storytelling */}
         <div className="space-y-16">
           <div className="space-y-4 max-w-4xl">
@@ -32,7 +32,7 @@ export function About() {
               <div className="h-px w-8 bg-primary/40" />
               <span className="text-primary font-mono text-[10px] uppercase tracking-[0.3em]">The Narrative</span>
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight">
+            <h2 className="text-fluid-h2 font-display font-bold tracking-tight">
               Bridging the gap between <br className="hidden sm:block" />
               <span className="text-muted-foreground">systems and interfaces.</span>
             </h2>

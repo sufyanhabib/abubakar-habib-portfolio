@@ -45,11 +45,11 @@ export function Articles() {
   };
 
   return (
-    <section id="articles" className="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-background relative overflow-hidden transition-colors duration-500">
+    <section id="articles" className="py-20 md:py-32 bg-background relative overflow-hidden transition-colors duration-500">
       {/* Background Accents */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 -z-10 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="container-responsive relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
           <div className="max-w-2xl">
@@ -68,7 +68,7 @@ export function Articles() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-display font-bold tracking-tight mb-6 md:mb-8 text-foreground"
+              className="text-fluid-h2 font-display font-bold tracking-tight mb-6 md:mb-8 text-foreground"
             >
               Tutorials <span className="text-muted-foreground/40">&</span> Deep Dives
             </motion.h2>
@@ -90,11 +90,11 @@ export function Articles() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex items-center p-1.5 bg-muted/30 border border-border rounded-full backdrop-blur-sm"
+            className="flex items-center p-1 bg-muted/30 border border-border rounded-full backdrop-blur-sm self-start sm:self-auto"
           >
             <button
               onClick={() => { setLanguage("hinglish"); playClick(); }}
-              className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
+              className={`px-4 sm:px-6 py-2 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
                 language === "hinglish" ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -102,7 +102,7 @@ export function Articles() {
             </button>
             <button
               onClick={() => { setLanguage("english"); playClick(); }}
-              className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
+              className={`px-4 sm:px-6 py-2 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
                 language === "english" ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -173,7 +173,7 @@ export function Articles() {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                   >
-                    <h3 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold mb-6 sm:mb-8 group-hover:text-primary transition-colors duration-500 leading-[1.2] md:leading-[1.15] text-foreground tracking-tight">
+                    <h3 className="text-fluid-h3 font-display font-bold mb-6 sm:mb-8 group-hover:text-primary transition-colors duration-500 leading-tight text-foreground tracking-tight">
                       {featuredArticle.title[language]}
                     </h3>
                     

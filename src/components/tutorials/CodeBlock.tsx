@@ -23,16 +23,22 @@ export function CodeBlock({ code, language = 'javascript', isTerminal = false, f
 
   const customStyle = {
     margin: 0,
-    padding: '2.5rem',
+    padding: '1.5rem',
     background: 'transparent',
-    fontSize: '0.875rem',
-    lineHeight: '1.7',
+    fontSize: '0.8125rem',
+    lineHeight: '1.6',
   };
+
+  if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+    customStyle.padding = '2.5rem';
+    customStyle.fontSize = '0.875rem';
+    customStyle.lineHeight = '1.7';
+  }
 
   return (
     <div className="group relative my-12 rounded-[2rem] overflow-hidden border border-border/50 bg-[#0d1117] shadow-2xl shadow-primary/5 transition-all duration-500 hover:border-primary/30">
       {/* Header / Chrome */}
-      <div className="flex items-center justify-between px-8 py-5 bg-[#161b22] border-b border-border/30">
+      <div className="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 bg-[#161b22] border-b border-border/30">
         <div className="flex items-center gap-6">
           {isTerminal ? (
             <div className="flex items-center gap-4">

@@ -89,7 +89,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-20 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-8 lg:py-0">
+      <div className="relative z-20 container-responsive grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-8 lg:py-0">
         <motion.div
           style={{ 
             opacity: shouldReduceMotion ? 1 : contentOpacity,
@@ -98,13 +98,13 @@ export function Hero() {
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center lg:text-left"
+          className="text-center lg:text-left order-2 lg:order-1"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] lg:text-[5rem] font-display font-bold tracking-tighter leading-[0.9] md:leading-[0.85] mb-6 md:mb-8"
+            className="text-fluid-h1 font-display font-bold tracking-tighter mb-6 md:mb-8"
           >
             <span className="text-tricolor animate-gradient-x inline-block">
               {identity.name}
@@ -115,7 +115,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-2xl font-display font-medium text-foreground/70 mb-4 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl font-display font-medium text-foreground/70 mb-4 max-w-xl mx-auto lg:mx-0 leading-relaxed"
           >
             {identity.title}
           </motion.h2>
@@ -194,9 +194,9 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.9, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative px-8 lg:px-0 flex justify-center lg:justify-end"
+          className="relative px-4 sm:px-8 lg:px-0 flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0"
         >
-          <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-lg aspect-square group lg:-mt-20">
+          <div className="relative w-full max-w-[240px] sm:max-w-[320px] md:max-w-lg aspect-square group lg:-mt-20">
             {/* Background Abstract Waves (Inspired by Josh but techy) */}
             <div className="absolute inset-0 z-0 overflow-visible pointer-events-none">
               <svg viewBox="0 0 400 400" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] opacity-20 dark:opacity-30">

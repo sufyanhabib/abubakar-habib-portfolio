@@ -6,6 +6,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { useSound } from "@/components/SoundProvider";
 import { cn } from "@/lib/utils";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { portfolioData } from "@/data/portfolio";
 
 const navLinks = [
   { name: "About", href: "#about", id: "about" },
@@ -40,11 +41,23 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-[999] transition-all duration-300 py-4",
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border py-3" : "bg-transparent"
+        isScrolled || isMobileMenuOpen ? "bg-white/90 dark:bg-[#0d0d12]/90 backdrop-blur-md border-b border-zinc-200/50 dark:border-zinc-800/50 py-3" : "bg-transparent"
       )}
     >
       {/* Scroll Progress Bar */}
@@ -58,7 +71,7 @@ export function Navbar() {
           href="#"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-xl font-display font-bold tracking-tighter"
+          className="text-xl font-display font-bold tracking-tighter relative z-[1000]"
         >
           <span className="text-tricolor animate-gradient-x">AH.</span>
         </motion.a>
@@ -124,10 +137,10 @@ export function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-3 md:hidden relative z-[1000]">
           <button
             onClick={toggleMute}
-            className="p-2 rounded-full hover:bg-foreground/5 transition-colors text-muted-foreground hover:text-foreground w-10 h-10 flex items-center justify-center relative overflow-hidden"
+            className="p-2 rounded-full hover:bg-foreground/5 transition-colors text-muted-foreground hover:text-foreground w-10 h-10 flex items-center justify-center relative overflow-hidden shrink-0"
             aria-label={isMuted ? "Unmute" : "Mute"}
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -144,38 +157,54 @@ export function Navbar() {
           </button>
           <ThemeToggle />
           <button
-            className="text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="w-11 h-11 flex items-center justify-center rounded-full bg-foreground/5 hover:bg-foreground/10 active:scale-95 transition-all text-foreground shrink-0 focus:outline-none focus:ring-2 focus:ring-primary"
+            onClick={() => {
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+              playClick();
+            }}
+            aria-label={isMobileMenuOpen ? "Close main navigation menu" : "Open main navigation menu"}
+            aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={isMobileMenuOpen ? "open" : "closed"}
+                initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
+                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </motion.div>
+            </AnimatePresence>
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="md:hidden fixed inset-0 z-[998] bg-background/95 backdrop-blur-xl pt-24 px-6 pb-12 flex flex-col justify-between"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden fixed inset-0 z-[998] bg-white dark:bg-[#0d0d12] pt-24 pb-8 px-6 flex flex-col justify-between overflow-y-auto"
           >
-            <div className="flex flex-col gap-8">
+            {/* Nav links container, using center align with flexible spacing */}
+            <div className="flex flex-col gap-6 py-6 my-auto">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -15 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.05 }}
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     playClick();
                   }}
                   className={cn(
-                    "text-3xl font-display font-bold transition-colors",
+                    "text-3xl font-display font-bold tracking-tight transition-colors py-2",
                     activeSection === link.id ? "text-primary" : "text-foreground/80 hover:text-primary"
                   )}
                 >
@@ -184,28 +213,41 @@ export function Navbar() {
               ))}
             </div>
             
-            <div className="space-y-8">
-              <div className="h-px bg-border/50 w-full" />
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
+            {/* Bottom Actions Bar */}
+            <div className="space-y-6 pt-4 shrink-0">
+              <div className="h-[1px] bg-border/40 w-full" />
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
                   {[
-                    { icon: Github, href: "#" },
-                    { icon: Linkedin, href: "#" },
-                    { icon: Mail, href: "#" }
+                    { icon: Github, href: portfolioData.identity.github, label: "GitHub" },
+                    { icon: Linkedin, href: portfolioData.identity.linkedin, label: "LinkedIn" },
+                    { icon: Mail, href: `mailto:${portfolioData.identity.email}`, label: "Email" }
                   ].map((social, i) => (
                     <motion.a
                       key={i}
                       href={social.href}
-                      initial={{ opacity: 0, scale: 0.5 }}
+                      target={social.href && social.href !== "#" ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, scale: 0.6 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.4 + i * 0.1 }}
-                      className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
+                      transition={{ delay: 0.3 + i * 0.05 }}
+                      className="w-11 h-11 rounded-full bg-muted/60 border border-border/30 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors focus:ring-2 focus:ring-primary"
+                      aria-label={social.label}
                     >
                       <social.icon className="w-5 h-5" />
                     </motion.a>
                   ))}
                 </div>
-                <Button size="lg" className="rounded-full px-8" asChild onClick={() => setIsMobileMenuOpen(false)}>
+                
+                <Button 
+                  size="lg" 
+                  className="rounded-full px-8 shadow-lg shadow-primary/20" 
+                  asChild 
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    playClick();
+                  }}
+                >
                   <a href="#contact">Hire Me</a>
                 </Button>
               </div>

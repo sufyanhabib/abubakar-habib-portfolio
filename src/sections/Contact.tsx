@@ -24,7 +24,7 @@ export function Contact() {
               </div>
               <div>
                 <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Email</p>
-                <a href={`mailto:${identity.email}`} className="text-lg font-medium hover:text-primary transition-colors">
+                <a href={`mailto:${identity.email}`} className="text-base sm:text-lg font-medium hover:text-primary transition-colors break-all sm:break-normal">
                   {identity.email}
                 </a>
               </div>

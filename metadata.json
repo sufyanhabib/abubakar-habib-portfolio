@@ -1,5 +1,6 @@
 {
   "name": "Abubakar Habib | Portfolio",
   "description": "Premium developer portfolio for Abubakar Habib - Frontend Developer, Network Engineer, and Aspiring AI Engineer.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

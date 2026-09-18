@@ -193,6 +193,32 @@ export const JourneyTimeline = memo(function JourneyTimeline() {
             <div className="hidden lg:block w-[42%]" />
           </div>
         ))}
+
+        {/* Mobile-only "What's next?" CTA at the bottom of the stack */}
+        <div className="flex lg:hidden flex-col items-center justify-center pt-8 pb-4 relative z-20">
+          <motion.button 
+            onClick={scrollToContact}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="group/qbox flex flex-col items-center justify-center cursor-pointer focus:outline-none"
+            aria-label="What's next? Scroll to contact"
+          >
+            <div className="relative w-20 h-20 bg-background border-2 border-[#138808] rounded-3xl flex items-center justify-center shadow-[0_0_25px_rgba(19,136,8,0.2)] active:scale-95 transition-all duration-300">
+              <HelpCircle className="h-10 w-10 text-[#138808]" />
+              <div className="absolute -top-1 -right-1">
+                <div className="h-4 w-4 bg-[#138808] rounded-full animate-ping" />
+              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <p className="text-[12px] font-mono uppercase tracking-[0.4em] text-[#138808] font-bold">What's next?</p>
+              <div className="flex items-center justify-center gap-1.5 text-[10px] text-muted-foreground mt-1">
+                <span>Let's collaborate</span>
+                <ArrowUpRight className="h-3 w-3" />
+              </div>
+            </div>
+          </motion.button>
+        </div>
       </div>
 
       {/* Mobile Path (Simplified Vertical Line) */}

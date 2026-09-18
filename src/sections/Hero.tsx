@@ -242,13 +242,13 @@ export function Hero() {
               <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-orange-500">Frontend</span>
             </motion.div>
 
-            <motion.div 
+             <motion.div 
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.95 }}
               onClick={() => playClick()}
-              className="absolute bottom-20 -right-4 md:-right-8 bg-background/90 backdrop-blur-md border-2 border-dashed border-green-500/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2 cursor-pointer select-none group/tag"
+              className="absolute bottom-8 sm:bottom-12 md:bottom-20 -right-2 sm:-right-4 md:-right-8 bg-background/90 backdrop-blur-md border-2 border-dashed border-green-500/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2 cursor-pointer select-none group/tag"
             >
               <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse group-hover/tag:scale-125 transition-transform" />
               <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-green-500">Network</span>
@@ -260,7 +260,7 @@ export function Hero() {
               whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.95 }}
               onClick={() => playClick()}
-              className="absolute top-1/2 -right-8 md:-right-12 bg-background/90 backdrop-blur-md border-2 border-dotted border-primary/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2 cursor-pointer select-none group/tag"
+              className="absolute top-[35%] sm:top-[40%] md:top-1/2 -right-4 sm:-right-8 md:-right-12 bg-background/90 backdrop-blur-md border-2 border-dotted border-primary/50 px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2 cursor-pointer select-none group/tag"
             >
               <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse group-hover/tag:scale-125 transition-transform" />
               <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-primary">AI Engineer</span>

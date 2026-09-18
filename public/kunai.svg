@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <defs>
+    <!-- Filter for realistic metallic lighting & drop shadow -->
+    <filter id="metal-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="8" dy="16" stdDeviation="12" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <!-- Top facet of blade: high-specular steel -->
+    <linearGradient id="blade-facet-light" x1="280" y1="230" x2="60" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#808B96" />
+      <stop offset="25%" stop-color="#C5CBD3" />
+      <stop offset="50%" stop-color="#F2F4F7" />
+      <stop offset="70%" stop-color="#FFFFFF" />
+      <stop offset="85%" stop-color="#CBD2DA" />
+      <stop offset="100%" stop-color="#8A95A0" />
+    </linearGradient>
+
+    <!-- Bottom facet of blade: dark gunmetal / shadow side -->
+    <linearGradient id="blade-facet-dark" x1="280" y1="280" x2="70" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4A525A" />
+      <stop offset="25%" stop-color="#2D3339" />
+      <stop offset="55%" stop-color="#1A1F24" />
+      <stop offset="85%" stop-color="#22282E" />
+      <stop offset="100%" stop-color="#343C44" />
+    </linearGradient>
+
+    <!-- Center spine ridge shine -->
+    <linearGradient id="spine-gleam" x1="235" y1="250" x2="62" y2="422" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E2E8F0" stop-opacity="0.8" />
+      <stop offset="35%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="65%" stop-color="#F8FAFC" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#94A3B8" stop-opacity="0.5" />
+    </linearGradient>
+
+    <!-- Pommel ring gradient -->
+    <radialGradient id="ring-gradient" cx="390" cy="115" r="55" fx="380" fy="105" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="20%" stop-color="#D1D5DB" />
+      <stop offset="50%" stop-color="#6B7280" />
+      <stop offset="80%" stop-color="#374151" />
+      <stop offset="100%" stop-color="#111827" />
+    </radialGradient>
+
+    <!-- Pommel inner rim -->
+    <radialGradient id="ring-inner-rim" cx="395" cy="120" r="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="70%" stop-color="#1F2937" />
+      <stop offset="100%" stop-color="#4B5563" />
+    </radialGradient>
+
+    <!-- Handle shaft under-metal -->
+    <linearGradient id="handle-core" x1="360" y1="140" x2="240" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="50%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Handle bandage wrap gradient (greyish silver cloth) -->
+    <linearGradient id="wrap-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E2E8F0" />
+      <stop offset="30%" stop-color="#CBD5E1" />
+      <stop offset="70%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#64748B" />
+    </linearGradient>
+
+    <linearGradient id="wrap-shadow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#64748B" />
+      <stop offset="50%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+
+    <!-- Bolster collar -->
+    <linearGradient id="bolster-grad" x1="250" y1="215" x2="225" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="40%" stop-color="#475569" />
+      <stop offset="85%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Glint flare star -->
+    <filter id="glint-bloom" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#metal-shadow)">
+    <!-- 1. POMMEL RING -->
+    <!-- Outer Ring -->
+    <circle cx="395" cy="115" r="42" fill="url(#ring-gradient)" stroke="#1F2937" stroke-width="2" />
+    <!-- Outer Ring Specular Bevel Arc -->
+    <path d="M 365 105 A 42 42 0 0 1 425 88" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
+    <!-- Punched Ring Hole -->
+    <circle cx="395" cy="115" r="23" fill="none" stroke="#111827" stroke-width="4" />
+    <circle cx="395" cy="115" r="22" fill="#000000" fill-opacity="0" />
+    <!-- Inner Rim Highlight -->
+    <path d="M 378 128 A 22 22 0 0 0 412 128" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" opacity="0.9" />
+
+    <!-- 2. HANDLE SHAFT -->
+    <!-- Metal core base -->
+    <path d="M 368 140 L 378 150 L 255 260 L 245 250 Z" fill="url(#handle-core)" />
+
+    <!-- Cord Wrap Bands (Individually sculpted 3D coils) -->
+    <!-- Coil 1 -->
+    <path d="M 364 144 L 375 155 L 366 164 L 355 153 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="365" y1="145" x2="356" y2="154" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+    <!-- Coil 2 -->
+    <path d="M 353 155 L 364 166 L 355 175 L 344 164 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="354" y1="156" x2="345" y2="165" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+    <!-- Coil 3 -->
+    <path d="M 342 166 L 353 177 L 344 186 L 333 175 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="343" y1="167" x2="334" y2="176" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+    <!-- Coil 4 -->
+    <path d="M 331 177 L 342 188 L 333 197 L 322 186 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="332" y1="178" x2="323" y2="187" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+    <!-- Coil 5 -->
+    <path d="M 320 188 L 331 199 L 322 208 L 311 197 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="321" y1="189" x2="312" y2="198" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+    <!-- Coil 6 -->
+    <path d="M 309 199 L 320 210 L 311 219 L 300 208 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="310" y1="200" x2="301" y2="209" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+    <!-- Coil 7 -->
+    <path d="M 298 210 L 309 221 L 300 230 L 289 219 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="299" y1="211" x2="290" y2="220" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+    <!-- Coil 8 -->
+    <path d="M 287 221 L 298 232 L 289 241 L 278 230 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="288" y1="222" x2="279" y2="231" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+    <!-- Coil 9 -->
+    <path d="M 276 232 L 287 243 L 278 252 L 267 241 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="277" y1="233" x2="268" y2="242" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+    <!-- Coil 10 -->
+    <path d="M 265 243 L 276 254 L 267 263 L 256 252 Z" fill="url(#wrap-light)" stroke="#334155" stroke-width="1.2" />
+    <line x1="266" y1="244" x2="257" y2="253" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" />
+
+    <!-- 3. BOLSTER / COLLAR (Connection between handle & blade) -->
+    <path d="M 252 249 L 266 261 L 253 274 L 239 262 Z" fill="url(#bolster-grad)" stroke="#0F172A" stroke-width="1.5" />
+    <line x1="250" y1="250" x2="264" y2="262" stroke="#CBD5E1" stroke-width="1.5" />
+
+    <!-- 4. BLADE: 3D FACETED DIAMOND SPEAR-POINT -->
+    <!-- Top/Right Facet (Light and reflective metallic sheen) -->
+    <path
+      d="M 235 250 L 195 235 L 58 426 L 220 300 Z"
+      fill="url(#blade-facet-light)"
+      stroke="#CBD5E1"
+      stroke-width="0.8"
+      stroke-linejoin="round"
+    />
+
+    <!-- Bottom/Left Facet (Cast shadow & deep gunmetal sheen) -->
+    <path
+      d="M 220 300 L 235 250 L 58 426 Z"
+      fill="url(#blade-facet-dark)"
+      stroke="#1E293B"
+      stroke-width="0.8"
+      stroke-linejoin="round"
+    />
+
+    <!-- Bevel perimeter edge highlights -->
+    <!-- Top edge cutting bevel -->
+    <line x1="195" y1="235" x2="58" y2="426" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.95" />
+    <line x1="195" y1="235" x2="235" y2="250" stroke="#F1F5F9" stroke-width="1.8" opacity="0.85" />
+    
+    <!-- Bottom edge back bevel -->
+    <line x1="220" y1="300" x2="58" y2="426" stroke="#475569" stroke-width="1.5" stroke-linecap="round" opacity="0.9" />
+    <line x1="220" y1="300" x2="235" y2="250" stroke="#334155" stroke-width="1.5" opacity="0.9" />
+
+    <!-- 5. CENTRAL SPINE (Razor-sharp center ridge) -->
+    <line
+      x1="235"
+      y1="250"
+      x2="58"
+      y2="426"
+      stroke="url(#spine-gleam)"
+      stroke-width="2.5"
+      stroke-linecap="round"
+    />
+
+    <!-- Specular highlight streak along blade ridge -->
+    <line
+      x1="200"
+      y1="290"
+      x2="90"
+      y2="400"
+      stroke="#FFFFFF"
+      stroke-width="1.2"
+      opacity="0.8"
+    />
+
+    <!-- 6. GLINT AT RAZOR TIP (Solar reflection flare) -->
+    <g filter="url(#glint-bloom)" transform="translate(58, 426)">
+      <!-- Core intense white spark -->
+      <circle cx="0" cy="0" r="3.5" fill="#FFFFFF" />
+      <!-- Star rays -->
+      <line x1="-12" y1="0" x2="12" y2="0" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.9" />
+      <line x1="0" y1="-12" x2="0" y2="12" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.9" />
+      <!-- Diagonal subtle rays -->
+      <line x1="-7" y1="-7" x2="7" y2="7" stroke="#A7F3D0" stroke-width="1" stroke-linecap="round" opacity="0.75" />
+      <line x1="-7" y1="7" x2="7" y2="-7" stroke="#A7F3D0" stroke-width="1" stroke-linecap="round" opacity="0.75" />
+    </g>
+  </g>
+</svg>

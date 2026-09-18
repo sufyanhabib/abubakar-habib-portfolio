@@ -4,7 +4,7 @@ import { useSound } from '../SoundProvider';
 
 import levelUpAsset from '@/assets/sounds/naruto-jutsu-sound.mp3';
 import lightningAsset from '@/assets/sounds/chidori.mp3';
-import waterAsset from '@/assets/sounds/tra.mp3'; 
+import waterAsset from '@/assets/sounds/WATER-dragon-jutsu.mp3'; 
 import handSignsAsset from '@/assets/sounds/naruto-hand-signs.mp3';
 import teleportAsset from '@/assets/sounds/teleport-sasuke.mp3';
 import sasukeAsset from '@/assets/sounds/saaaske.mp3';
@@ -89,7 +89,7 @@ export const useNinjaSound = () => {
     hoverSound.current = createSound('https://assets.mixkit.co/sfx/preview/mixkit-fast-small-sweep-transition-166.mp3', 0.15);
     sharinganSound.current = createSound('https://assets.mixkit.co/sfx/preview/mixkit-deep-ambient-hum-2144.mp3', 0.2, true);
     lightningSound.current = createSound(lightningAsset, 0.7);
-    waterSound.current = createSound(waterAsset, 0.6);
+    waterSound.current = createSound(waterAsset, 0.85);
     handSignsSound.current = createSound(handSignsAsset, 0.6);
     teleportSound.current = createSound(teleportAsset, 0.6);
     sasukeSound.current = createSound(sasukeAsset, 0.7);
@@ -152,9 +152,11 @@ export const useNinjaSound = () => {
   const playWater = useCallback(() => {
     if (!isMuted) {
       ensureAudioUnlocked();
-      playSynthWave(); // Play synth as immediate feedback or fallback
       if (waterSound.current?.state() === 'loaded') {
+        waterSound.current.stop(); // Reset playback to prevent clipping/stacking
         waterSound.current.play();
+      } else {
+        playSynthWave(); // Fallback
       }
     }
   }, [isMuted, ensureAudioUnlocked, playSynthWave]);

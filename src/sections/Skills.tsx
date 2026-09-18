@@ -45,7 +45,7 @@ export function Skills() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             className={cn(
-              "group relative p-8 rounded-3xl border border-border/50 bg-secondary/10 hover:bg-secondary/20 transition-all duration-500",
+              "group relative p-6 sm:p-8 rounded-3xl border border-border/50 bg-secondary/10 hover:bg-secondary/20 transition-all duration-500",
               i === 0 || i === 3 ? "lg:col-span-7" : "lg:col-span-5"
             )}
           >

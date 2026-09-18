@@ -8,6 +8,7 @@ import { Volume2, VolumeX } from 'lucide-react';
 import { DOSSIER_ASSETS, STORY_SECTIONS, MANGA_CALLOUTS } from '@/constants/dossierData';
 import { cn } from '@/lib/utils';
 import { SHINOBI_IMAGES } from '@/constants/assetRegistry';
+import { ShinobiBackToTop } from '@/components/ShinobiBackToTop';
 
 export const NinjaProfilePage: React.FC = () => {
   const { isMuted, toggleMute, playExport } = useSound();
@@ -64,8 +65,8 @@ export const NinjaProfilePage: React.FC = () => {
       {/* Global Ambient Accents */}
       <div className="fixed inset-0 pointer-events-none z-[5] opacity-[0.03] bg-[radial-gradient(#00FF9F_1px,transparent_1px)] bg-[size:32px_32px]" />
 
-      {/* Floating Tactical Labels */}
-      <div className="fixed inset-0 pointer-events-none z-[55] overflow-hidden select-none">
+      {/* Floating Tactical Labels - Hidden on mobile to avoid overlapping with text content */}
+      <div className="hidden md:block fixed inset-0 pointer-events-none z-[55] overflow-hidden select-none">
         <div className="absolute top-1/4 left-10 text-[8px] font-mono text-white/10 [writing-mode:vertical-lr] uppercase tracking-[0.5em]">SYSTEM_ARCH_LOG</div>
         <div className="absolute top-1/2 right-4 text-[8px] font-mono text-white/5 [writing-mode:vertical-lr] uppercase tracking-[0.5em]">K BUREAU_SHADOW</div>
         <div className="absolute bottom-[10%] left-10 text-[8px] font-mono text-white/10 [writing-mode:vertical-lr] uppercase tracking-[0.5em]">ARCHIVE_SEAL_LOCKED</div>
@@ -283,19 +284,19 @@ export const NinjaProfilePage: React.FC = () => {
               Known for precision in complex data extractions and the tactical application of modern frontend frameworks.
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {[
                 { label: "Village", value: "Konohagakure", icon: Shield },
                 { label: "Rank", value: "Early Jōnin", icon: Award },
                 { label: "Specialization", value: "System Architecture", icon: Target },
                 { label: "Affinities", value: "Lightning / Water", icon: Zap },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 group hover:border-[#00FF9F]/30 transition-all">
-                  <div className="flex items-center gap-2 text-white/40">
-                    <item.icon className="w-3.5 h-3.5" />
-                    <span className="text-[9px] font-mono uppercase tracking-widest">{item.label}</span>
+                <div key={i} className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 space-y-1.5 sm:space-y-2 group hover:border-[#00FF9F]/30 transition-all">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-white/40">
+                    <item.icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                    <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-widest">{item.label}</span>
                   </div>
-                  <p className="text-xs font-bold text-white uppercase tracking-tight">{item.value}</p>
+                  <p className="text-3xs sm:text-xs font-bold text-white uppercase tracking-tight break-words">{item.value}</p>
                 </div>
               ))}
             </div>
@@ -651,6 +652,9 @@ export const NinjaProfilePage: React.FC = () => {
         {/* Bottom decorative bar */}
         <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#00FF9F]/40 to-transparent" />
       </footer>
+
+      {/* Floating 3D Shining Glossing Kunai Back to Top FAB */}
+      <ShinobiBackToTop threshold={320} />
     </div>
   );
 };

@@ -74,7 +74,7 @@ export function About() {
                   to="/dossier" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="group relative block p-8 bg-secondary/5 border-2 border-dashed border-border/50 hover:border-primary hover:bg-primary/[0.02] transition-all duration-500 rounded-2xl overflow-hidden"
+                  className="group relative block p-6 sm:p-8 bg-secondary/5 border-2 border-dashed border-border/50 hover:border-primary hover:bg-primary/[0.02] transition-all duration-500 rounded-2xl overflow-hidden"
                 >
                   {/* Reimagined Card Background */}
                   <div className="absolute inset-x-0 bottom-0 top-0 pointer-events-none opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700">
@@ -114,7 +114,7 @@ export function About() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-[2rem] bg-secondary/5 border border-border/50 space-y-8"
+                className="p-6 sm:p-8 rounded-[2rem] bg-secondary/5 border border-border/50 space-y-8"
               >
                 <div className="group">
                   <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary/50 mb-3 group-hover:text-primary transition-colors">Current Base</h4>

@@ -9,8 +9,7 @@ import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 import { SoundProvider } from "@/components/SoundProvider";
 import { NinjaProfilePage } from "@/pages/NinjaProfilePage";
-import { ShinobiBackToTop } from "@/components/ShinobiBackToTop";
-import { useEffect, useLayoutEffect, Suspense, lazy } from "react";
+import { useLayoutEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { MotionConfig } from "motion/react";
 
@@ -44,7 +43,6 @@ function Portfolio() {
         <Contact />
       </main>
       <Footer />
-      <ShinobiBackToTop threshold={350} />
     </div>
   );
 }

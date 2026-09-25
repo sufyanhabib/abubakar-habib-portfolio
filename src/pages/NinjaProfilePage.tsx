@@ -9,6 +9,7 @@ import { DOSSIER_ASSETS, STORY_SECTIONS, MANGA_CALLOUTS } from '@/constants/doss
 import { cn } from '@/lib/utils';
 import { SHINOBI_IMAGES } from '@/constants/assetRegistry';
 import { ShinobiBackToTop } from '@/components/ShinobiBackToTop';
+import { ShinobiKunaiCursor } from '@/components/ShinobiKunaiCursor';
 
 export const NinjaProfilePage: React.FC = () => {
   const { isMuted, toggleMute, playExport } = useSound();
@@ -53,8 +54,11 @@ export const NinjaProfilePage: React.FC = () => {
     <div 
       ref={containerRef} 
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen bg-[#020617] text-slate-100 selection:bg-[#00FF9F]/30 selection:text-[#00FF9F] overflow-x-hidden"
+      className="shinobi-dossier-page relative min-h-screen bg-[#020617] text-slate-100 selection:bg-[#00FF9F]/30 selection:text-[#00FF9F] overflow-x-hidden"
     >
+      {/* Interactive Custom Shinobi Kunai Cursor with Calibrated Tip Hotspot */}
+      <ShinobiKunaiCursor assetUrl="/Kunai.png" />
+
       {/* Cinematic Background Scanlines */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
       

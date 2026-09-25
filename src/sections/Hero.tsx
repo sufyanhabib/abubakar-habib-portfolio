@@ -4,17 +4,8 @@ import { Github, Linkedin, Mail, Codepen, ArrowRight, Download } from "lucide-re
 import { portfolioData } from "@/data/portfolio";
 import { useRef, Suspense, lazy } from "react";
 import { useSound } from "@/components/SoundProvider";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { HeroGlobeFallback } from "@/components/HeroGlobeFallback";
 
-const LazyHeroGlobe = lazy<React.ComponentType>(() => 
-  import("@/components/HeroGlobe")
-    .then(m => ({ default: m.HeroGlobe || m.default }))
-    .catch(err => {
-      console.warn("Failed to load dynamic HeroGlobe, using fallback:", err);
-      return { default: HeroGlobeFallback };
-    })
-);
+const LazyHeroGlobe = lazy(() => import("@/components/HeroGlobe").then(m => ({ default: m.HeroGlobe })));
 
 export function Hero() {
   const { identity } = portfolioData;
@@ -233,11 +224,9 @@ export function Hero() {
 
             {/* Premium Circular Frame */}
             <div className="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl shadow-primary/10 bg-muted/30 backdrop-blur-sm">
-              <ErrorBoundary fallback={<HeroGlobeFallback />}>
-                <Suspense fallback={<HeroGlobeFallback />}>
-                  <LazyHeroGlobe />
-                </Suspense>
-              </ErrorBoundary>
+              <Suspense fallback={<div className="w-full h-full bg-muted/20 animate-pulse" />}>
+                <LazyHeroGlobe />
+              </Suspense>
             </div>
 
             {/* Floating Labels (Pills) */}

@@ -45,7 +45,7 @@ export function Articles() {
   };
 
   return (
-    <section id="articles" className="py-20 md:py-32 bg-background relative overflow-hidden transition-colors duration-500">
+    <section id="articles" data-section-id="articles" className="py-20 md:py-32 bg-background relative overflow-hidden transition-colors duration-500 scroll-mt-24">
       {/* Background Accents */}
       <div className="absolute top-0 right-0 -z-10 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       

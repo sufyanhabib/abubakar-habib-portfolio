@@ -18,7 +18,7 @@ export function About() {
   const labels = ["The Foundation", "The Practical Path", "The Transition", "Current Focus"];
 
   return (
-    <section id="about" className="relative overflow-hidden bg-background pt-32 pb-24 border-y border-border/5">
+    <section id="about" data-section-id="about" className="relative overflow-hidden bg-background pt-32 pb-24 border-y border-border/5 scroll-mt-24">
       <div className="container-responsive space-y-20 lg:space-y-32 relative z-10">
         {/* Top Section: Narrative Storytelling */}
         <div className="space-y-16">

@@ -1,11 +1,11 @@
 import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
 import { Github, Linkedin, Mail, Menu, X, Volume2, VolumeX } from "lucide-react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useSound } from "@/components/SoundProvider";
 import { cn } from "@/lib/utils";
-import { useActiveSection } from "@/hooks/useActiveSection";
+import { useActiveSectionObserver } from "@/hooks/useActiveSectionObserver";
 import { portfolioData } from "@/data/portfolio";
 
 const navLinks = [
@@ -24,7 +24,14 @@ export function Navbar() {
   const { isMuted, toggleMute, playClick } = useSound();
   
   const sectionIds = useMemo(() => ["hero", ...navLinks.map(link => link.id)], []);
-  const activeSection = useActiveSection(sectionIds);
+  const { activeSection, scrollToSection } = useActiveSectionObserver(sectionIds, {
+    headerOffset: 85,
+    rootMargin: "-15% 0px -40% 0px",
+    threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0],
+    debounceMs: 35,
+    bottomThreshold: 70,
+    defaultSection: null,
+  });
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -53,11 +60,24 @@ export function Navbar() {
     };
   }, [isMobileMenuOpen]);
 
+  const handleLinkClick = useCallback((e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    playClick();
+    scrollToSection(id);
+  }, [playClick, scrollToSection]);
+
+  const handleMobileLinkClick = useCallback((e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    playClick();
+    scrollToSection(id);
+  }, [playClick, scrollToSection]);
+
   return (
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-[999] transition-all duration-300 py-4",
-        isScrolled || isMobileMenuOpen ? "bg-white/90 dark:bg-[#0d0d12]/90 backdrop-blur-md border-b border-zinc-200/50 dark:border-zinc-800/50 py-3" : "bg-transparent"
+        isScrolled || isMobileMenuOpen ? "bg-white/90 dark:bg-[#0d0d12]/90 backdrop-blur-md border-b border-zinc-200/50 dark:border-zinc-800/50 py-3 shadow-sm" : "bg-transparent"
       )}
     >
       {/* Scroll Progress Bar */}
@@ -68,42 +88,51 @@ export function Navbar() {
 
       <div className="container-responsive flex items-center justify-between">
         <motion.a
-          href="#"
+          href="#hero"
+          onClick={(e) => handleLinkClick(e, "hero")}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-xl font-display font-bold tracking-tighter relative z-[1000]"
+          className="text-xl font-display font-bold tracking-tighter relative z-[1000] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           <span className="text-tricolor animate-gradient-x">AH.</span>
         </motion.a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link, i) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              onClick={() => playClick()}
-              className={cn(
-                "text-sm font-medium transition-all duration-300 relative group",
-                activeSection === link.id 
-                  ? "text-primary" 
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {link.name}
-              {activeSection === link.id && (
-                <motion.div
-                  layoutId="activeNav"
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-            </motion.a>
-          ))}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6 relative" role="tablist">
+            {navLinks.map((link, i) => {
+              const isActive = activeSection === link.id;
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  role="tab"
+                  aria-selected={isActive}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.08 }}
+                  onClick={(e) => handleLinkClick(e, link.id)}
+                  className={cn(
+                    "text-sm font-medium transition-colors duration-200 relative py-1 px-1 focus:outline-none focus-visible:text-primary",
+                    isActive 
+                      ? "text-primary font-semibold" 
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {link.name}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavUnderline"
+                      className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-primary rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)] dark:shadow-[0_0_10px_rgba(96,165,250,0.7)]"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                </motion.a>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-4 pl-2 border-l border-border/40">
             <button
               onClick={toggleMute}
               className="p-2 rounded-full hover:bg-foreground/5 transition-colors text-muted-foreground hover:text-foreground w-10 h-10 flex items-center justify-center relative overflow-hidden"
@@ -128,8 +157,8 @@ export function Navbar() {
               variant="outline" 
               size="sm" 
               asChild 
-              className="rounded-full"
-              onClick={() => playClick()}
+              className="rounded-full hover:border-primary/50 transition-colors"
+              onClick={(e) => handleLinkClick(e, "contact")}
             >
               <a href="#contact">Hire Me</a>
             </Button>
@@ -199,16 +228,19 @@ export function Navbar() {
                   initial={{ opacity: 0, x: -15 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    playClick();
-                  }}
+                  onClick={(e) => handleMobileLinkClick(e, link.id)}
                   className={cn(
-                    "text-3xl font-display font-bold tracking-tight transition-colors py-2",
+                    "text-3xl font-display font-bold tracking-tight transition-colors py-2 flex items-center justify-between",
                     activeSection === link.id ? "text-primary" : "text-foreground/80 hover:text-primary"
                   )}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {activeSection === link.id && (
+                    <motion.div
+                      layoutId="mobileActiveDot"
+                      className="w-2.5 h-2.5 rounded-full bg-primary"
+                    />
+                  )}
                 </motion.a>
               ))}
             </div>
@@ -243,10 +275,7 @@ export function Navbar() {
                   size="lg" 
                   className="rounded-full px-8 shadow-lg shadow-primary/20" 
                   asChild 
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    playClick();
-                  }}
+                  onClick={(e) => handleMobileLinkClick(e, "contact")}
                 >
                   <a href="#contact">Hire Me</a>
                 </Button>

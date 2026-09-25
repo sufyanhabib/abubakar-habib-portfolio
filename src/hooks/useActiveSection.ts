@@ -1,44 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useActiveSectionObserver, UseActiveSectionObserverOptions } from "./useActiveSectionObserver";
 
-export function useActiveSection(sectionIds: string[], optionsOrRootId?: IntersectionObserverInit | string) {
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+/**
+ * Backward-compatible hook wrapper for useActiveSection.
+ * Returns the active section ID string (or null).
+ */
+export function useActiveSection(
+  sectionIds: string[],
+  optionsOrRootId?: IntersectionObserverInit | string | UseActiveSectionObserverOptions
+): string | null {
+  let hookOptions: UseActiveSectionObserverOptions = {
+    headerOffset: 90,
+    rootMargin: "-15% 0px -40% 0px",
+    threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0],
+    debounceMs: 40,
+    bottomThreshold: 60,
+  };
 
-  useEffect(() => {
-    let options: IntersectionObserverInit = {
-      root: null,
-      rootMargin: '-20% 0px -70% 0px',
-      threshold: 0,
-    };
-
-    if (typeof optionsOrRootId === 'string') {
-      const root = document.getElementById(optionsOrRootId);
-      if (root) {
-        options.root = root;
-      }
-    } else if (optionsOrRootId) {
-      options = { ...options, ...optionsOrRootId };
+  if (typeof optionsOrRootId === "string") {
+    const root = document.getElementById(optionsOrRootId);
+    if (root) {
+      hookOptions.root = root;
     }
+  } else if (optionsOrRootId && typeof optionsOrRootId === "object") {
+    hookOptions = { ...hookOptions, ...optionsOrRootId };
+  }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, options);
-
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
-    return () => {
-      sectionIds.forEach((id) => {
-        const element = document.getElementById(id);
-        if (element) observer.unobserve(element);
-      });
-    };
-  }, [sectionIds, optionsOrRootId]);
-
+  const { activeSection } = useActiveSectionObserver(sectionIds, hookOptions);
   return activeSection;
 }
+
+export { useActiveSectionObserver };

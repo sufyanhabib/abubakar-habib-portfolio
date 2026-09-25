@@ -12,7 +12,7 @@ interface SectionProps {
 
 export function Section({ children, id, className, title, subtitle }: SectionProps) {
   return (
-    <section id={id} className={cn("py-24", className)}>
+    <section id={id} data-section-id={id} className={cn("py-24 scroll-mt-24", className)}>
       <div className="container-responsive">
         {(title || subtitle) && (
           <motion.div 

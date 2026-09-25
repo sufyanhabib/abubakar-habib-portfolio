@@ -27,6 +27,7 @@ export function Hero() {
   return (
     <section 
       id="hero"
+      data-section-id="hero"
       ref={containerRef}
       className="relative min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background transition-colors duration-700"
     >
